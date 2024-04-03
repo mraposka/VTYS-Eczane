@@ -16,4 +16,8 @@ class Eczane extends BaseController
     { 
         return view("homePage");
     }
+    public function Test()
+    { 
+        return view("test");
+    }
 }
