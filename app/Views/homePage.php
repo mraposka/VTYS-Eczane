@@ -57,6 +57,57 @@
     </div>
   </nav>
   <!-- Navbar -->
+
     </div>  
+    <!--KARTLAR-->
+    <div class="cards ">
+      
+   
+      <div class="container py-5">
+        <h1 class="text-center" style="color: #808080;">Admin Paneli</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
+
+            <div class="col" >
+                <div class="card" style="background:#f2f2f2;">
+                <img id="MDB-logo5" class="card-img-top"src="<?php echo base_url('ViewAssets/')?>images/5.jpg" alt="..." />
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #808080; text-align:center;">PERSONEL</h5>
+                        
+                    </div>
+                    <div class="mb-5 d-flex justify-content-around">
+                    
+                        <button class="btn " style="color: #808080; background:#ffa500; font-weight: bold;">EKLE</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card" style="background:#f2f2f2;">
+                <img id="MDB-logo6" class="card-img-top"src="<?php echo base_url('ViewAssets/')?>images/6.jpg" alt="..." />
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #808080; text-align:center;">İLAÇ</h5>
+                       
+                    </div>
+                    <div class="mb-5 d-flex justify-content-around">
+                      
+                        <button class="btn " style="color: #808080; background:#ffa500; font-weight: bold;">EKLE</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card" style="background:#f2f2f2;">
+                <img id="MDB-logo7" class="card-img-top"src="<?php echo base_url('ViewAssets/')?>images/7.jpg" alt="..." />
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #808080;text-align:center;">KATEGORİ</h5>
+                       
+                    </div>
+                    <div class="mb-5 d-flex justify-content-around">
+                        
+                        <button class="btn" style="color: #808080; background:#ffa500; font-weight: bold;">EKLE</button>
+                    </div>
+                </div>
+            </div>
+            </div>
 </body>
 </html>
