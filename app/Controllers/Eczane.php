@@ -16,12 +16,32 @@ class Eczane extends BaseController
     { 
         return view("homePage");
     }
-    public function Test()
+    public function Giris()
     { 
-        return view("test");
+        return view("login");
     }
     public function Ilaclar()
     { 
         return view("medicines"); 
+    }
+    public function Hastalar()
+    { 
+        return view("sick"); 
+    }
+    public function Receteler()
+    { 
+        return view("prescriptions"); 
+    }
+    public function Stok()
+    { 
+        return view("stock"); 
+    }
+    public function Personel()
+    { 
+        return view("employee"); 
+    }
+    public function Sepet()
+    { 
+        return view("myCart"); 
     }
 }

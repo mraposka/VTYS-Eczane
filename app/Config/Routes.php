@@ -7,8 +7,13 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Eczane::index');
 $routes->get('/Home', 'Eczane::home');
-$routes->get('/Test', 'Eczane::Test');
+$routes->get('/Giris', 'Eczane::Giris');
 $routes->get('/Ilaclar', 'Eczane::Ilaclar'); 
+$routes->get('/Hastalar', 'Eczane::Hastalar'); 
+$routes->get('/Receteler', 'Eczane::Receteler');
+$routes->get('/Stok', 'Eczane::Stok');
+$routes->get('/Personel', 'Eczane::Personel');
+$routes->get('/Sepet', 'Eczane::Sepet');
 
 $routes->set404Override(function() {
 	return view('404');
