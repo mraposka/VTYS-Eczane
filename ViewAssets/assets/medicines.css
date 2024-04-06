@@ -1,0 +1,17 @@
+.navbar-light .navbar-nav .nav-link {
+    color: #000;
+    
+  }
+.navbar{
+    background-color:#808080 ;
+}
+.collabs .navbar .nav-item .nav-link:hover{
+    color: chocolate;
+}
+.home {
+    background-color: #401717;
+}
+.cards{
+    margin-top: 100px;
+}
+

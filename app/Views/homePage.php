@@ -35,7 +35,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto align-items-center">
           <li class="nav-item">
-            <a class="btn  btn-rounded nav-link mx-2" href="#!" style="color: #ffa500;"><i class="fa-solid fa-capsules pe-2"></i>İLAÇLAR</a>
+            <a class="btn  btn-rounded nav-link mx-2" href="<?php echo base_url("/Ilaclar")?>" style="color: #ffa500;"><i class="fa-solid fa-capsules pe-2"></i>İLAÇLAR</a>
           </li>
           <li class="nav-item">
             <a class="btn  btn-rounded nav-link mx-2" href="#!" style="color: #ffa500;"><i class="fa-solid fa-person pe-2"></i>HASTALAR</a>

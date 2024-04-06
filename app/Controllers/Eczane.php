@@ -20,4 +20,8 @@ class Eczane extends BaseController
     { 
         return view("test");
     }
+    public function Ilaclar()
+    { 
+        return view("medicines"); 
+    }
 }
