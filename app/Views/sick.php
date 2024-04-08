@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo base_url('ViewAssets/') ?>assets/homePage.css">
-    <link rel="stylesheet" href="<?php echo base_url('ViewAssets/') ?>assets/sick.css">
+    <link rel="stylesheet" href="<?php echo base_url('ViewAssets/') ?>assets/Sick.css">
     <link rel="stylesheet" href="<?php echo base_url('ViewAssets/') ?>bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -13,10 +13,11 @@
 </head>
 
 <body>
+    //! MENU BAR START
     <div class="home">
         <header class="navbar navbar-expand-lg fixed-top navbar-light">
             <div class="container">
-                <a class="navbar-brand" href="<?php echo base_url("/Home")?>">
+                <a class="navbar-brand" href="<?php echo base_url("/Home") ?>">
                     <img id="MDB-logo1" src="<?php echo base_url('ViewAssets/') ?>images/4.png" alt="MDB Logo" draggable="false" height="60" />
                     <img id="MDB-logo2" src="<?php echo base_url('ViewAssets/') ?>images/3.png" alt="MDB Logo" draggable="false" height="60" />
                 </a>
@@ -46,9 +47,38 @@
                     </ul>
                 </div>
             </div>
-            </nav>
+        </header>
     </div>
 
+    //! TABLE START
+    <div class="table">
+        <table class="table  table-hover" style="background:#f2f2f2;">
+            <thead>
+                <tr>
+                    <th scope="col">Hasta ID</th>
+                    <th scope="col">Ad</th>
+                    <th scope="col">Soyad</th>
+                    <th>Cinsiyet</th>
+                    <th scope="col">Doğum Tarihi</th>
+                    <th scope="col">Adres</th>
+                    <th scope="col">Bilgileri Düzenle</th>
+                    <th scope="col">Reçete Görüntüle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Zeynep </td>
+                    <td>Ayar</td>
+                    <td>Kadın</td>
+                    <td>19.02.2003</td>
+                    <td>Başiskele</td>
+                    <td><button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold; ">DÜZENLE</button></td>
+                    <td><button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold;">GÖRÜNTÜLE</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 
 </html>

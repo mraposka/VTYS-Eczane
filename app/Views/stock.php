@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo base_url('ViewAssets/') ?>assets/homePage.css">
-    <link rel="stylesheet" href="<?php echo base_url('ViewAssets/') ?>assets/stock.css">
+    <link rel="stylesheet" href="<?php echo base_url('ViewAssets/') ?>assets/Stock.css">
     <link rel="stylesheet" href="<?php echo base_url('ViewAssets/') ?>bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -46,7 +46,33 @@
                     </ul>
                 </div>
             </div>
-            </nav>
+        </header>
+    </div>
+
+    //! TABLE START
+    <div class="table">
+        <table class="table  table-hover" style="background:#f2f2f2;">
+            <thead>
+                <tr>
+                    <th scope="col">İlaç ID</th>
+                    <th scope="col">Adet</th>
+                    <th scope="col">Kategori</th>
+                    <th>Kullanım Süresi</th>
+                    <th scope="col">İlaç Sayısı</th>
+                    <th scope="col">Reçete Görüntüle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Kırmızı </td>
+                    <td>08.04.2024</td>
+                    <td>1 Gün</td>
+                    <td>1</td>
+                    <td><button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold;">GÖRÜNTÜLE</button></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
 </body>

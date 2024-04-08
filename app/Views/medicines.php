@@ -12,7 +12,7 @@
 </head>
 
 <body>
-
+  //! MENU BAR START
   <div class="home">
     <header class="navbar navbar-expand-lg fixed-top navbar-light">
       <div class="container">
@@ -46,10 +46,10 @@
           </ul>
         </div>
       </div>
-      </nav>
+    </header>
   </div>
 
-
+  //! TABLE START
   <div class="table ">
   <table class="table  table-hover" style="background:#f2f2f2;">
   <thead>
@@ -72,7 +72,7 @@
       <td>Atabay İlaç Firması</td>
       <td>25 TL</td>
       <td>Kırmızı</td>
-      <td><button class="btn btn-sm" style="color: #ffa500; background:#808080; ">EKLE</button></td>
+      <td><button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold; ">EKLE</button></td>
       <td><button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold;">SATIŞ YAP</button></td>
     </tr>
     <tr>
