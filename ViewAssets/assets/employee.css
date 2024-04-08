@@ -3,3 +3,24 @@
 body{
     font-family: "Poppins", sans-serif;
 }
+.navbar-light .navbar-nav .nav-link {
+    color: #000;
+    
+  }
+.navbar{
+    background-color:#808080 ;
+}
+.collabs .navbar .nav-item .nav-link:hover{
+    color: chocolate;
+}
+.home {
+    background-color: #401717;
+}
+.table{
+    height: auto;
+    width: auto;
+    padding-top: 150px; 
+    padding-left: 200px; 
+    padding-right: 200px; 
+    text-align: center;
+}
