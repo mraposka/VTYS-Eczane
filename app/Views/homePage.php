@@ -64,7 +64,6 @@
               <h5 class="card-title" style="color: #808080; text-align:center;">PERSONEL</h5>
             </div>
             <div class="mb-5 d-flex justify-content-around">
-
               <button class="btn " type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" style="color: #808080; background:#ffa500; font-weight: bold;">EKLE</button>
             </div>
           </div>
@@ -76,7 +75,7 @@
               <h5 class="card-title" style="color: #808080; text-align:center;">İLAÇ</h5>
             </div>
             <div class="mb-5 d-flex justify-content-around">
-              <button class="btn " type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="color: #808080; background:#ffa500; font-weight: bold; ">EKLE</button>
+              <button class="btn " data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="color: #808080; background:#ffa500; font-weight: bold; ">EKLE</button>
             </div>
           </div>
         </div>
@@ -93,7 +92,7 @@
         </div>
       </div>
 
-      <!--MODAL FORM -->
+      <!--MODAL FORM İLAÇLAR-->
       <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -111,16 +110,13 @@
               <div class="input-group mb-3">
                 <input type="text" name="" id="" class="form-control form-control-lg bg-ligth fs-6" placeholder="Firması" />
               </div>
-
               <select class="form-select" style="color: #808080;" aria-label="Default select example">
                 <option selected>Reçete rengini seçin.</option>
-
                 <option value="1">Kırmızı</option>
                 <option value="2">Yeşil</option>
                 <option value="3">Sarı</option>
               </select>
               <div style="margin-bottom: 15px;"></div>
-
               <select class="form-select" style="color: #808080;" aria-label="Default select example">
                 <option selected>Kategori seçiniz.</option>
                 <option value="1">Merhem</option>
@@ -129,15 +125,19 @@
               </select>
               <div style="margin-bottom: 20px;"></div>
               <div class="input-group mb-3">
-                <button class="btn btn-custom btn-lg w-100 fs-6" style="background-color: #ffa500; color: #808080; font-weight: bold;">EKLE</button>
+                <button onclick="showSnackbar()" class="btn btn-custom btn-lg w-100 fs-6" style="background-color: #ffa500; color: #808080; font-weight: bold;">EKLE</button>
               </div>
-
-
+              <!--SNACKBAR-->
+              <figure class="notification" id="notification" >
+                <div class="notification body">
+                  <img src="#" title="Success" alt="Success" class="notification icon"/>
+                  Your account has been created! &#128640;
+                </div>
+                <div class="notification progress"></div>
+              </figure>
             </div>
             <div class="modal-footer">
-
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
-
             </div>
           </div>
         </div>
@@ -158,7 +158,6 @@
               <div class="input-group mb-3">
                 <input type="text" name="" id="" class="form-control form-control-lg bg-ligth fs-6" placeholder="Soyad" />
               </div>
-
               <select class="form-select w-100" style="color: #808080;" aria-label="Default select example">
                 <option selected>Cinsiyet seçin..</option>
                 <option value="1">Kadın &#9792;</option>
@@ -171,9 +170,7 @@
               </div>
             </div>
             <div class="modal-footer">
-
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
-
             </div>
           </div>
         </div>
@@ -191,24 +188,32 @@
               <div class="input-group mb-3">
                 <input type="text" name="" id="" class="form-control form-control-lg bg-ligth fs-6" placeholder="Kategori adını girin." />
               </div>
-
               <div style="margin-bottom: 20px;"></div>
               <div class="input-group mb-3">
                 <button class="btn btn-custom btn-lg w-100 fs-6" style="background-color: #ffa500; color: #808080; font-weight: bold;">EKLE</button>
               </div>
-
-
             </div>
             <div class="modal-footer">
-
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
-
             </div>
           </div>
         </div>
       </div>
 
-</body>
 
+
+      <script>
+        function showSnackbar() {
+          var notification = document.getElementById("notification");
+          notification.style.display = "block";
+          setTimeout(function() {
+            notification.style.display = "none";
+          }, 3000); // Snackbar will disappear after 3 seconds
+        }
+      </script>
+
+
+
+</body>
 
 </html>
