@@ -128,19 +128,21 @@
                 <button onclick="showSnackbar()" class="btn btn-custom btn-lg w-100 fs-6" style="background-color: #ffa500; color: #808080; font-weight: bold;">EKLE</button>
               </div>
               <!--SNACKBAR-->
-              <figure class="notification" id="notification" >
-                <div class="notification body">
-                  <img src="#" title="Success" alt="Success" class="notification icon"/>
-                  Your account has been created! &#128640;
-                </div>
-                <div class="notification progress"></div>
-              </figure>
+
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
             </div>
           </div>
+          <figure class="notification" id="notification" style="margin-right: 90%;">
+                <div class="notification body">
+                  <div class="notification icon" style="color: #808080; background-color: #ffa500;"><i class="fa-solid fa-check"></i>
+                    Kayıt Başarılı! &#128640;</div>
+                </div>
+                <div class="notification progress"></div>
+              </figure>
         </div>
+
       </div>
       <!--MODAL FORM PERSONEL-->
 
@@ -199,6 +201,7 @@
           </div>
         </div>
       </div>
+
 
 
 
