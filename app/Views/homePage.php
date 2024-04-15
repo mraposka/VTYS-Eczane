@@ -139,6 +139,12 @@
                 style="color: #ffa500;"><i class="fas fa-user pe-2"></i>PERSONEL</a>
             </li>
             <li class="nav-item">
+    <a class="btn btn-rounded nav-link mx-2" href="<?php echo base_url("/Faturalar") ?>" style="color: #ffa500;">
+        <i class="fas fa-file-invoice pe-2"></i>FATURALAR
+    </a>
+</li>
+
+            <li class="nav-item">
               <a class="btn  btn-rounded" href="<?php echo base_url("/Sepet") ?>" style="color: #ffa500;" </a><i
                   class="fa-solid fa-cart-shopping pe-2"></i>SEPET</a>
             </li>
@@ -233,16 +239,14 @@
                 <button onclick="showSnackbar()" class="btn btn-custom btn-lg w-100 fs-6"
                   style="background-color: #ffa500; color: #808080; font-weight: bold;">EKLE</button>
               </div>
-              <!--SNACKBAR-->
 
+              <!--SNACKBAR-->
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" id="ilacKapatBtn" data-bs-dismiss="modal">Kapat</button>
             </div>
           </div>
-
         </div>
-
       </div>
 
 
@@ -312,6 +316,7 @@
           </div>
         </div>
       </div>
+      
       <script>
         function showSnackbar() {
           document.getElementById("ilacKapatBtn").click();

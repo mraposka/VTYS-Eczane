@@ -13,6 +13,7 @@ $routes->get('/Hastalar', 'Eczane::Hastalar');
 $routes->get('/Receteler', 'Eczane::Receteler');
 $routes->get('/Stok', 'Eczane::Stok');
 $routes->get('/Personel', 'Eczane::Personel');
+$routes->get('/Faturalar', 'Eczane::Faturalar');
 $routes->get('/Sepet', 'Eczane::Sepet');
 
 $routes->set404Override(function() {

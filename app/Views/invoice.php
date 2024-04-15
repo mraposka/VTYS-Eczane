@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo base_url('ViewAssets/') ?>assets/homePage.css">
+    <link rel="stylesheet" href="<?php echo base_url('ViewAssets/') ?>assets/homepage.css">
     <link rel="stylesheet" href="<?php echo base_url('ViewAssets/') ?>assets/Prescriptions.css">
     <link rel="stylesheet" href="<?php echo base_url('ViewAssets/') ?>bootstrap/css/bootstrap.min.css">
     <script src="<?php echo base_url('ViewAssets/') ?>bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -14,6 +14,7 @@
 </head>
 
 <body>
+
     <div class="home">
         <header class="navbar navbar-expand-lg fixed-top navbar-light">
             <div class="container">
@@ -42,6 +43,9 @@
                             <a class=" btn  btn-rounded nav-link mx-2" href="<?php echo base_url("/Personel") ?>" style="color: #ffa500;"><i class="fas fa-user pe-2"></i>PERSONEL</a>
                         </li>
                         <li class="nav-item">
+                            <a class="btn  btn-rounded nav-link mx-2" href="<?php echo base_url("/Faturalar") ?>" style="color: #ffa500;"><i class="fa-solid fa-capsules pe-2"></i>FATURALAR</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="btn  btn-rounded" href="<?php echo base_url("/Sepet") ?>" style="color: #ffa500;" </a><i class="fa-solid fa-cart-shopping pe-2"></i>SEPET</a>
                         </li>
                     </ul>
@@ -50,16 +54,25 @@
         </header>
     </div>
 
+    <div class="input-group input-group-sm mb-3" style="margin-top:130px; width:250px; float:right; margin-right: 203px">
+    <input type="text" class="form-control form-control-sm" placeholder="Aramak istediğiniz şeyi giriniz." aria-label="Recipient's username" aria-describedby="button-addon2">
+    <button class="btn btn-outline-secondary btn-sm"style="color: #808080; background:#ffa500; font-weight: bold; " type="button" id="button-addon2">Button</button>
+</div>
+
+
+
+
     //! TABLE START
     <div class="table">
         <table class="table  table-hover" style="background:#f2f2f2;">
             <thead>
                 <tr>
-                    <th scope="col">Reçete ID</th>
-                    <th scope="col">Hasta ID</th>
-                    <th scope="col">Hasta Adı</th>
-                    <th scope="col">Hasta Soyadı</th>
-                    <th scope="col">Reçete Görüntüle</th>
+                    <th scope="col">Fatura ID</th>
+                    <th scope="col">TCKNO</th>
+                    <th scope="col">Müşteri Adı</th>
+                    <th scope="col">Personel Adı</th>
+                    <th scope="col">Faturalandırılma Tarihi</th>
+                    <th scope="col">Fatura Görüntüle</th>
                 </tr>
             </thead>
             <tbody>
@@ -68,6 +81,7 @@
                     <td>2</td>
                     <td>zeynep</td>
                     <td>Ayar</td>
+                    <td>03.04.2024</td>
                     <td><button class="btn btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="color: #808080; background:#ffa500; font-weight: bold;">GÖRÜNTÜLE</button></td>
                 </tr>
             </tbody>
@@ -106,9 +120,6 @@
             </div>
         </div>
     </div>
-
-
-
 
 
 </body>

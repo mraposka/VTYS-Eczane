@@ -1,16 +1,12 @@
 <?php
 
 namespace App\Controllers;
-use App\Models\EczaneModel;
 
 class Eczane extends BaseController
 {
     public function index()
     {
-        $db = db_connect();
-        $model = new EczaneModel($db);
-        $data['users']=$model->test();
-        return view("login",$data);
+        return view("login");
     }
     public function home()
     { 
@@ -39,6 +35,10 @@ class Eczane extends BaseController
     public function Personel()
     { 
         return view("employee"); 
+    }
+    public function Faturalar()
+    { 
+        return view("invoice"); 
     }
     public function Sepet()
     { 
