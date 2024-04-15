@@ -59,7 +59,7 @@
                     <th scope="col">Kategori</th>
                     <th>Kullanım Süresi</th>
                     <th scope="col">İlaç Sayısı</th>
-                    <th scope="col">Reçete Görüntüle</th>
+                    <th scope="col">Stok Görüntüle</th>
                 </tr>
             </thead>
             <tbody>
