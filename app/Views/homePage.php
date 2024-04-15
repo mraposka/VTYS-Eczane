@@ -233,16 +233,14 @@
                 <button onclick="showSnackbar()" class="btn btn-custom btn-lg w-100 fs-6"
                   style="background-color: #ffa500; color: #808080; font-weight: bold;">EKLE</button>
               </div>
-              <!--SNACKBAR-->
 
+              <!--SNACKBAR-->
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" id="ilacKapatBtn" data-bs-dismiss="modal">Kapat</button>
             </div>
           </div>
-
         </div>
-
       </div>
 
 
@@ -312,6 +310,7 @@
           </div>
         </div>
       </div>
+      
       <script>
         function showSnackbar() {
           document.getElementById("ilacKapatBtn").click();

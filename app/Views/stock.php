@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="<?php echo base_url('ViewAssets/') ?>assets/homePage.css">
     <link rel="stylesheet" href="<?php echo base_url('ViewAssets/') ?>assets/Stock.css">
     <link rel="stylesheet" href="<?php echo base_url('ViewAssets/') ?>bootstrap/css/bootstrap.min.css">
+    <script src="<?php echo base_url('ViewAssets/') ?>bootstrap/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Document</title>
@@ -16,7 +17,7 @@
     <div class="home">
         <header class="navbar navbar-expand-lg fixed-top navbar-light">
             <div class="container">
-                <a class="navbar-brand" href="<?php echo base_url("/Home")?>">
+                <a class="navbar-brand" href="<?php echo base_url("/Home") ?>">
                     <img id="MDB-logo1" src="<?php echo base_url('ViewAssets/') ?>images/4.png" alt="MDB Logo" draggable="false" height="60" />
                     <img id="MDB-logo2" src="<?php echo base_url('ViewAssets/') ?>images/3.png" alt="MDB Logo" draggable="false" height="60" />
                 </a>
@@ -55,25 +56,46 @@
             <thead>
                 <tr>
                     <th scope="col">İlaç ID</th>
+                    <th scope="col">İlaç Adı</th>
                     <th scope="col">Adet</th>
-                    <th scope="col">Kategori</th>
-                    <th>Kullanım Süresi</th>
-                    <th scope="col">İlaç Sayısı</th>
-                    <th scope="col">Reçete Görüntüle</th>
+                    <th scope="col">Stok Ekle</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <th scope="row">1</th>
-                    <td>Kırmızı </td>
-                    <td>08.04.2024</td>
-                    <td>1 Gün</td>
-                    <td>1</td>
-                    <td><button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold;">GÖRÜNTÜLE</button></td>
+                    <td>Parol</td>
+                    <td>100</td>
+                    <td><button class="btn btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="color: #808080; background:#ffa500; font-weight: bold;">EKLE</button></td>
                 </tr>
             </tbody>
         </table>
     </div>
+
+    <!--MODAL FORM stock-->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">STOK</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Yeni İlaç Adedi</span>
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold;">KAYDET</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 
 </body>
 

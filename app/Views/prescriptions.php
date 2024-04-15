@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="<?php echo base_url('ViewAssets/') ?>assets/homePage.css">
     <link rel="stylesheet" href="<?php echo base_url('ViewAssets/') ?>assets/Prescriptions.css">
     <link rel="stylesheet" href="<?php echo base_url('ViewAssets/') ?>bootstrap/css/bootstrap.min.css">
+    <script src="<?php echo base_url('ViewAssets/') ?>bootstrap/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Document</title>
@@ -55,25 +56,60 @@
             <thead>
                 <tr>
                     <th scope="col">Reçete ID</th>
-                    <th scope="col">Reçete Rengi</th>
-                    <th scope="col">Verilme Tarihi</th>
-                    <th>Kullanım Süresi</th>
-                    <th scope="col">İlaç Sayısı</th>
+                    <th scope="col">Hasta ID</th>
+                    <th scope="col">Hasta Adı</th>
+                    <th scope="col">Hasta Soyadı</th>
                     <th scope="col">Reçete Görüntüle</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <th scope="row">1</th>
-                    <td>Kırmızı </td>
-                    <td>08.04.2024</td>
-                    <td>1 Gün</td>
-                    <td>1</td>
-                    <td><button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold;">GÖRÜNTÜLE</button></td>
+                    <td>2</td>
+                    <td>zeynep</td>
+                    <td>Ayar</td>
+                    <td><button class="btn btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="color: #808080; background:#ffa500; font-weight: bold;">GÖRÜNTÜLE</button></td>
                 </tr>
             </tbody>
         </table>
     </div>
+
+    <!--MODAL FORM PRES-->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">REÇETE</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Verilme Tarihi</th>
+                                <th scope="col">Kullanım Süresi</th>
+                                <th scope="col">Reçete Rengi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>12.12.2024</td>
+                                <td>15 gün</td>
+                                <td>Kırmızı</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold; float: right;">Ne yapacak ?</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
 
 </body>
 
