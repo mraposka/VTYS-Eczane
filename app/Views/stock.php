@@ -16,7 +16,7 @@
     <div class="home">
         <header class="navbar navbar-expand-lg fixed-top navbar-light">
             <div class="container">
-                <a class="navbar-brand" href="<?php echo base_url("/Home")?>">
+                <a class="navbar-brand" href="<?php echo base_url("/Home") ?>">
                     <img id="MDB-logo1" src="<?php echo base_url('ViewAssets/') ?>images/4.png" alt="MDB Logo" draggable="false" height="60" />
                     <img id="MDB-logo2" src="<?php echo base_url('ViewAssets/') ?>images/3.png" alt="MDB Logo" draggable="false" height="60" />
                 </a>
@@ -39,6 +39,11 @@
                         </li>
                         <li class="nav-item">
                             <a class=" btn  btn-rounded nav-link mx-2" href="<?php echo base_url("/Personel") ?>" style="color: #ffa500;"><i class="fas fa-user pe-2"></i>PERSONEL</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-rounded nav-link mx-2" href="<?php echo base_url("/Faturalar") ?>" style="color: #ffa500;">
+                                <i class="fas fa-file-invoice pe-2"></i>FATURALAR
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="btn  btn-rounded" href="<?php echo base_url("/Sepet") ?>" style="color: #ffa500;" </a> <i class="fa-solid fa-cart-shopping pe-2"></i>SEPET</a>

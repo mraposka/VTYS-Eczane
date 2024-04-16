@@ -43,8 +43,10 @@
               <a class=" btn  btn-rounded nav-link mx-2" href="<?php echo base_url("/Personel") ?>" style="color: #ffa500;"><i class="fas fa-user pe-2"></i>PERSONEL</a>
             </li>
             <li class="nav-item">
-                            <a class="btn  btn-rounded nav-link mx-2" href="<?php echo base_url("/Faturalar") ?>" style="color: #ffa500;"><i class="fa-solid fa-capsules pe-2"></i>FATURALAR</a>
-                        </li>
+              <a class="btn btn-rounded nav-link mx-2" href="<?php echo base_url("/Faturalar") ?>" style="color: #ffa500;">
+                <i class="fas fa-file-invoice pe-2"></i>FATURALAR
+              </a>
+            </li>
             <li class="nav-item">
               <a class="btn  btn-rounded" href="<?php echo base_url("/Sepet") ?>" style="color: #ffa500;" </a><i class="fa-solid fa-cart-shopping pe-2"></i>SEPET</a>
             </li>
@@ -95,7 +97,7 @@
     </table>
   </div>
 
-  
+
 
 
 

@@ -43,6 +43,11 @@
                             <a class=" btn  btn-rounded nav-link mx-2" href="<?php echo base_url("/Personel") ?>" style="color: #ffa500;"><i class="fas fa-user pe-2"></i>PERSONEL</a>
                         </li>
                         <li class="nav-item">
+                            <a class="btn btn-rounded nav-link mx-2" href="<?php echo base_url("/Faturalar") ?>" style="color: #ffa500;">
+                                <i class="fas fa-file-invoice pe-2"></i>FATURALAR
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="btn  btn-rounded" href="#!" style="color: #ffa500;" </a><i class="fa-solid fa-cart-shopping pe-2"></i>SEPET</a>
                         </li>
                     </ul>
@@ -112,7 +117,7 @@
                             </h2>
                             <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body">
-                                <div class="card" style="width: 26.7rem;">
+                                    <div class="card" style="width: 26.7rem;">
                                         <ul class="list-group list-group-flush">
                                             <li class="list-group-item">ilaç 1 -- kullanım 1</li>
                                             <li class="list-group-item">ilaç 2 -- kullanım 2</li>
@@ -130,7 +135,7 @@
                             </h2>
                             <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body">
-                                <div class="card" style="width: 26.7rem;">
+                                    <div class="card" style="width: 26.7rem;">
                                         <ul class="list-group list-group-flush">
                                             <li class="list-group-item">ilaç 1 -- xx TL</li>
                                             <li class="list-group-item">ilaç 2 -- xx TL</li>
@@ -146,7 +151,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                <button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold;">SEPETİ SİL</button>
+                    <button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold;">SEPETİ SİL</button>
                     <button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold;">SATIN AL</button>
                 </div>
             </div>
