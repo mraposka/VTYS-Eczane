@@ -62,7 +62,7 @@
                   class="fa-solid fa-cart-shopping pe-2"></i>SEPET</a>
             </li>
             <li class="nav-item">
-              <a class="btn  btn-rounded" href="<?php echo base_url("/Logout") ?>" style="color: #ffa500;" </a><i
+              <a class="btn  btn-rounded" href="<?php echo base_url("/Logout") ?>" style="color: white;" </a><i
                   class="fa-solid fa-sign-out pe-2"></i>Çıkış</a>
             </li>
           </ul>

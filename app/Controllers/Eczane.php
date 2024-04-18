@@ -55,19 +55,22 @@ class Eczane extends BaseController
     }
     public function Login()
     {
-        try { $session = session(); } catch (\Throwable $th){}
-        $sessionData = [ 'user_id'  => $this->admin ]; 
+        try {
+            $session = session();
+        } catch (\Throwable $th) {
+            // Hata durumunu ele al
+        }
+    
         $db = db_connect();
         $model = new EczaneModel($db);
         $query = $model->login($_POST["user"], md5($_POST["pass"]));
-        if ($query->user_id == $this->admin) {
+    
+        if ($query !== null && $query->user_id == $this->admin) {
+            $sessionData = ['user_id' => $this->admin];
             $session->set($sessionData);
             return redirect()->to("Home");
-        } else
+        } else {
             return redirect()->to("Giris");
+        }
     }
-
-    // Controller dosyanızda
-
-
 }
