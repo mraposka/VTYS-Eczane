@@ -34,7 +34,7 @@
             <div class="input-group mb-3">
               <input
                 type="text"
-                name=""
+                name="username"
                 id=""
                 class="form-control form-control-lg bg-ligth fs-6"
                 placeholder="Kullanıcı Adı"
@@ -43,7 +43,7 @@
             <div class="input-group mb-3">
               <input
                 type="password"
-                name=""
+                name="password"
                 id=""
                 class="form-control form-control-lg bg-ligth fs-6"
                 placeholder="Şifre"

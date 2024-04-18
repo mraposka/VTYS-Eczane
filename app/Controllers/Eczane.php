@@ -44,4 +44,8 @@ class Eczane extends BaseController
     { 
         return view("myCart"); 
     }
+
+    // Controller dosyanızda
+
+
 }
