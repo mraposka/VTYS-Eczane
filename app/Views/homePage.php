@@ -175,12 +175,12 @@
           <div class="modal-body">
             <form action="EmployeeAdd" method="POST">
               <div class="input-group mb-3">
-                <input type="text" name="Ad" id="Ad" class="form-control form-control-lg bg-ligth fs-6" placeholder="Ad" />
+                <input type="text" name="Ad" class="form-control form-control-lg bg-ligth fs-6" placeholder="Ad" />
               </div>
               <div class="input-group mb-3">
-                <input type="text" name="Soyad" id="Soyad" class="form-control form-control-lg bg-ligth fs-6" placeholder="Soyad" />
+                <input type="text" name="Soyad" class="form-control form-control-lg bg-ligth fs-6" placeholder="Soyad" />
               </div>
-              <select class="form-select w-100" name="Cinsiyet" id="Cinsiyet" style="color: #808080;" aria-label="Default select example">
+              <select class="form-select w-100" name="Cinsiyet" style="color: #808080;" aria-label="Default select example">
                 <option selected>Cinsiyet seçin..</option>
                 <option value="1">Kadın &#9792;</option>
                 <option value="2">Erkek &#9794;</option>
