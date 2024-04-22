@@ -173,7 +173,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="HomePage" method="POST">
+            <form action="EmployeeAdd" method="POST">
               <div class="input-group mb-3">
                 <input type="text" name="Ad" id="Ad" class="form-control form-control-lg bg-ligth fs-6" placeholder="Ad" />
               </div>

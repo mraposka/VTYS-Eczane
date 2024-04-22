@@ -8,12 +8,12 @@ use App\Router\RouteCollection;
 //GetRoutes
 $routes->get('/Giris', 'Eczane::Giris');
 $routes->get('/Logout', 'Eczane::Logout');
-$routes->get('/HomePage', 'Eczane::employeeAdd');
+
 //GetRoutes
 
 //PostRoutes
 $routes->post('/Login', 'Eczane::Login');
-$routes->post('/HomePage', 'Eczane::employeeAdd');
+$routes->post('/EmployeeAdd', 'Eczane::EmployeeAdd');
 //PostRoutes
 
 $routes->set404Override(function () {

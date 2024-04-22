@@ -23,5 +23,7 @@ class EczaneModel
         }
         return false;
     }
+
+
 }
 ?>
