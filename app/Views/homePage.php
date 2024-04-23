@@ -100,6 +100,17 @@
       </div>
       <div class="col">
         <div class="card" style="background:#f2f2f2;">
+          <img id="MDB-logo5" class="card-img-top" src="<?php echo base_url('ViewAssets/') ?>images/8.jpg" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title" style="color: #808080; text-align:center;">HASTA</h5>
+          </div>
+          <div class="mb-5 d-flex justify-content-around">
+            <button class="btn " type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" style="color: #808080; background:#ffa500; font-weight: bold;">EKLE</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="background:#f2f2f2;">
           <img id="MDB-logo6" class="card-img-top" src="<?php echo base_url('ViewAssets/') ?>images/6.jpg" alt="..." />
           <div class="card-body">
             <h5 class="card-title" style="color: #808080; text-align:center;">İLAÇ</h5>
@@ -120,6 +131,7 @@
           </div>
         </div>
       </div>
+      
     </div>
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
