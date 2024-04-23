@@ -109,11 +109,8 @@ class Eczane extends BaseController
         $surname = $_POST['Soyad'];
         $gender = $_POST['Cinsiyet'];
 
-        // SQL sorgusunu oluştur
-        $sql = "INSERT INTO employee (name, surname, gender) VALUES ('$name', '$surname', '$gender')";
-
-        // SQL sorgusunu veritabanına gönder ve sonucu kontrol et
-        if ($db->query($sql) === TRUE) {
+        // Çalışan ekleme işlemini model aracılığıyla gerçekleştir
+        if ($model->addEmployee($name, $surname, $gender)) {
             // Başarılı bir şekilde eklendiğini belirten bir mesaj
             echo "Employee successfully added.";
             return redirect()->to("/Home");
@@ -123,6 +120,7 @@ class Eczane extends BaseController
             return redirect()->to("/Home");
         }
     }
+    
     // ADMİN PANELİ KATEGORİ EKLEME
     public function CategoryAdd()
     {
@@ -132,12 +130,8 @@ class Eczane extends BaseController
         // POST verilerini al
         $category = $_POST['Kategori'];
 
-
-        // SQL sorgusunu oluştur
-        $sql = "INSERT INTO category (c_type) VALUES ('$category')";
-
-        // SQL sorgusunu veritabanına gönder ve sonucu kontrol et
-        if ($db->query($sql) === TRUE) {
+        // Kategori ekleme işlemini model aracılığıyla gerçekleştir
+        if ($model->addCategory($category)) {
             // Başarılı bir şekilde eklendiğini belirten bir mesaj
             echo "Category successfully added.";
             return redirect()->to("/Home");

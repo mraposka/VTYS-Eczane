@@ -49,4 +49,17 @@ class EczaneModel
          $query = $db->query("SELECT * FROM medicines"); // Tüm ilaçları seç
          return $query->getResult(); // Sonuçları döndür
      }
+
+     public function addCategory($category)
+    {
+        $sql = "INSERT INTO category (c_type) VALUES ('$category')";
+        
+        return $this->db->query($sql);
+    }
+    public function addEmployee($name, $surname, $gender)
+    {
+        $sql = "INSERT INTO employee (name, surname, gender) VALUES ('$name', '$surname', '$gender')";
+        
+        return $this->db->query($sql);
+    }
 }
