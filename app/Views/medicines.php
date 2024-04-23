@@ -1,4 +1,4 @@
-<?php include ("header.php"); ?>
+<?php include("header.php"); ?>
 <div class="table ">
   <table class="table  table-hover" style="background:#f2f2f2;">
     <thead>
@@ -14,42 +14,22 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Parol</td>
-        <td>Ağrı Kesici</td>
-        <td>Atabay İlaç Firması</td>
-        <td>25 TL</td>
-        <td>Kırmızı</td>
-        <td><button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold; ">EKLE</button>
-        </td>
-        <td><button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold;">SATIŞ YAP</button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Arveles</td>
-        <td>Ağrı Kesici</td>
-        <td>Atabay İlaç Firması</td>
-        <td>25 TL</td>
-        <td>Kırmızı</td>
-        <td><button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold;">EKLE</button></td>
-        <td><button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold;">SATIŞ YAP</button>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Pastil</td>
-        <td>Ağrı Kesici</td>
-        <td>Atabay İlaç Firması</td>
-        <td>25 TL</td>
-        <td>Kırmızı</td>
-        <td><button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold;">EKLE</button></td>
-        <td><button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold;">SATIŞ YAP</button>
-        </td>
-      </tr>
+      <?php foreach ($employees as $employee) : ?>
+        <tr>
+          <td><?php echo $employee->emp_id; ?></td>
+          <td><?php echo $employee->name; ?></td>
+          <td><?php echo $employee->surname; ?></td>
+          <td><?php echo $employee->gender; ?></td>
+          <td><button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold; ">EKLE</button>
+          </td>
+          <td><button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold;">SATIŞ YAP</button>
+          </td>
+        </tr>
+      <?php endforeach; ?>
+      
     </tbody>
   </table>
-</div> 
-</body> 
+</div>
+</body>
+
 </html>

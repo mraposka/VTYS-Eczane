@@ -157,11 +157,11 @@
               <div class="input-group mb-3">
                 <input type="text" name="Firması" class="form-control" placeholder="Firması" />
               </div>
-              <select class="form-select" name="reçete_rengi">
+              <select class="form-select" name="receteRengi">
                 <option selected>Reçete rengini seçin.</option>
-                <option value="1">Kırmızı</option>
-                <option value="2">Yeşil</option>
-                <option value="3">Sarı</option>
+                <option value="Kırmızı">Kırmızı</option>
+                <option value="Yeşil">Yeşil</option>
+                <option value="Sarı">Sarı</option>
               </select>
               <div style="margin-bottom: 15px;"></div>
               <select class="form-select" name="kategori" aria-label="Kategori seçiniz">
@@ -253,13 +253,10 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-<<<<<<< HEAD
             <form action="PatientAdd" method="POST">
             <div class="input-group mb-3">
-=======
             <form action="EmployeeAdd" method="POST">
               <div class="input-group mb-3">
->>>>>>> c431781692acf0a0178ef92627365945df5ffca0
                 <input type="text" name="TC" class="form-control form-control-lg bg-ligth fs-6" placeholder="TC Kimlik No" />
               </div>
               <div class="input-group mb-3">
