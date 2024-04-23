@@ -15,6 +15,7 @@ $routes->get('/Logout', 'Eczane::Logout');
 $routes->post('/Login', 'Eczane::Login');
 $routes->post('/EmployeeAdd', 'Eczane::EmployeeAdd');
 $routes->post('/CategoryAdd', 'Eczane::CategoryAdd');
+$routes->post('/PatientAdd', 'Eczane::PatientAdd');
 //PostRoutes
 
 $routes->set404Override(function () {

@@ -120,7 +120,7 @@ class Eczane extends BaseController
             return redirect()->to("/Home");
         }
     }
-    
+
     // ADMİN PANELİ KATEGORİ EKLEME
     public function CategoryAdd()
     {
@@ -138,6 +138,31 @@ class Eczane extends BaseController
         } else {
             // Hata durumunda bir mesaj
             echo "Error: Failed to add category.";
+            return redirect()->to("/Home");
+        }
+    }
+
+    public function PatientAdd()
+    {
+        $db = db_connect();
+        $model = new EczaneModel($db);
+
+        // POST verilerini al
+        $name = $_POST['Ad'];
+        $surname = $_POST['Soyad'];
+        $gender = $_POST['Cinsiyet'];
+        $dob = $_POST['DogumTarihi'];
+        $address= $_POST['Adres'];
+        $tckno= $_POST['TC'];
+
+        // Çalışan ekleme işlemini model aracılığıyla gerçekleştir
+        if ($model->addPatient($name, $surname, $gender, $dob, $address, $tckno )) {
+            // Başarılı bir şekilde eklendiğini belirten bir mesaj
+            echo "Employee successfully added.";
+            return redirect()->to("/Home");
+        } else {
+            // Hata durumunda bir mesaj
+            echo "Error: Failed to add employee.";
             return redirect()->to("/Home");
         }
     }

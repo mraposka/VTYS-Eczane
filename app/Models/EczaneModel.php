@@ -54,4 +54,12 @@ class EczaneModel
         
         return $this->db->query($sql);
     }
+    
+    public function addPatient($name, $surname, $gender, $dob, $address, $tckno)
+    {
+        $db = db_connect();
+        $sql = "INSERT INTO patient (p_name, p_surname, gender, dob, address, tckno) VALUES ('$name', '$surname', '$gender',  '$dob', '$address', '$tckno')";
+        
+        return $this->db->query($sql);
+    }
 }
