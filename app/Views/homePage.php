@@ -182,8 +182,8 @@
               </div>
               <select class="form-select w-100" name="Cinsiyet" style="color: #808080;" aria-label="Default select example">
                 <option selected>Cinsiyet seçin..</option>
-                <option value="1">Kadın &#9792;</option>
-                <option value="2">Erkek &#9794;</option>
+                <option value="Kadın">Kadın &#9792;</option>
+                <option value="Erkek">Erkek &#9794;</option>
               </select>
               <div style="margin-bottom: 15px;"></div>
               <div style="margin-bottom: 20px;"></div>

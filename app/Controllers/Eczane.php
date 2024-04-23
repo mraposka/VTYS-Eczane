@@ -45,7 +45,10 @@ class Eczane extends BaseController
     }
     public function Personel()
     {
-        return view("employee");
+        $db = db_connect();
+        $model = new EczaneModel($db);
+        $data['employees'] = $model->getEmployees(); // Veritabanından verileri alın
+         return view('employee', $data);  
     }
     public function Faturalar()
     {
@@ -64,6 +67,8 @@ class Eczane extends BaseController
         } catch (\Throwable $th) {
         }
     }
+
+    // GİRİŞ İŞLEMLERİ
     public function Login()
     {
         try {
@@ -84,9 +89,10 @@ class Eczane extends BaseController
             return redirect()->to("Giris");
         }
     }
+
+    // ADMİN PANELİ ÇALIŞAN EKLEME 
     public function EmployeeAdd()
     {
-
         $db = db_connect();
         $model = new EczaneModel($db);
     
@@ -102,11 +108,11 @@ class Eczane extends BaseController
         if ($db->query($sql) === TRUE) {
             // Başarılı bir şekilde eklendiğini belirten bir mesaj
             echo "Employee successfully added.";
-            return redirect()->to("Employee");
+            return redirect()->to("/Home");
         } else {
             // Hata durumunda bir mesaj
             echo "Error: Failed to add employee.";
-            return redirect()->to("Employee");
+            return redirect()->to("/Home");
         }
-    }
+    }  
 }
