@@ -87,6 +87,7 @@
   <div class="container py-5">
     <h1 class="text-center" style="color: #808080;">Admin Paneli</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
+
       <div class="col">
         <div class="card" style="background:#f2f2f2;">
           <img id="MDB-logo5" class="card-img-top" src="<?php echo base_url('ViewAssets/') ?>images/5.jpg" alt="..." />
@@ -98,6 +99,7 @@
           </div>
         </div>
       </div>
+
       <div class="col">
         <div class="card" style="background:#f2f2f2;">
           <img id="MDB-logo5" class="card-img-top" src="<?php echo base_url('ViewAssets/') ?>images/8.jpg" alt="..." />
@@ -109,6 +111,7 @@
           </div>
         </div>
       </div>
+
       <div class="col">
         <div class="card" style="background:#f2f2f2;">
           <img id="MDB-logo6" class="card-img-top" src="<?php echo base_url('ViewAssets/') ?>images/6.jpg" alt="..." />
@@ -120,6 +123,7 @@
           </div>
         </div>
       </div>
+
       <div class="col">
         <div class="card" style="background:#f2f2f2;">
           <img id="MDB-logo7" class="card-img-top" src="<?php echo base_url('ViewAssets/') ?>images/7.jpg" alt="..." />
@@ -133,48 +137,50 @@
       </div>
     </div>
 
-    
+
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">İlaç Ekle</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="input-group mb-3">
-              <input type="text" name="" id="" class="form-control form-control-lg bg-ligth fs-6" placeholder="İlaç Adı" />
+          <form action="MedicineAdd" method="post"> <!-- Form başlangıcı -->
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">İlaç Ekle</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="input-group mb-3">
-              <input type="text" name="" id="" class="form-control form-control-lg bg-ligth fs-6" placeholder="Fiyatı" />
+            <div class="modal-body">
+              <!-- Form Girdi Alanları -->
+              <div class="input-group mb-3">
+                <input type="text" name="IlaçAdı" class="form-control" placeholder="İlaç Adı" />
+              </div>
+              <div class="input-group mb-3">
+                <input type="text" name="Fiyatı" class="form-control" placeholder="Fiyatı" />
+              </div>
+              <div class="input-group mb-3">
+                <input type="text" name="Firması" class="form-control" placeholder="Firması" />
+              </div>
+              <select class="form-select" name="reçete_rengi">
+                <option selected>Reçete rengini seçin.</option>
+                <option value="1">Kırmızı</option>
+                <option value="2">Yeşil</option>
+                <option value="3">Sarı</option>
+              </select>
+              <div style="margin-bottom: 15px;"></div>
+              <select class="form-select" name="kategori" aria-label="Kategori seçiniz">
+                <option selected>Kategori seçiniz.</option>
+                <?php foreach ($categorys as $category) : ?>
+                  <option value="<?php echo $category->c_type; ?>"><?php echo $category->c_type; ?></option>
+                <?php endforeach; ?>
+              </select>
+              <div style="margin-bottom: 20px;"></div>
             </div>
-            <div class="input-group mb-3">
-              <input type="text" name="" id="" class="form-control form-control-lg bg-ligth fs-6" placeholder="Firması" />
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+              <button type="submit" class="btn btn-custom btn-lg" style="background-color: #ffa500; color: white;">Ekle</button> <!-- Formu gönder -->
             </div>
-            <select class="form-select" style="color: #808080;" aria-label="Default select example">
-              <option selected>Reçete rengini seçin.</option>
-              <option value="1">Kırmızı</option>
-              <option value="2">Yeşil</option>
-              <option value="3">Sarı</option>
-            </select>
-            <div style="margin-bottom: 15px;"></div>
-            <select class="form-select" style="color: #808080;" aria-label="Default select example">
-              <option selected>Kategori seçiniz.</option> <!-- Varsayılan boş seçenek -->
-              <?php foreach ($categorys as $category) : ?> <!-- Kategorileri döngü ile ekleyin -->
-                <option value="<?php echo $category->c_type; ?>"><?php echo $category->c_type; ?></option>
-              <?php endforeach; ?>
-            </select>
-            <div style="margin-bottom: 20px;"></div>
-            <div class="input-group mb-3">
-              <button onclick="showSnackbar()" class="btn btn-custom btn-lg w-100 fs-6" style="background-color: #ffa500; color: #808080; font-weight: bold;">EKLE</button>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" id="ilacKapatBtn" data-bs-dismiss="modal">Kapat</button>
-          </div>
+          </form> <!-- Form bitişi -->
         </div>
       </div>
     </div>
+
 
 
 
@@ -248,7 +254,7 @@
           </div>
           <div class="modal-body">
             <form action="EmployeeAdd" method="POST">
-            <div class="input-group mb-3">
+              <div class="input-group mb-3">
                 <input type="text" name="TC" class="form-control form-control-lg bg-ligth fs-6" placeholder="TC Kimlik No" />
               </div>
               <div class="input-group mb-3">

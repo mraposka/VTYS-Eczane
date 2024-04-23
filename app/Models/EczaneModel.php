@@ -38,7 +38,15 @@ class EczaneModel
      public function getCategorys()
      {
          $db = db_connect();
-         $query = $db->query("SELECT * FROM category"); // Tüm çalışanları seç
+         $query = $db->query("SELECT * FROM category"); // Tüm kategorileri seç
+         return $query->getResult(); // Sonuçları döndür
+     }
+
+     // KATEGORİ TABLOSUNU GÖSTERMEK İÇİN
+     public function getMedicines()
+     {
+         $db = db_connect();
+         $query = $db->query("SELECT * FROM medicines"); // Tüm ilaçları seç
          return $query->getResult(); // Sonuçları döndür
      }
 }
