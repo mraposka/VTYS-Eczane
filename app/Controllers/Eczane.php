@@ -141,8 +141,6 @@ class Eczane extends BaseController
             return redirect()->to("/Home");
         }
     }
-
-<<<<<<< HEAD
     public function PatientAdd()
     {
         $db = db_connect();
@@ -167,7 +165,7 @@ class Eczane extends BaseController
             return redirect()->to("/Home");
         }
     }
-=======
+
      // ADMİN PANELİ İLAÇ EKLEME
      public function MedicineAdd()
      {
@@ -192,5 +190,5 @@ class Eczane extends BaseController
              return redirect()->to("/Home");
          }
      }
->>>>>>> c431781692acf0a0178ef92627365945df5ffca0
+
 }
