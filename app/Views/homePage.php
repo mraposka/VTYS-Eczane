@@ -131,7 +131,7 @@
           </div>
         </div>
       </div>
-      
+
     </div>
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -218,19 +218,23 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div class="input-group mb-3">
-              <input type="text" name="" id="" class="form-control form-control-lg bg-ligth fs-6" placeholder="Kategori adını girin." />
-            </div>
-            <div style="margin-bottom: 20px;"></div>
-            <div class="input-group mb-3">
-              <button class="btn btn-custom btn-lg w-100 fs-6" style="background-color: #ffa500; color: #808080; font-weight: bold;">EKLE</button>
-            </div>
+            <form action="CategoryAdd" method="POST">
+              <div class="input-group mb-3">
+                <input type="text" name="Kategori" id="" class="form-control form-control-lg bg-ligth fs-6" placeholder="Kategori adını girin." />
+              </div>
+              <div style="margin-bottom: 20px;"></div>
+              <div class="input-group mb-3">
+                <button type="submit" class="btn btn-custom btn-lg w-100 fs-6" style="background-color: #ffa500; color: #808080; font-weight: bold;">EKLE</button>
+
+              </div>
+            </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
           </div>
         </div>
       </div>
+
     </div>
     <script>
       function showSnackbar() {

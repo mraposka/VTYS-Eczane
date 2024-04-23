@@ -115,4 +115,28 @@ class Eczane extends BaseController
             return redirect()->to("/Home");
         }
     }  
+     // ADMİN PANELİ KATEGORİ EKLEME
+     public function CategoryAdd()
+     {
+         $db = db_connect();
+         $model = new EczaneModel($db);
+     
+         // POST verilerini al
+         $category = $_POST['Kategori'];
+         
+     
+         // SQL sorgusunu oluştur
+         $sql = "INSERT INTO category (c_type) VALUES ('$category')";
+     
+         // SQL sorgusunu veritabanına gönder ve sonucu kontrol et
+         if ($db->query($sql) === TRUE) {
+             // Başarılı bir şekilde eklendiğini belirten bir mesaj
+             echo "Category successfully added.";
+             return redirect()->to("/Home");
+         } else {
+             // Hata durumunda bir mesaj
+             echo "Error: Failed to add category.";
+             return redirect()->to("/Home");
+         }
+     }  
 }
