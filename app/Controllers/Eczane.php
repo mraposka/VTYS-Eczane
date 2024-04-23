@@ -142,6 +142,7 @@ class Eczane extends BaseController
         }
     }
 
+<<<<<<< HEAD
     public function PatientAdd()
     {
         $db = db_connect();
@@ -166,4 +167,30 @@ class Eczane extends BaseController
             return redirect()->to("/Home");
         }
     }
+=======
+     // ADMİN PANELİ İLAÇ EKLEME
+     public function MedicineAdd()
+     {
+         $db = db_connect();
+         $model = new EczaneModel($db);
+ 
+         // POST verilerini al
+         $name= $_POST['IlaçAdı'];
+         $price = $_POST['Fiyatı'];
+         $company = $_POST['Firması'];
+         // SQL sorgusunu oluştur
+         $sql = "INSERT INTO medicines (name, price, company) VALUES ('$name', '$price', '$company')";
+ 
+         // SQL sorgusunu veritabanına gönder ve sonucu kontrol et
+         if ($db->query($sql) === TRUE) {
+             // Başarılı bir şekilde eklendiğini belirten bir mesaj
+             echo "Medicine successfully added.";
+             return redirect()->to("/Home");
+         } else {
+             // Hata durumunda bir mesaj
+             echo "Error: Failed to add category.";
+             return redirect()->to("/Home");
+         }
+     }
+>>>>>>> c431781692acf0a0178ef92627365945df5ffca0
 }
