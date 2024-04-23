@@ -158,10 +158,10 @@
             </select>
             <div style="margin-bottom: 15px;"></div>
             <select class="form-select" style="color: #808080;" aria-label="Default select example">
-              <option selected>Kategori seçiniz.</option>
-              <option value="1">Merhem</option>
-              <option value="2">Şurup</option>
-              <option value="3">Hap</option>
+              <option selected>Kategori seçiniz.</option> <!-- Varsayılan boş seçenek -->
+              <?php foreach ($categorys as $category) : ?> <!-- Kategorileri döngü ile ekleyin -->
+                <option value="<?php echo $category->c_type; ?>"><?php echo $category->c_type; ?></option>
+              <?php endforeach; ?>
             </select>
             <div style="margin-bottom: 20px;"></div>
             <div class="input-group mb-3">

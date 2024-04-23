@@ -33,4 +33,12 @@ class EczaneModel
         $query = $db->query("SELECT * FROM employee"); // Tüm çalışanları seç
         return $query->getResult(); // Sonuçları döndür
     }
+
+     // KATEGORİ TABLOSUNU GÖSTERMEK İÇİN
+     public function getCategorys()
+     {
+         $db = db_connect();
+         $query = $db->query("SELECT * FROM category"); // Tüm çalışanları seç
+         return $query->getResult(); // Sonuçları döndür
+     }
 }

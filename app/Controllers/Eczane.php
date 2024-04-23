@@ -16,7 +16,15 @@ class Eczane extends BaseController
     }
     public function Home()
     {
-        return view("homePage");
+
+        $db = db_connect(); // Öncelikle veritabanı bağlantısını oluşturun.
+        $model = new EczaneModel($db);
+        $data['categorys'] = $model->getCategorys(); // Veritabanından verileri alın.
+
+        // İlk view'i döndürmeden önce gerekli verileri ayarlayın.
+        return view("homePage", $data); // 'homePage' ve kategori verilerini döndürün.
+
+
     }
     public function Giris()
     {
@@ -48,7 +56,7 @@ class Eczane extends BaseController
         $db = db_connect();
         $model = new EczaneModel($db);
         $data['employees'] = $model->getEmployees(); // Veritabanından verileri alın
-         return view('employee', $data);  
+        return view('employee', $data);
     }
     public function Faturalar()
     {
@@ -95,15 +103,15 @@ class Eczane extends BaseController
     {
         $db = db_connect();
         $model = new EczaneModel($db);
-    
+
         // POST verilerini al
         $name = $_POST['Ad'];
         $surname = $_POST['Soyad'];
         $gender = $_POST['Cinsiyet'];
-    
+
         // SQL sorgusunu oluştur
         $sql = "INSERT INTO employee (name, surname, gender) VALUES ('$name', '$surname', '$gender')";
-    
+
         // SQL sorgusunu veritabanına gönder ve sonucu kontrol et
         if ($db->query($sql) === TRUE) {
             // Başarılı bir şekilde eklendiğini belirten bir mesaj
@@ -114,29 +122,29 @@ class Eczane extends BaseController
             echo "Error: Failed to add employee.";
             return redirect()->to("/Home");
         }
-    }  
-     // ADMİN PANELİ KATEGORİ EKLEME
-     public function CategoryAdd()
-     {
-         $db = db_connect();
-         $model = new EczaneModel($db);
-     
-         // POST verilerini al
-         $category = $_POST['Kategori'];
-         
-     
-         // SQL sorgusunu oluştur
-         $sql = "INSERT INTO category (c_type) VALUES ('$category')";
-     
-         // SQL sorgusunu veritabanına gönder ve sonucu kontrol et
-         if ($db->query($sql) === TRUE) {
-             // Başarılı bir şekilde eklendiğini belirten bir mesaj
-             echo "Category successfully added.";
-             return redirect()->to("/Home");
-         } else {
-             // Hata durumunda bir mesaj
-             echo "Error: Failed to add category.";
-             return redirect()->to("/Home");
-         }
-     }  
+    }
+    // ADMİN PANELİ KATEGORİ EKLEME
+    public function CategoryAdd()
+    {
+        $db = db_connect();
+        $model = new EczaneModel($db);
+
+        // POST verilerini al
+        $category = $_POST['Kategori'];
+
+
+        // SQL sorgusunu oluştur
+        $sql = "INSERT INTO category (c_type) VALUES ('$category')";
+
+        // SQL sorgusunu veritabanına gönder ve sonucu kontrol et
+        if ($db->query($sql) === TRUE) {
+            // Başarılı bir şekilde eklendiğini belirten bir mesaj
+            echo "Category successfully added.";
+            return redirect()->to("/Home");
+        } else {
+            // Hata durumunda bir mesaj
+            echo "Error: Failed to add category.";
+            return redirect()->to("/Home");
+        }
+    }
 }
