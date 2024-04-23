@@ -105,7 +105,7 @@
             <h5 class="card-title" style="color: #808080; text-align:center;">HASTA</h5>
           </div>
           <div class="mb-5 d-flex justify-content-around">
-            <button class="btn " type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" style="color: #808080; background:#ffa500; font-weight: bold;">EKLE</button>
+            <button class="btn " type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop4" style="color: #808080; background:#ffa500; font-weight: bold;">EKLE</button>
           </div>
         </div>
       </div>
@@ -131,8 +131,9 @@
           </div>
         </div>
       </div>
-
     </div>
+
+    
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -174,8 +175,8 @@
         </div>
       </div>
     </div>
-    <div id="notif">
-    </div>
+
+
 
     <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -210,6 +211,8 @@
         </div>
       </div>
     </div>
+
+
     <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -234,8 +237,53 @@
           </div>
         </div>
       </div>
-
     </div>
+
+    <div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Hasta Ekle</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="EmployeeAdd" method="POST">
+            <div class="input-group mb-3">
+                <input type="text" name="TC" class="form-control form-control-lg bg-ligth fs-6" placeholder="TC Kimlik No" />
+              </div>
+              <div class="input-group mb-3">
+                <input type="text" name="Ad" class="form-control form-control-lg bg-ligth fs-6" placeholder="Ad" />
+              </div>
+              <div class="input-group mb-3">
+                <input type="text" name="Soyad" class="form-control form-control-lg bg-ligth fs-6" placeholder="Soyad" />
+              </div>
+              <div class="input-group mb-3">
+                <input type="text" name="DogumTarihi" class="form-control form-control-lg bg-ligth fs-6" placeholder="Doğum Tarihi" />
+              </div>
+              <div class="input-group mb-3">
+                <input type="text" name="Adres" class="form-control form-control-lg bg-ligth fs-6" placeholder="Adres" />
+              </div>
+              <select class="form-select w-100" name="Cinsiyet" style="color: #808080;" aria-label="Default select example">
+                <option selected>Cinsiyet seçin..</option>
+                <option value="Kadın">Kadın &#9792;</option>
+                <option value="Erkek">Erkek &#9794;</option>
+              </select>
+              <div style="margin-bottom: 15px;"></div>
+              <div style="margin-bottom: 20px;"></div>
+              <div class="input-group mb-3">
+                <button type="submit" class="btn btn-custom btn-lg w-100 fs-6" style="background-color: #ffa500; color: #808080; font-weight: bold;">EKLE</button>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
     <script>
       function showSnackbar() {
         document.getElementById("ilacKapatBtn").click();
