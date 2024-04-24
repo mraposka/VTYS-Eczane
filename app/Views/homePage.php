@@ -270,7 +270,7 @@
               </div>
               <!-- İlaç Seçimi -->
               <div class="input-group mb-3">
-                <select class="form-select" name="ilaç" aria-label="İlaç seçiniz">
+                <select class="form-select" name="ilac" aria-label="İlaç seçiniz">
                   <option selected disabled>İlaç seçiniz.</option>
                   <?php foreach ($medicines as $medicines) : ?>
                     <option value="<?php echo $medicines->name; ?>"><?php echo $medicines->name; ?></option>

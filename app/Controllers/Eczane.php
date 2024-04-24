@@ -182,11 +182,10 @@ class Eczane extends BaseController
  
          // POST verilerini al
          $piece= $_POST['Stok'];
-        
-       
- 
+         $med = $_POST['ilac'];
+
          // SQL sorgusunu veritabanına gönder ve sonucu kontrol et
-         if ($model -> addStock($piece)) {
+         if ($model -> addStock($piece, $med)) {
              // Başarılı bir şekilde eklendiğini belirten bir mesaj
              echo "Medicine successfully added.";
              return redirect()->to("/Home");
