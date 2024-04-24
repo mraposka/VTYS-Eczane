@@ -79,10 +79,12 @@ class EczaneModel
     }
     // İLAÇ EKLEME
     public function addMedicines($name, $price, $company, $pres_color){
+        $db = db_connect();
         $sql = "INSERT INTO medicines (name, price, company , pres_color) VALUES ('$name', '$price', '$company', '$pres_color')";
         return $this->db->query($sql);
     }
 
+    //STOK EKLEME
     public function addStock($name, $price, $company, $pres_color){
         $sql = "INSERT INTO medicines (name, price, company , pres_color) VALUES ('$name', '$price', '$company', '$pres_color')";
         return $this->db->query($sql);
