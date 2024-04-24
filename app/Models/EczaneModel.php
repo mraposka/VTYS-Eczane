@@ -45,9 +45,13 @@ class EczaneModel
      // KATEGORİ TABLOSUNU GÖSTERMEK İÇİN
      public function getMedicines()
      {
-         $db = db_connect();
-         $query = $db->query("SELECT * FROM medicines"); // Tüm ilaçları seç
-         return $query->getResult(); // Sonuçları döndür
+        $db = db_connect();
+        $query = $db->query("SELECT * FROM medicines"); // Sorgunun doğru olduğundan emin olun
+        $results = $query->getResult(); // Sonuçları kontrol edin
+        if (empty($results)) {
+            echo "No medicines found in the database."; // Kontrol çıktısı
+        }
+        return $results; // Sonuçları döndür
      }
 
      // KATEGORİ EKLEME
@@ -75,6 +79,11 @@ class EczaneModel
     }
     // İLAÇ EKLEME
     public function addMedicines($name, $price, $company, $pres_color){
+        $sql = "INSERT INTO medicines (name, price, company , pres_color) VALUES ('$name', '$price', '$company', '$pres_color')";
+        return $this->db->query($sql);
+    }
+
+    public function addStock($name, $price, $company, $pres_color){
         $sql = "INSERT INTO medicines (name, price, company , pres_color) VALUES ('$name', '$price', '$company', '$pres_color')";
         return $this->db->query($sql);
     }

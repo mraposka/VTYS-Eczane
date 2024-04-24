@@ -37,10 +37,7 @@ class Eczane extends BaseController
     }
     public function Ilaclar()
     {
-        $db = db_connect();
-        $model = new EczaneModel($db);
-        $data["medicines"] = $model->getMedicines();
-        return view("medicines" , $data);
+        return view("medicines");
     }
     public function Hastalar()
     {
@@ -112,8 +109,11 @@ class Eczane extends BaseController
         $surname = $_POST['Soyad'];
         $gender = $_POST['Cinsiyet'];
 
-        // Çalışan ekleme işlemini model aracılığıyla gerçekleştir
-        if ($model->addEmployee($name, $surname, $gender)) {
+        // SQL sorgusunu oluştur
+        $sql = "INSERT INTO employee (name, surname, gender) VALUES ('$name', '$surname', '$gender')";
+
+        // SQL sorgusunu veritabanına gönder ve sonucu kontrol et
+        if ($db->query($sql) === TRUE) {
             // Başarılı bir şekilde eklendiğini belirten bir mesaj
             echo "Employee successfully added.";
             return redirect()->to("/Home");
@@ -123,7 +123,6 @@ class Eczane extends BaseController
             return redirect()->to("/Home");
         }
     }
-
     // ADMİN PANELİ KATEGORİ EKLEME
     public function CategoryAdd()
     {
@@ -133,8 +132,12 @@ class Eczane extends BaseController
         // POST verilerini al
         $category = $_POST['Kategori'];
 
-        // Kategori ekleme işlemini model aracılığıyla gerçekleştir
-        if ($model->addCategory($category)) {
+
+        // SQL sorgusunu oluştur
+        $sql = "INSERT INTO category (c_type) VALUES ('$category')";
+
+        // SQL sorgusunu veritabanına gönder ve sonucu kontrol et
+        if ($db->query($sql) === TRUE) {
             // Başarılı bir şekilde eklendiğini belirten bir mesaj
             echo "Category successfully added.";
             return redirect()->to("/Home");
@@ -144,54 +147,29 @@ class Eczane extends BaseController
             return redirect()->to("/Home");
         }
     }
-    public function PatientAdd()
-    {
-        $db = db_connect();
-        $model = new EczaneModel($db);
-
-        // POST verilerini al
-        $name = $_POST['Ad'];
-        $surname = $_POST['Soyad'];
-        $gender = $_POST['Cinsiyet'];
-        $dob = $_POST['DogumTarihi'];
-        $address= $_POST['Adres'];
-        $tckno= $_POST['TC'];
-
-        // Çalışan ekleme işlemini model aracılığıyla gerçekleştir
-        if ($model->addPatient($name, $surname, $gender, $dob, $address, $tckno )) {
-            // Başarılı bir şekilde eklendiğini belirten bir mesaj
-            echo "Employee successfully added.";
-            return redirect()->to("/Home");
-        } else {
-            // Hata durumunda bir mesaj
-            echo "Error: Failed to add employee.";
-            return redirect()->to("/Home");
-        }
-    }
 
      // ADMİN PANELİ İLAÇ EKLEME
      public function MedicineAdd()
      {
-        $db = db_connect();
-        $model = new EczaneModel($db);
-
-        // POST verilerini al
-        $name = $_POST['IlaçAdı'];
-        $price = $_POST['Fiyatı'];
-        $company = $_POST['Firması'];
-        $pres_color = $_POST['receteRengi'];
-
-        // İlaç ekleme işlemini model aracılığıyla gerçekleştir
-        if ($model->addMedicines($name, $price, $company, $pres_color )) {
-            // Başarılı bir şekilde eklendiğini belirten bir mesaj
-            echo "Medicine successfully added.";
-            return redirect()->to("/Home");
-        } else {
-            // Hata durumunda bir mesaj
-            echo "Error: Failed to add medicine.";
-            return redirect()->to("/Home");
-        }
-    }
-
-
+         $db = db_connect();
+         $model = new EczaneModel($db);
+ 
+         // POST verilerini al
+         $name= $_POST['IlaçAdı'];
+         $price = $_POST['Fiyatı'];
+         $company = $_POST['Firması'];
+         // SQL sorgusunu oluştur
+         $sql = "INSERT INTO medicines (name, price, company) VALUES ('$name', '$price', '$company')";
+ 
+         // SQL sorgusunu veritabanına gönder ve sonucu kontrol et
+         if ($db->query($sql) === TRUE) {
+             // Başarılı bir şekilde eklendiğini belirten bir mesaj
+             echo "Medicine successfully added.";
+             return redirect()->to("/Home");
+         } else {
+             // Hata durumunda bir mesaj
+             echo "Error: Failed to add category.";
+             return redirect()->to("/Home");
+         }
+     }
 }

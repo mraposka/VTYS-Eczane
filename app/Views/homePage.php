@@ -114,6 +114,18 @@
 
       <div class="col">
         <div class="card" style="background:#f2f2f2;">
+          <img id="MDB-logo5" class="card-img-top" src="<?php echo base_url('ViewAssets/') ?>images/9.jpg" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title" style="color: #808080; text-align:center;">STOK</h5>
+          </div>
+          <div class="mb-5 d-flex justify-content-around">
+            <button class="btn " type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop5" style="color: #808080; background:#ffa500; font-weight: bold;">EKLE</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card" style="background:#f2f2f2;">
           <img id="MDB-logo6" class="card-img-top" src="<?php echo base_url('ViewAssets/') ?>images/6.jpg" alt="..." />
           <div class="card-body">
             <h5 class="card-title" style="color: #808080; text-align:center;">İLAÇ</h5>
@@ -234,6 +246,64 @@
               <div style="margin-bottom: 20px;"></div>
               <div class="input-group mb-3">
                 <button type="submit" class="btn btn-custom btn-lg w-100 fs-6" style="background-color: #ffa500; color: #808080; font-weight: bold;">EKLE</button>
+
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="staticBackdrop5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop5Label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal başlığı ve kapatma düğmesi -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdrop5Label">Stok Ekle</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <!-- Modal gövdesi -->
+      <div class="modal-body">
+        <form action="CategoryAdd" method="POST">
+          <!-- Stok Girişi -->
+          <div class="input-group mb-3">
+            <input type="text" name="Stok" class="form-control form-control-lg bg-light fs-6" placeholder="Stok sayısını girin." />
+          </div>
+
+          <!-- İlaç Seçimi -->
+          <div class="input-group mb-3">
+    <select class="form-select" name="ilaç" aria-label="İlaç seçiniz">
+        <option selected disabled>İlaç seçiniz.</option>
+        <?php if (!empty($medicines)) : ?>
+            <?php foreach ($medicines as $medicine) : ?>
+                <option value="<?php echo htmlspecialchars($medicines->name); ?>"><?php echo htmlspecialchars($medicines->name); ?></option>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <option disabled>İlaç yok.</option>
+        <?php endif; ?>
+    </select>
+</div>
+
+          
+          <!-- Form gönderme düğmesi -->
+          <div class="input-group mb-3">
+            <button type="submit" class="btn btn-custom btn-lg w-100 fs-6" style="background-color: #ffa500; color: white; font-weight: bold;">EKLE</button>
+          </div>
+        </form>
+      </div>
+      
+      <!-- Modal altbilgisi ve kapatma düğmesi -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
               </div>
             </form>
