@@ -45,7 +45,10 @@ class Eczane extends BaseController
     }
     public function Hastalar()
     {
-        return view("sick");
+        $db = db_connect();
+        $model = new EczaneModel($db);
+        $data['patient'] = $model->getPatients();
+        return view("sick", $data);
     }
     public function Receteler()
     {
