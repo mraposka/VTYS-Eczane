@@ -149,7 +149,8 @@
       </div>
     </div>
 
-
+    //MODALS
+    //MEDİCİNE MODAL
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -192,10 +193,7 @@
         </div>
       </div>
     </div>
-
-
-
-
+    //EMPLOYEE MODAL
     <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -229,8 +227,7 @@
         </div>
       </div>
     </div>
-
-
+    //CATEGORY MODAL
     <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -246,7 +243,6 @@
               <div style="margin-bottom: 20px;"></div>
               <div class="input-group mb-3">
                 <button type="submit" class="btn btn-custom btn-lg w-100 fs-6" style="background-color: #ffa500; color: #808080; font-weight: bold;">EKLE</button>
-
               </div>
             </form>
           </div>
@@ -256,75 +252,64 @@
         </div>
       </div>
     </div>
-
+    //STOCK MODAL
     <div class="modal fade" id="staticBackdrop5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop5Label" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <!-- Modal başlığı ve kapatma düğmesi -->
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdrop5Label">Stok Ekle</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      
-      <!-- Modal gövdesi -->
-      <div class="modal-body">
-        <form action="CategoryAdd" method="POST">
-          <!-- Stok Girişi -->
-          <div class="input-group mb-3">
-            <input type="text" name="Stok" class="form-control form-control-lg bg-light fs-6" placeholder="Stok sayısını girin." />
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal başlığı ve kapatma düğmesi -->
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdrop5Label">Stok Ekle</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-
-          <!-- İlaç Seçimi -->
-          <div class="input-group mb-3">
-    <select class="form-select" name="ilaç" aria-label="İlaç seçiniz">
-        <option selected disabled>İlaç seçiniz.</option>
-        <?php if (!empty($medicines)) : ?>
-            <?php foreach ($medicines as $medicine) : ?>
-                <option value="<?php echo htmlspecialchars($medicines->name); ?>"><?php echo htmlspecialchars($medicines->name); ?></option>
-            <?php endforeach; ?>
-        <?php else : ?>
-            <option disabled>İlaç yok.</option>
-        <?php endif; ?>
-    </select>
-</div>
-
-          
-          <!-- Form gönderme düğmesi -->
-          <div class="input-group mb-3">
-            <button type="submit" class="btn btn-custom btn-lg w-100 fs-6" style="background-color: #ffa500; color: white; font-weight: bold;">EKLE</button>
+          <!-- Modal gövdesi -->
+          <div class="modal-body">
+            <form action="StockAdd" method="POST">
+              <!-- Stok Girişi -->
+              <div class="input-group mb-3">
+                <input type="text" name="Stok" class="form-control form-control-lg bg-light fs-6" placeholder="Stok sayısını girin." />
+              </div>
+              <!-- İlaç Seçimi -->
+              <div class="input-group mb-3">
+                <select class="form-select" name="ilaç" aria-label="İlaç seçiniz">
+                  <option selected disabled>İlaç seçiniz.</option>
+                  <?php foreach ($medicines as $medicines) : ?>
+                    <option value="<?php echo $medicines->name; ?>"><?php echo $medicines->name; ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
+              <!-- Form gönderme düğmesi -->
+              <div class="input-group mb-3">
+                <button type="submit" class="btn btn-custom btn-lg w-100 fs-6" style="background-color: #ffa500; color: white; font-weight: bold;">EKLE</button>
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
-      
-      <!-- Modal altbilgisi ve kapatma düğmesi -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+          <!-- Modal altbilgisi ve kapatma düğmesi -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+  </form>
 </div>
-
-
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
-          </div>
-        </div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+</div>
+</div>
+</div>
+</div>
+//PATEİENT MODAL
+<div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Hasta Ekle</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-    </div>
-
-    <div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Hasta Ekle</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form action="PatientAdd" method="POST">
-            <div class="input-group mb-3">
+      <div class="modal-body">
+        <form action="PatientAdd" method="POST">
+          <div class="input-group mb-3">
             <form action="EmployeeAdd" method="POST">
               <div class="input-group mb-3">
                 <input type="text" name="TC" class="form-control form-control-lg bg-ligth fs-6" placeholder="TC Kimlik No" />
@@ -356,17 +341,17 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
           </div>
-        </div>
       </div>
     </div>
+  </div>
 
+  //SHOW SNACKBAR
 
-
-    <script>
-      function showSnackbar() {
-        document.getElementById("ilacKapatBtn").click();
-        var notifDiv = document.getElementById("notif");
-        var notificationContent = `
+  <script>
+    function showSnackbar() {
+      document.getElementById("ilacKapatBtn").click();
+      var notifDiv = document.getElementById("notif");
+      var notificationContent = `
             <div class="notification">
               <div class="notification__body">
                 <img src="<?php echo base_url('ViewAssets/') ?>images/check-circle.svg" alt="Success" class="notification__icon">
@@ -375,9 +360,9 @@
               <div class="notification__progress"></div>
             </div>
           `;
-        notifDiv.innerHTML = notificationContent;
-      }
-    </script>
-    </body>
+      notifDiv.innerHTML = notificationContent;
+    }
+  </script>
+  </body>
 
-    </html>
+  </html>

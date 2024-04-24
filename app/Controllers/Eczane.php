@@ -20,6 +20,7 @@ class Eczane extends BaseController
         $db = db_connect(); // Öncelikle veritabanı bağlantısını oluşturun.
         $model = new EczaneModel($db);
         $data['categorys'] = $model->getCategorys(); // Veritabanından verileri alın.
+        $data['medicines'] = $model->getMedicines(); 
 
         // İlk view'i döndürmeden önce gerekli verileri ayarlayın.
         return view("homePage", $data); // 'homePage' ve kategori verilerini döndürün.
@@ -170,21 +171,19 @@ class Eczane extends BaseController
          }
      }
 
-     // ADMİN PANELİ İLAÇ EKLEME
+     // ADMİN PANELİ STOK EKLEME
      public function StockAdd()
      {
          $db = db_connect();
          $model = new EczaneModel($db);
  
          // POST verilerini al
-         $name= $_POST['IlaçAdı'];
-         $price = $_POST['Fiyatı'];
-         $company = $_POST['Firması'];
-         // SQL sorgusunu oluştur
-         $sql = "INSERT INTO medicines (name, price, company) VALUES ('$name', '$price', '$company')";
+         $piece= $_POST['Stok'];
+        
+       
  
          // SQL sorgusunu veritabanına gönder ve sonucu kontrol et
-         if ($db->query($sql) === TRUE) {
+         if ($model -> addStock($piece)) {
              // Başarılı bir şekilde eklendiğini belirten bir mesaj
              echo "Medicine successfully added.";
              return redirect()->to("/Home");

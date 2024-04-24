@@ -85,8 +85,8 @@ class EczaneModel
     }
 
     //STOK EKLEME
-    public function addStock($name, $price, $company, $pres_color){
-        $sql = "INSERT INTO medicines (name, price, company , pres_color) VALUES ('$name', '$price', '$company', '$pres_color')";
+    public function addStock($piece){
+        $sql = "INSERT INTO stock (piece) VALUES ('$piece')";
         return $this->db->query($sql);
     }
 }
