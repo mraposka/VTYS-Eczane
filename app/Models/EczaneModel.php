@@ -47,11 +47,7 @@ class EczaneModel
      {
         $db = db_connect();
         $query = $db->query("SELECT * FROM medicines"); // Sorgunun doğru olduğundan emin olun
-        $results = $query->getResult(); // Sonuçları kontrol edin
-        if (empty($results)) {
-            echo "No medicines found in the database."; // Kontrol çıktısı
-        }
-        return $results; // Sonuçları döndür
+        return $query->getResult();
      }
 
      // KATEGORİ EKLEME

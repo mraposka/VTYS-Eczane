@@ -5,21 +5,23 @@
       <tr>
         <th scope="col">ilaç ID</th>
         <th scope="col">İlaç Adı</th>
-        <th scope="col">Kategori</th>
-        <th>Üretici Firma</th>
         <th scope="col">Fiyat</th>
+        <th>Üretici Firma</th>
         <th scope="col">Reçete Rengi</th>
         <th scope="col">Sepete Ekle</th>
         <th scope="col">Satış Yap</th>
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($employees as $employee) : ?>
+      <?php foreach ($medicines as $medicines) : ?>
         <tr>
-          <td><?php echo $employee->emp_id; ?></td>
-          <td><?php echo $employee->name; ?></td>
-          <td><?php echo $employee->surname; ?></td>
-          <td><?php echo $employee->gender; ?></td>
+          <td><?php echo $medicines->medicine_id; ?></td>
+          <td><?php echo $medicines->name; ?></td>
+          <td><?php echo $medicines->price; ?></td>
+          <td><?php echo $medicines->company; ?></td>
+          <td><?php echo $medicines->pres_color; ?></td>
+      
+        
           <td><button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold; ">EKLE</button>
           </td>
           <td><button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold;">SATIŞ YAP</button>
