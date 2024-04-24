@@ -110,10 +110,10 @@ class Eczane extends BaseController
         $gender = $_POST['Cinsiyet'];
 
         // SQL sorgusunu oluştur
-        $sql = "INSERT INTO employee (name, surname, gender) VALUES ('$name', '$surname', '$gender')";
+       
 
         // SQL sorgusunu veritabanına gönder ve sonucu kontrol et
-        if ($db->query($sql) === TRUE) {
+        if ($model->addEmployee($name, $surname, $gender)) {
             // Başarılı bir şekilde eklendiğini belirten bir mesaj
             echo "Employee successfully added.";
             return redirect()->to("/Home");
@@ -133,11 +133,8 @@ class Eczane extends BaseController
         $category = $_POST['Kategori'];
 
 
-        // SQL sorgusunu oluştur
-        $sql = "INSERT INTO category (c_type) VALUES ('$category')";
-
         // SQL sorgusunu veritabanına gönder ve sonucu kontrol et
-        if ($db->query($sql) === TRUE) {
+        if ($model -> addCategory($category)) {
             // Başarılı bir şekilde eklendiğini belirten bir mesaj
             echo "Category successfully added.";
             return redirect()->to("/Home");
@@ -158,11 +155,11 @@ class Eczane extends BaseController
          $name= $_POST['IlaçAdı'];
          $price = $_POST['Fiyatı'];
          $company = $_POST['Firması'];
-         // SQL sorgusunu oluştur
-         $sql = "INSERT INTO medicines (name, price, company) VALUES ('$name', '$price', '$company')";
+         $pres_color = $_POST['receteRengi'];
+
  
          // SQL sorgusunu veritabanına gönder ve sonucu kontrol et
-         if ($db->query($sql) === TRUE) {
+         if ($model -> addMedicines($name, $price, $company, $pres_color)) {
              // Başarılı bir şekilde eklendiğini belirten bir mesaj
              echo "Medicine successfully added.";
              return redirect()->to("/Home");
