@@ -17,6 +17,7 @@ $routes->post('/EmployeeAdd', 'Eczane::EmployeeAdd');
 $routes->post('/CategoryAdd', 'Eczane::CategoryAdd');
 $routes->post('/PatientAdd', 'Eczane::PatientAdd');
 $routes->post('/MedicineAdd', 'Eczane::MedicineAdd');
+$routes->post('/StockAdd', 'Eczane::StockAdd');
 //PostRoutes
 
 $routes->set404Override(function () {

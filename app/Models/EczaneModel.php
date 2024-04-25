@@ -81,18 +81,28 @@ class EczaneModel
         return $this->db->query($sql);
     }
     // İLAÇ EKLEME
-    public function addMedicines($name, $price, $company, $pres_color)
+    public function addMedicines($name, $price, $company, $pres_color, $cat_id)
     {
         $db = db_connect();
-        $sql = "INSERT INTO medicines (name, price, company , pres_color) VALUES ('$name', '$price', '$company', '$pres_color')";
+        $sql = "INSERT INTO medicines (name, price, company , pres_color,category_id) VALUES ('$name', '$price', '$company', '$pres_color','$cat_id')";
         return $this->db->query($sql);
     }
 
     //STOK EKLEME
-    public function addStock($piece)
+    public function addStock($med_id, $piece, $cat_id)
     {
-        $sql = "INSERT INTO stock (piece) VALUES ('$piece')";
+        $sql = "INSERT INTO stock (medicine_id,piece,category_id) VALUES ('$med_id','$piece','$cat_id')";
         return $this->db->query($sql);
+    }
+    public function getCategoryByMedicineId($med_id)
+    {
+        // Örnek bir sorgu, gerçek veritabanı şemanı ve tablo adlarına göre düzenlenmelidir 
+        $query = $this->db->table("medicines")
+            ->select('category_id')
+            ->where(['medicine_id' => $med_id])
+            ->get();
+        $result = $query->getFirstRow();
+        return $result->category_id;
     }
 
     // HASTA GÜNCELLEME
@@ -107,7 +117,7 @@ class EczaneModel
                     dob = ?, 
                     address = ? 
                 WHERE patient_id = ?";
-    
+
         $query = $db->query($sql, [
             $tckno,
             $p_name,
@@ -117,7 +127,7 @@ class EczaneModel
             $address,
             $patient_id
         ]);
-    
+
         return $query; // Sorgu başarılıysa true, başarısızsa false döner
     }
-}   
+}

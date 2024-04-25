@@ -15,17 +15,12 @@ class Eczane extends BaseController
         return view("homePage");
     }
     public function Home()
-    {
-
-        $db = db_connect(); // Öncelikle veritabanı bağlantısını oluşturun.
+    { 
+        $db = db_connect();
         $model = new EczaneModel($db);
-        $data['categorys'] = $model->getCategorys(); // Veritabanından verileri alın.
-        $data['medicines'] = $model->getMedicines(); 
-
-        // İlk view'i döndürmeden önce gerekli verileri ayarlayın.
-        return view("homePage", $data); // 'homePage' ve kategori verilerini döndürün.
-
-
+        $data['categorys'] = $model->getCategorys();
+        $data['medicines'] = $model->getMedicines();
+        return view("homePage", $data);
     }
     public function Giris()
     {
@@ -62,7 +57,7 @@ class Eczane extends BaseController
     {
         $db = db_connect();
         $model = new EczaneModel($db);
-        $data['employees'] = $model->getEmployees(); // Veritabanından verileri alın
+        $data['employees'] = $model->getEmployees();
         return view('employee', $data);
     }
     public function Faturalar()
@@ -83,15 +78,13 @@ class Eczane extends BaseController
         }
     }
 
-    // GİRİŞ İŞLEMLERİ
+    // GİRİŞ İŞLEMLERİ+
     public function Login()
     {
         try {
             $session = session();
         } catch (\Throwable $th) {
-            // Hata durumunu ele al
         }
-
         $db = db_connect();
         $model = new EczaneModel($db);
         $query = $model->login($_POST["user"], md5($_POST["pass"]));
@@ -106,97 +99,73 @@ class Eczane extends BaseController
     }
 
     // ADMİN PANELİ ÇALIŞAN EKLEME 
+    public function PatientAdd()
+    {
+        $db = db_connect();
+        $model = new EczaneModel($db);
+        $name = $_POST['Ad'];
+        $surname = $_POST['Soyad'];
+        $gender = $_POST['Cinsiyet'];  
+        $dob= $_POST['DogumTarihi'];
+        $address= $_POST['Adres'];
+        $tckno= $_POST['TC'];
+        if ($model->addPatient($name, $surname, $gender, $dob, $address, $tckno))
+            echo json_encode(200);
+        else
+            echo json_encode(400);
+    }
     public function EmployeeAdd()
     {
         $db = db_connect();
         $model = new EczaneModel($db);
-
-        // POST verilerini al
         $name = $_POST['Ad'];
         $surname = $_POST['Soyad'];
         $gender = $_POST['Cinsiyet'];
-
-        // SQL sorgusunu oluştur
-       
-
-        // SQL sorgusunu veritabanına gönder ve sonucu kontrol et
-        if ($model->addEmployee($name, $surname, $gender)) {
-            // Başarılı bir şekilde eklendiğini belirten bir mesaj
-            echo "Employee successfully added.";
-            return redirect()->to("/Home");
-        } else {
-            // Hata durumunda bir mesaj
-            echo "Error: Failed to add employee.";
-            return redirect()->to("/Home");
-        }
+        if ($model->addEmployee($name, $surname, $gender))
+            echo json_encode(200);
+        else
+            echo json_encode(400);
     }
-    // ADMİN PANELİ KATEGORİ EKLEME
+    // ADMİN PANELİ KATEGORİ EKLEME+
     public function CategoryAdd()
     {
         $db = db_connect();
         $model = new EczaneModel($db);
-
-        // POST verilerini al
         $category = $_POST['Kategori'];
-
-
-        // SQL sorgusunu veritabanına gönder ve sonucu kontrol et
-        if ($model -> addCategory($category)) {
-            // Başarılı bir şekilde eklendiğini belirten bir mesaj
-            echo "Category successfully added.";
-            return redirect()->to("/Home");
-        } else {
-            // Hata durumunda bir mesaj
-            echo "Error: Failed to add category.";
-            return redirect()->to("/Home");
-        }
+        if ($model->addCategory($category))
+            echo json_encode(200);
+        else
+            echo json_encode(400);
     }
 
-     // ADMİN PANELİ İLAÇ EKLEME
-     public function MedicineAdd()
-     {
-         $db = db_connect();
-         $model = new EczaneModel($db);
- 
-         // POST verilerini al
-         $name= $_POST['IlaçAdı'];
-         $price = $_POST['Fiyatı'];
-         $company = $_POST['Firması'];
-         $pres_color = $_POST['receteRengi'];
+    // ADMİN PANELİ İLAÇ EKLEME+
+    public function MedicineAdd()
+    {
+        $db = db_connect();
+        $model = new EczaneModel($db);
+        $name = $_POST['IlaçAdı'];
+        $price = $_POST['Fiyatı'];
+        $company = $_POST['Firması'];
+        $pres_color = $_POST['receteRengi'];
+        $cat_id = $_POST['kategori'];
+        if ($model->addMedicines($name, $price, $company, $pres_color, $cat_id))
+            echo json_encode(200);
+        else
+            echo json_encode(400);
+    }
 
- 
-         // SQL sorgusunu veritabanına gönder ve sonucu kontrol et
-         if ($model -> addMedicines($name, $price, $company, $pres_color)) {
-             // Başarılı bir şekilde eklendiğini belirten bir mesaj
-             echo "Medicine successfully added.";
-             return redirect()->to("/Home");
-         } else {
-             // Hata durumunda bir mesaj
-             echo "Error: Failed to add category.";
-             return redirect()->to("/Home");
-         }
-     }
-
-     // ADMİN PANELİ STOK EKLEME
-     public function StockAdd()
-     {
-         $db = db_connect();
-         $model = new EczaneModel($db);
- 
-         // POST verilerini al
-         $piece= $_POST['Stok'];
-        
-       
- 
-         // SQL sorgusunu veritabanına gönder ve sonucu kontrol et
-         if ($model -> addStock($piece)) {
-             // Başarılı bir şekilde eklendiğini belirten bir mesaj
-             echo "Medicine successfully added.";
-             return redirect()->to("/Home");
-         } else {
-             // Hata durumunda bir mesaj
-             echo "Error: Failed to add category.";
-             return redirect()->to("/Home");
-         }
-     }
+    // ADMİN PANELİ STOK EKLEME+
+    public function StockAdd()
+    {
+        $db = db_connect();
+        $model = new EczaneModel($db);
+        $piece = $_POST['Stok'];
+        $med_id = $_POST['ilac'];
+        $cat_id = $model->getCategoryByMedicineId($med_id);
+        if ($model->addStock($med_id, $piece, $cat_id)) {
+            echo json_encode(200);
+        } else {
+            echo json_encode(400);
+        }
+    }
 }
