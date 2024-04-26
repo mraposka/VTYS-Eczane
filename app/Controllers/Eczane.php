@@ -15,7 +15,7 @@ class Eczane extends BaseController
         return view("homePage");
     }
     public function Home()
-    { 
+    {
         $db = db_connect();
         $model = new EczaneModel($db);
         $data['categorys'] = $model->getCategorys();
@@ -36,6 +36,7 @@ class Eczane extends BaseController
         $db = db_connect();
         $model = new EczaneModel($db);
         $data['medicines'] = $model->getMedicines();
+        $data['categories'] = $model->getCategories();
         return view("medicines", $data);
     }
     public function Hastalar()
@@ -105,10 +106,10 @@ class Eczane extends BaseController
         $model = new EczaneModel($db);
         $name = $_POST['Ad'];
         $surname = $_POST['Soyad'];
-        $gender = $_POST['Cinsiyet'];  
-        $dob= $_POST['DogumTarihi'];
-        $address= $_POST['Adres'];
-        $tckno= $_POST['TC'];
+        $gender = $_POST['Cinsiyet'];
+        $dob = $_POST['DogumTarihi'];
+        $address = $_POST['Adres'];
+        $tckno = $_POST['TC'];
         if ($model->addPatient($name, $surname, $gender, $dob, $address, $tckno))
             echo json_encode(200);
         else
@@ -152,6 +153,32 @@ class Eczane extends BaseController
             echo json_encode(200);
         else
             echo json_encode(400);
+    }
+    public function MedicineEdit()
+    {
+        $db = db_connect();
+        $model = new EczaneModel($db);
+        $data = array(
+            'name' => $_POST['IlaçAdı'],
+            'price' => $_POST['Fiyatı'],
+            'company' => $_POST['Firması'],
+            'pres_color' => $_POST['receteRengi'],
+            'category_id' => $_POST['kategori']
+        );
+       
+        if ($model->editMedicines($data,$_POST['med_id']))
+            echo json_encode(200);
+        else
+            echo json_encode(400); 
+    }
+    public function MedicineDel()
+    {
+        $db = db_connect();
+        $model = new EczaneModel($db);  
+        if ($model->delMedicines($_POST['id']))
+            echo json_encode(200);
+        else
+            echo json_encode(400); 
     }
 
     // ADMİN PANELİ STOK EKLEME+

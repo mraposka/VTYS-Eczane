@@ -87,6 +87,24 @@ class EczaneModel
         $sql = "INSERT INTO medicines (name, price, company , pres_color,category_id) VALUES ('$name', '$price', '$company', '$pres_color','$cat_id')";
         return $this->db->query($sql);
     }
+    public function editMedicines($data,$id)
+    {
+        $db = db_connect();
+        $query = $this->db->table('medicines')->where('medicine_id', $id)->update($data);
+        if ($this->db->affectedRows()>0)
+            return true;
+        else
+            return false;
+    }
+    public function delMedicines($id)
+    {
+        $db = db_connect();
+        $query = $this->db->table('medicines')->where('medicine_id', $id)->delete();
+        if ($this->db->affectedRows()>0)
+            return true;
+        else
+            return false;
+    }
 
     //STOK EKLEME
     public function addStock($med_id, $piece, $cat_id)
@@ -104,11 +122,16 @@ class EczaneModel
         $result = $query->getFirstRow();
         return $result->category_id;
     }
-
+    public function getCategories()
+    {
+        $query = $this->db->table("category")->get();
+        $result = $query->getResult();
+        return $result;
+    }
     // HASTA GÜNCELLEME
     public function updatePatient($patient_id, $tckno, $p_name, $p_surname, $gender, $dob, $address)
     {
-        $db = db_connect(); // Veritabanına güvenli bağlantı
+        $db = db_connect();
         $sql = "UPDATE patient 
                 SET tckno = ?, 
                     p_name = ?, 
@@ -127,7 +150,6 @@ class EczaneModel
             $address,
             $patient_id
         ]);
-
-        return $query; // Sorgu başarılıysa true, başarısızsa false döner
+        return $query;
     }
 }

@@ -17,6 +17,8 @@ $routes->post('/EmployeeAdd', 'Eczane::EmployeeAdd');
 $routes->post('/CategoryAdd', 'Eczane::CategoryAdd');
 $routes->post('/PatientAdd', 'Eczane::PatientAdd');
 $routes->post('/MedicineAdd', 'Eczane::MedicineAdd');
+$routes->post('/MedicineEdit', 'Eczane::MedicineEdit');
+$routes->post('/MedicineDel', 'Eczane::MedicineDel');
 $routes->post('/StockAdd', 'Eczane::StockAdd');
 //PostRoutes
 
