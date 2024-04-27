@@ -152,4 +152,24 @@ class EczaneModel
         ]);
         return $query;
     }
+    public function updatePrescriptionDetails($pres_id, $pres_date, $usage_date, $pres_color) {
+        // Veritabanı bağlantısı
+        $db = db_connect();
+    
+        // SQL sorgusu
+        $sql = "UPDATE prescription 
+                SET pres_date = ?, 
+                    usage_date = ?, 
+                    pres_color = ? 
+                WHERE pres_id = ?";  
+        $query = $db->query($sql, [
+            $pres_date, 
+            $usage_date,  
+            $pres_color, 
+            $pres_id  
+        ]);
+        
+        return $query;
+    }
+    
 }
