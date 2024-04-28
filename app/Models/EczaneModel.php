@@ -87,11 +87,11 @@ class EczaneModel
         $sql = "INSERT INTO medicines (name, price, company , pres_color,category_id) VALUES ('$name', '$price', '$company', '$pres_color','$cat_id')";
         return $this->db->query($sql);
     }
-    public function editMedicines($data,$id)
+    public function editMedicines($data, $id)
     {
         $db = db_connect();
         $query = $this->db->table('medicines')->where('medicine_id', $id)->update($data);
-        if ($this->db->affectedRows()>0)
+        if ($this->db->affectedRows() > 0)
             return true;
         else
             return false;
@@ -100,17 +100,17 @@ class EczaneModel
     {
         $db = db_connect();
         $query = $this->db->table('medicines')->where('medicine_id', $id)->delete();
-        if ($this->db->affectedRows()>0)
+        if ($this->db->affectedRows() > 0)
             return true;
         else
             return false;
     }
-    
+
     public function delStock($id)
     {
         $db = db_connect();
         $query = $this->db->table('stock')->where('stock_id', $id)->delete();
-        if ($this->db->affectedRows()>0)
+        if ($this->db->affectedRows() > 0)
             return true;
         else
             return false;
@@ -145,7 +145,7 @@ class EczaneModel
         $result = $query->getResult();
         return $result;
     }
-    
+
     // HASTA GÜNCELLEME
     public function updatePatient($patient_id, $tckno, $p_name, $p_surname, $gender, $dob, $address)
     {
@@ -170,23 +170,24 @@ class EczaneModel
         ]);
         return $query;
     }
-    public function updatePrescriptionDetails($pres_id, $pres_date, $usage_date, $pres_color) {
+    public function updatePrescriptionDetails($pres_id, $pres_date, $usage_date, $pres_color)
+    {
         // Veritabanı bağlantısı
         $db = db_connect();
-    
+
         // SQL sorgusu
         $sql = "UPDATE prescription 
                 SET pres_date = ?, 
                     usage_date = ?, 
                     pres_color = ? 
-                WHERE pres_id = ?";  
+                WHERE pres_id = ?";
         $query = $db->query($sql, [
-            $pres_date, 
-            $usage_date,  
-            $pres_color, 
-            $pres_id  
+            $pres_date,
+            $usage_date,
+            $pres_color,
+            $pres_id
         ]);
-        
+
         return $query;
     }
 
@@ -194,21 +195,19 @@ class EczaneModel
     {
         $db = db_connect();
         $query = $this->db->table('employee')->where('emp_id', $id)->delete();
-        if ($this->db->affectedRows()>0)
+        if ($this->db->affectedRows() > 0)
             return true;
         else
             return false;
     }
 
-    public function editEmployess($data,$id)
+    public function editEmployees($data, $id)
     {
         $db = db_connect();
-        $query = $this->db->table('medicines')->where('medicine_id', $id)->update($data);
-        if ($this->db->affectedRows()>0)
+        $query = $this->db->table('employee')->where('emp_id', $id)->update($data);
+        if ($this->db->affectedRows() > 0)
             return true;
         else
             return false;
     }
-   
-    
 }

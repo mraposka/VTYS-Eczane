@@ -215,10 +215,9 @@ class Eczane extends BaseController
         $db = db_connect();
         $model = new EczaneModel($db);
         $data = array(
-            'name' => $_POST['Personel Adi'],
-            'surname' => $_POST['Personel Soyadi'],
-            'gender' => $_POST['cinsiyeti'],
-            
+            'name' => $_POST['adi'],
+            'surname' => $_POST['soyadi'],
+            'gender' => $_POST['cinsiyeti'], 
         );
        
         if ($model->editEmployees($data,$_POST['emp_id']))
