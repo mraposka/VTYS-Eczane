@@ -171,5 +171,16 @@ class EczaneModel
         
         return $query;
     }
+
+    public function delEmployee($id)
+    {
+        $db = db_connect();
+        $query = $this->db->table('employee')->where('emp_id', $id)->delete();
+        if ($this->db->affectedRows()>0)
+            return true;
+        else
+            return false;
+    }
+   
     
 }
