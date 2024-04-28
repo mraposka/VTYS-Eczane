@@ -205,10 +205,29 @@ class Eczane extends BaseController
     {
         $db = db_connect();
         $model = new EczaneModel($db);  
-        if ($model->delEmployee($_POST['id']))
+        if ($model->delEmployees($_POST['id']))
             echo json_encode(200);
         else
             echo json_encode(400); 
     }
-
+    public function EmployeeEdit()
+    {
+        $db = db_connect();
+        $model = new EczaneModel($db);
+        $data = array(
+            'name' => $_POST['Personel Adi'],
+            'surname' => $_POST['Personel Soyadi'],
+            'gender' => $_POST['cinsiyeti'],
+            
+        );
+       
+        if ($model->editEmployees($data,$_POST['emp_id']))
+            echo json_encode(200);
+        else
+            echo json_encode(400); 
+    }
+   
 }
+    
+
+

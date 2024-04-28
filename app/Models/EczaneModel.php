@@ -190,10 +190,20 @@ class EczaneModel
         return $query;
     }
 
-    public function delEmployee($id)
+    public function delEmployees($id)
     {
         $db = db_connect();
         $query = $this->db->table('employee')->where('emp_id', $id)->delete();
+        if ($this->db->affectedRows()>0)
+            return true;
+        else
+            return false;
+    }
+
+    public function editEmployess($data,$id)
+    {
+        $db = db_connect();
+        $query = $this->db->table('medicines')->where('medicine_id', $id)->update($data);
         if ($this->db->affectedRows()>0)
             return true;
         else
