@@ -102,7 +102,7 @@
                 <option <?php if ($medicine->pres_color == "Normal")
                   echo "selected"; ?> value="Normal">Normal</option>
                 <option <?php if ($medicine->pres_color == "Kırmızı")
-                  echo "selected"; ?> value="Kırımızı">Kırımızı</option>
+                  echo "selected"; ?> value="Kırmızı">Kırmızı</option>
                 <option <?php if ($medicine->pres_color == "Turuncu")
                   echo "selected"; ?> value="Turuncu">Turuncu</option>
                 <option <?php if ($medicine->pres_color == "Yeşil")

@@ -105,6 +105,16 @@ class EczaneModel
         else
             return false;
     }
+    
+    public function delStock($id)
+    {
+        $db = db_connect();
+        $query = $this->db->table('stock')->where('stock_id', $id)->delete();
+        if ($this->db->affectedRows()>0)
+            return true;
+        else
+            return false;
+    }
 
     //STOK EKLEME
     public function addStock($med_id, $piece, $cat_id)
@@ -122,12 +132,20 @@ class EczaneModel
         $result = $query->getFirstRow();
         return $result->category_id;
     }
+    // kategori görüntüleme
     public function getCategories()
     {
         $query = $this->db->table("category")->get();
         $result = $query->getResult();
         return $result;
     }
+    public function getStock()
+    {
+        $query = $this->db->table("stock")->get();
+        $result = $query->getResult();
+        return $result;
+    }
+    
     // HASTA GÜNCELLEME
     public function updatePatient($patient_id, $tckno, $p_name, $p_surname, $gender, $dob, $address)
     {

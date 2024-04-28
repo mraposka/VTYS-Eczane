@@ -52,7 +52,12 @@ class Eczane extends BaseController
     }
     public function Stok()
     {
-        return view("stock");
+        $db = db_connect();
+        $model = new EczaneModel($db);
+        $data['stock'] = $model->getStock();
+        $data['medicines'] = $model->getMedicines();
+        $data['categories'] = $model->getCategories();
+        return view("stock", $data);
     }
     public function Personel()
     {
