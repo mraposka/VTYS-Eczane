@@ -178,7 +178,7 @@
                 <div style="margin-bottom: 15px;"></div>
                 <select class="form-select" name="kategori" aria-label="Kategori seçiniz">
                   <option selected>Kategori seçiniz.</option>
-                  <?php foreach ($categorys as $category) : ?>
+                  <?php foreach ($category as $categorys) : ?>
                     <option name="category" value="<?php echo $category->category_id; ?>"><?php echo $category->c_type; ?>
                     </option>
                   <?php endforeach; ?>
