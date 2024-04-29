@@ -144,53 +144,7 @@ class EczaneModel
         $query = $this->db->table("stock")->get();
         $result = $query->getResult();
         return $result;
-    }
-
-    // HASTA GÜNCELLEME
-    public function updatePatient($patient_id, $tckno, $p_name, $p_surname, $gender, $dob, $address)
-    {
-        $db = db_connect();
-        $sql = "UPDATE patient 
-                SET tckno = ?, 
-                    p_name = ?, 
-                    p_surname = ?, 
-                    gender = ?, 
-                    dob = ?, 
-                    address = ? 
-                WHERE patient_id = ?";
-
-        $query = $db->query($sql, [
-            $tckno,
-            $p_name,
-            $p_surname,
-            $gender,
-            $dob,
-            $address,
-            $patient_id
-        ]);
-        return $query;
-    }
-    public function updatePrescriptionDetails($pres_id, $pres_date, $usage_date, $pres_color)
-    {
-        // Veritabanı bağlantısı
-        $db = db_connect();
-
-        // SQL sorgusu
-        $sql = "UPDATE prescription 
-                SET pres_date = ?, 
-                    usage_date = ?, 
-                    pres_color = ? 
-                WHERE pres_id = ?";
-        $query = $db->query($sql, [
-            $pres_date,
-            $usage_date,
-            $pres_color,
-            $pres_id
-        ]);
-
-        return $query;
-    }
-
+    } 
     public function delEmployees($id)
     {
         $db = db_connect();
@@ -200,11 +154,28 @@ class EczaneModel
         else
             return false;
     }
-
-    public function editEmployees($data, $id)
+    public function delPatient($id)
     {
         $db = db_connect();
-        $query = $this->db->table('employee')->where('emp_id', $id)->update($data);
+        $query = $this->db->table('patient')->where('patient_id', $id)->delete();
+        if ($this->db->affectedRows() > 0)
+            return true;
+        else
+            return false;
+    }
+    public function editPatients($data, $id)
+    {
+        $db = db_connect();
+        $query = $this->db->table('patient')->where('patient_id', $id)->update($data);
+        if ($this->db->affectedRows() > 0)
+            return true;
+        else
+            return false;
+    }
+    public function editStock($data, $id)
+    {
+        $db = db_connect();
+        $query = $this->db->table('stock')->where('stock_id', $id)->update($data);
         if ($this->db->affectedRows() > 0)
             return true;
         else

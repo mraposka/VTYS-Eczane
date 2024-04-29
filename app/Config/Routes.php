@@ -23,6 +23,9 @@ $routes->post('/EmployeeDel', 'Eczane::EmployeeDel');
 $routes->post('/EmployeeEdit', 'Eczane::EmployeeEdit');
 $routes->post('/StockAdd', 'Eczane::StockAdd');
 $routes->post('/StockDel', 'Eczane::StockDel');
+$routes->post('/PatientDel', 'Eczane::PatientDel');
+$routes->post('/PatientEdit', 'Eczane::PatientEdit');
+$routes->post('/StockEdit', 'Eczane::StockEdit');
 //PostRoutes
 
 $routes->set404Override(function () {

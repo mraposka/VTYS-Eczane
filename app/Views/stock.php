@@ -24,7 +24,7 @@
             </button>
           </td>
           <td id="tableStock_id"><?php echo $stocks->stock_id; ?></td>
-          <td id="tableStock_med" <?php echo $stocks->medicine_id; ?>">
+          <td id="tableStock_med<?php echo $stocks->medicine_id; ?>">
             <?php
             foreach ($medicines as $medicine) {
               if ($medicine->medicine_id == $stocks->medicine_id) {
@@ -46,7 +46,7 @@
     </tbody>
   </table>
 </div>
-
+<div id="notif"></div>
 <?php foreach ($stock as $stocks) : ?> <!-- Düzeltme -->
   <form id="personelEdit<?php echo $stocks->stock_id; ?>"> <!-- Düzeltme -->
     <div class="modal fade" id="staticBackdrop<?php echo $stocks->stock_id; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -60,11 +60,15 @@
           <div class="modal-body">
             <div class="input-group mb-3">
               <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
-              <input name="adi" type="text" class="form-control" placeholder="Güncel stok adedi" aria-label="Stok adedi" value="<?php echo $stocks->piece; ?>">
+              <input name="piece" type="text" class="form-control" placeholder="Güncel stok adedi" aria-label="Stok adedi" value="<?php echo $stocks->piece; ?>">
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
-              <input name="ilac" type="text" class="form-control" placeholder="ilaç adı" aria-label="İlaç Adı" value="<?php echo $stocks->medicine_id; ?>">
+              <input name="cat_id" type="text" class="form-control" placeholder="Güncel stok adedi" aria-label="Stok adedi" value="<?php echo $stocks->category_id; ?>">
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
+              <input name="med_id" type="text" class="form-control" placeholder="ilaç adı" aria-label="İlaç Adı" value="<?php echo $stocks->medicine_id; ?>">
             </div>
           </div>
           <div class="modal-footer">
@@ -153,8 +157,7 @@
         $(ajaxFormID).on('submit', function(e) {
           e.preventDefault();
           var base_url = window.location.origin + "/" + window.location.pathname.split("/")[1];
-          var _URL = base_url + "/EmployeeEdit"; // Çalışan güncelleme URL'si
-
+          var _URL = base_url + "/StockEdit"; // Çalışan güncelleme URL'si 
           var formData = $(this).serialize();
           var formDataArray = {};
           var pairs = formData.split('&');
@@ -162,22 +165,20 @@
             var pair = pairs[i].split('=');
             formDataArray[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
           }
+          console.log(formDataArray);
           $.ajax({
             type: 'POST',
             url: _URL,
             data: formData,
             success: function(response) {
               if (response == "200") {
-                showSnackbar(null, "Çalışan Güncellendi!", 1);
-                document.getElementById(e.delegateTarget[1].id).click();
-                var currentEmpID = e.delegateTarget[1].id.replace("kapatBtn", "");
-                var trElement = document.getElementById("tableID_" + currentEmpID);
-                trElement.querySelector("#tableEmp_id").innerHTML = formDataArray["emp_id"];
-                trElement.querySelector("#tableEmp_name").innerHTML = formDataArray["adi"];
-                trElement.querySelector("#tableEmp_surname").innerHTML = formDataArray["soyadi"];
-                trElement.querySelector("#tableEmp_gender").innerHTML = formDataArray["cinsiyeti"];
+                showSnackbar(null, "Stok Güncellendi!", 1);
+                document.getElementById(e.delegateTarget[1].id).click();  
+                var currentID = e.delegateTarget[1].id.replace("kapatBtn", "");
+                var trElement = document.getElementById("tableID_" + currentID); 
+                trElement.querySelector("#tableStock_piece").innerHTML = formDataArray["piece"]; 
               } else {
-                showSnackbar(null, "Çalışan Güncellenirken Bir Hata Oluştu!", 0);
+                showSnackbar(null, "Stok Güncellenirken Bir Hata Oluştu!", 0);
               }
             },
             error: function() {
@@ -188,14 +189,5 @@
       }
     }
   });
-</script>
-
-
-
-
-
-
-
-
-
+</script>  
 </html>

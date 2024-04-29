@@ -204,10 +204,7 @@
           var _URL = base_url + "/MedicineEdit"
           console.log("Basıldı" + _URL);
           var formData = $(this).serialize();
-          var formDataArray = {};
-          console.log(formData);
-          // URL kodlu dizeden anahtar-değer çiftlerini ayır
-          var formDataArray = {};
+          var formDataArray = {}; 
           var pairs = formData.split('&');
           for (var i = 0; i < pairs.length; i++) {
             var pair = pairs[i].split('=');

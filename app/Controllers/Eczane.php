@@ -18,7 +18,7 @@ class Eczane extends BaseController
     {
         $db = db_connect();
         $model = new EczaneModel($db);
-        $data['categorys'] = $model->getCategorys();
+        $data['categorys'] = $model->getCategories();
         $data['medicines'] = $model->getMedicines();
         return view("homePage", $data);
     }
@@ -43,8 +43,8 @@ class Eczane extends BaseController
     {
         $db = db_connect();
         $model = new EczaneModel($db);
-        $data['patient'] = $model->getPatients();
-        return view("sick", $data);
+        $data['patients'] = $model->getPatients();
+        return view("patient", $data);
     }
     public function Receteler()
     {
@@ -104,7 +104,7 @@ class Eczane extends BaseController
         }
     }
 
-    // ADMİN PANELİ ÇALIŞAN EKLEME 
+    // ADMİN PANELİ HASTA EKLEME+
     public function PatientAdd()
     {
         $db = db_connect();
@@ -120,6 +120,7 @@ class Eczane extends BaseController
         else
             echo json_encode(400);
     }
+    // ADMİN PANELİ ÇALIŞAN EKLEME+
     public function EmployeeAdd()
     {
         $db = db_connect();
@@ -159,6 +160,7 @@ class Eczane extends BaseController
         else
             echo json_encode(400);
     }
+    // ADMİN PANELİ İLAÇ EDİT+
     public function MedicineEdit()
     {
         $db = db_connect();
@@ -170,20 +172,21 @@ class Eczane extends BaseController
             'pres_color' => $_POST['receteRengi'],
             'category_id' => $_POST['kategori']
         );
-       
-        if ($model->editMedicines($data,$_POST['med_id']))
+
+        if ($model->editMedicines($data, $_POST['med_id']))
             echo json_encode(200);
         else
-            echo json_encode(400); 
+            echo json_encode(400);
     }
+    // ADMİN PANELİ İLAÇ SİL+
     public function MedicineDel()
     {
         $db = db_connect();
-        $model = new EczaneModel($db);  
+        $model = new EczaneModel($db);
         if ($model->delMedicines($_POST['id']))
             echo json_encode(200);
         else
-            echo json_encode(400); 
+            echo json_encode(400);
     }
 
     // ADMİN PANELİ STOK EKLEME+
@@ -200,16 +203,17 @@ class Eczane extends BaseController
             echo json_encode(400);
         }
     }
-
+    // ADMİN PANELİ PERSONEL SİL+
     public function EmployeeDel()
     {
         $db = db_connect();
-        $model = new EczaneModel($db);  
+        $model = new EczaneModel($db);
         if ($model->delEmployees($_POST['id']))
             echo json_encode(200);
         else
-            echo json_encode(400); 
+            echo json_encode(400);
     }
+    // ADMİN PANELİ PERSONEL EDİT+
     public function EmployeeEdit()
     {
         $db = db_connect();
@@ -217,25 +221,68 @@ class Eczane extends BaseController
         $data = array(
             'name' => $_POST['adi'],
             'surname' => $_POST['soyadi'],
-            'gender' => $_POST['cinsiyeti'], 
+            'gender' => $_POST['cinsiyeti'],
         );
-       
-        if ($model->editEmployees($data,$_POST['emp_id']))
+
+        if ($model->editEmployees($data, $_POST['emp_id']))
             echo json_encode(200);
         else
-            echo json_encode(400); 
+            echo json_encode(400);
     }
+    // ADMİN PANELİ STOK EDİT+
+    public function StockEdit()
+    {
+        $db = db_connect();
+        $model = new EczaneModel($db);
+        $data = array(
+            'stock_id' => $_POST['stock_id'],
+            'piece' => $_POST['piece'],
+        );
+        if ($model->editStock($data, $_POST['stock_id']))
+            echo json_encode(200);
+        else
+            echo json_encode(400);
+    }
+    // ADMİN PANELİ STOK SİL+
     public function StockDel()
     {
         $db = db_connect();
-        $model = new EczaneModel($db);  
-        if ($model->delMedicines($_POST['id']))
+        $model = new EczaneModel($db);
+        if ($model->delStock($_POST['id']))
             echo json_encode(200);
         else
-            echo json_encode(400); 
+            echo json_encode(400);
     }
-   
+    //ADMİN PANELİ HASTA EDİT+
+    public function PatientEdit()
+    {
+        $db = db_connect();
+        $model = new EczaneModel($db);
+        $data = array(
+            "patient_id"=> $_POST['pat_id'],
+            "p_name"=> $_POST['name'],
+            "p_surname"=> $_POST['surname'],
+            "gender"=> $_POST['gender'],
+            "dob"=> $_POST['dob'],
+            "address"=> $_POST['address'],
+            "tckno"=> $_POST['tckno'], 
+        );
+        if ($model->editPatients($data, $_POST['pat_id']))
+            echo json_encode(200);
+        else
+            echo json_encode(400);
+    }
+    //ADMİN PANELİ HASTA SİL+
+    public function PatientDel()
+    {
+        $db = db_connect();
+        $model = new EczaneModel($db);
+        if ($model->delPatient($_POST['patient_id']))
+            echo json_encode(200);
+        else
+            echo json_encode(400);
+    }
 }
-    
+
 
 
