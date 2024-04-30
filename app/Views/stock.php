@@ -1,4 +1,8 @@
 <?php include("header.php"); ?>
+<div class="input-group input-group-sm mb-3" style="margin-top:130px; width:250px; float:right; margin-right: 203px">
+  <input type="text" class="form-control form-control-sm" placeholder="Aramak istediğiniz şeyi giriniz." aria-label="Recipient's username" aria-describedby="button-addon2">
+  <button class="btn btn-outline-secondary btn-sm" style="color: #808080; background:#ffa500; font-weight: bold; " type="button" id="button-addon2">Button</button>
+</div>
 <div class="table">
   <table class="table  table-hover" style="background:#f2f2f2;">
     <thead>
@@ -173,10 +177,10 @@
             success: function(response) {
               if (response == "200") {
                 showSnackbar(null, "Stok Güncellendi!", 1);
-                document.getElementById(e.delegateTarget[1].id).click();  
+                document.getElementById(e.delegateTarget[1].id).click();
                 var currentID = e.delegateTarget[1].id.replace("kapatBtn", "");
-                var trElement = document.getElementById("tableID_" + currentID); 
-                trElement.querySelector("#tableStock_piece").innerHTML = formDataArray["piece"]; 
+                var trElement = document.getElementById("tableID_" + currentID);
+                trElement.querySelector("#tableStock_piece").innerHTML = formDataArray["piece"];
               } else {
                 showSnackbar(null, "Stok Güncellenirken Bir Hata Oluştu!", 0);
               }
@@ -189,5 +193,6 @@
       }
     }
   });
-</script>  
+</script>
+
 </html>
