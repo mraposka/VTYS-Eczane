@@ -45,9 +45,9 @@ class EczaneModel
     // İLAÇ TABLOSUNU GÖSTERMEK İÇİN
     public function getMedicines()
     {
-        $db = db_connect();
-        $query = $db->query("SELECT * FROM medicines"); // Sorgunun doğru olduğundan emin olun
-        return $query->getResult();
+        $query = $this->db->table("medicines")->get();
+        $result = $query->getResult();
+        return $result;
     }
 
     // HASTA TABLOSUNU GÖSTERMEK İÇİN

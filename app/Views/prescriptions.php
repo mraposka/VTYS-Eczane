@@ -7,22 +7,28 @@
     <table class="table  table-hover" style="background:#f2f2f2;">
         <thead>
             <tr>
-                <th scope="col">Reçete ID</th>
+                <th scope="col">Güncelle</th>
                 <th scope="col">Hasta ID</th>
                 <th scope="col">Hasta Adı</th>
                 <th scope="col">Hasta Soyadı</th>
                 <th scope="col">Reçete Görüntüle</th>
-                <th scope="col">Bilgileri Düzenle</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <th scope="row">1</th>
+                <td>
+                    <button class="btn btn-sm" type="button" id="delete_<?php echo "" ?>" style="color: #808080; background:#ffa500; font-weight: bold;">
+                        <i class="fa-solid fa-trash"></i>&nbsp;Sil
+                    </button>
+                    &nbsp;
+                    <button class="btn btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop<?php echo "" ?>" style="color: #808080; background:#ffa500; font-weight: bold;">
+                        <i class="fa-solid fa-pen-to-square"></i>&nbsp;Düzenle
+                    </button>
+                </td>
                 <td>2</td>
                 <td>zeynep</td>
                 <td>Ayar</td>
                 <td><button class="btn btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="color: #808080; background:#ffa500; font-weight: bold;">GÖRÜNTÜLE</button></td>
-                <td><button class="btn btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" style="color: #808080; background:#ffa500; font-weight: bold;">DÜZENLE</button></td>
             </tr>
         </tbody>
     </table>
@@ -42,6 +48,7 @@
                             <th scope="col">Verilme Tarihi</th>
                             <th scope="col">Kullanım Süresi</th>
                             <th scope="col">Reçete Rengi</th>
+                            <th scope="col">İlaç Sayısı</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,6 +57,7 @@
                             <td>12.12.2024</td>
                             <td>15 gün</td>
                             <td>Kırmızı</td>
+                            <td>12</td>
                         </tr>
                     </tbody>
                 </table>

@@ -22,12 +22,12 @@
             <?php foreach ($patients as $patient) : ?>
                 <tr id="tablePatID_<?php echo $patient->patient_id; ?>">
                     <td id="tableID"><?php echo $patient->patient_id; ?></td>
+                    <td id="tableTC"><?php echo $patient->tckno; ?></td>
                     <td id="tableName"><?php echo $patient->p_name; ?></td>
                     <td id="tableSurname"><?php echo $patient->p_surname; ?></td>
                     <td id="tableGender"><?php echo $patient->gender; ?></td>
                     <td id="tableDOB"><?php echo $patient->dob; ?></td>
                     <td id="tableAdres"><?php echo $patient->address; ?></td>
-                    <td id="tableTC"><?php echo $patient->tckno; ?></td>
                     <td><button id="delete_<?php echo $patient->patient_id; ?>" class="btn btn-sm" type="button" data-bs-toggle="modal" style="color: #808080; background:#ffa500; font-weight: bold; "><i class="fa-solid fa-trash"></i>&nbsp;Sil</button>
                         <button class="btn btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop<?php echo $patient->patient_id; ?>" style="color: #808080; background:#ffa500; font-weight: bold; "><i class="fa-solid fa-pen-to-square"></i>&nbsp;Düzenle</button>
                     </td>

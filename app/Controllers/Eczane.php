@@ -20,13 +20,14 @@ class Eczane extends BaseController
         $model = new EczaneModel($db);
         $data['categorys'] = $model->getCategories();
         $data['medicines'] = $model->getMedicines();
+        $data['patient'] = $model->getPatients();
         return view("homePage", $data);
     }
     public function Giris()
     {
         try {
             $session = session();
-            $session->destroy();
+            $session->destroy(); 
         } catch (\Throwable $th) {
         }
         return view("login");
