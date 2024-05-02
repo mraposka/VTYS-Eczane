@@ -24,7 +24,8 @@ $routes->post('/EmployeeEdit', 'Eczane::EmployeeEdit');
 $routes->post('/StockAdd', 'Eczane::StockAdd');
 $routes->post('/StockDel', 'Eczane::StockDel');
 $routes->post('/PatientDel', 'Eczane::PatientDel');
-$routes->post('/PatientEdit', 'Eczane::PatientEdit');
+$routes->post('/PatientEdit', 'Eczane::PatientEdit'); 
+$routes->post('/PresAdd', 'Eczane::PresAdd');
 $routes->post('/StockEdit', 'Eczane::StockEdit');
 //PostRoutes
 

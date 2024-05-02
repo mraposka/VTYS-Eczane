@@ -27,7 +27,7 @@ class Eczane extends BaseController
     {
         try {
             $session = session();
-            $session->destroy(); 
+            $session->destroy();
         } catch (\Throwable $th) {
         }
         return view("login");
@@ -161,6 +161,25 @@ class Eczane extends BaseController
         else
             echo json_encode(400);
     }
+    // ADMİN PANELİ REÇETE EKLEME
+    public function PresAdd()
+    {
+        $db = db_connect();
+        $model = new EczaneModel($db);
+        $tarih = $_POST['verilmetarih'];
+        $sure = $_POST['kullanımsüre'];
+        $receteRengi = $_POST['receteRengi'];
+        $ilaclar = $_POST['ilaclar'];
+        $id = $model->getLastPresID();
+        $id++;
+        $veri_dizisi = json_decode($ilaclar, true); 
+        foreach ($veri_dizisi as $veri) { 
+            $ilacID = $veri['id'];
+            $adet = $veri['adet'];
+            $model->addPress($id, $tarih, $sure, $receteRengi, $adet, $ilacID);
+        }
+        echo json_encode(200);
+    }
     // ADMİN PANELİ İLAÇ EDİT+
     public function MedicineEdit()
     {
@@ -260,13 +279,13 @@ class Eczane extends BaseController
         $db = db_connect();
         $model = new EczaneModel($db);
         $data = array(
-            "patient_id"=> $_POST['pat_id'],
-            "p_name"=> $_POST['name'],
-            "p_surname"=> $_POST['surname'],
-            "gender"=> $_POST['gender'],
-            "dob"=> $_POST['dob'],
-            "address"=> $_POST['address'],
-            "tckno"=> $_POST['tckno'], 
+            "patient_id" => $_POST['pat_id'],
+            "p_name" => $_POST['name'],
+            "p_surname" => $_POST['surname'],
+            "gender" => $_POST['gender'],
+            "dob" => $_POST['dob'],
+            "address" => $_POST['address'],
+            "tckno" => $_POST['tckno'],
         );
         if ($model->editPatients($data, $_POST['pat_id']))
             echo json_encode(200);

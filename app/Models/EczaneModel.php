@@ -80,6 +80,20 @@ class EczaneModel
 
         return $this->db->query($sql);
     }
+    //REÇETE EKLEME
+    public function addPress(
+        $pres_id,
+        $pres_date,
+        $usage_time,
+        $pres_color,
+        $med_total,
+        $medicine_id
+    ) {
+        $db = db_connect();
+        $sql = "INSERT INTO pres (pres_id,pres_date,usage_time,pres_color,medicine_id,med_total) VALUES ('$pres_id', '$pres_date', '$usage_time',  '$pres_color', '$medicine_id','$med_total')";
+
+        return $this->db->query($sql);
+    }
     // İLAÇ EKLEME
     public function addMedicines($name, $price, $company, $pres_color, $cat_id)
     {
@@ -105,7 +119,15 @@ class EczaneModel
         else
             return false;
     }
-
+    public function getLastPresID()
+    {
+        $query = $this->db->table("pres")
+            ->select('pres_id')
+            ->orderBy('pres_id', 'DESC')
+            ->get();
+        $result = $query->getFirstRow();
+        return $result->pres_id;
+    }
     public function delStock($id)
     {
         $db = db_connect();
@@ -144,7 +166,7 @@ class EczaneModel
         $query = $this->db->table("stock")->get();
         $result = $query->getResult();
         return $result;
-    } 
+    }
     public function delEmployees($id)
     {
         $db = db_connect();
