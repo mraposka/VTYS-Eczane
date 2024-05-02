@@ -49,8 +49,23 @@ class Eczane extends BaseController
     }
     public function Receteler()
     {
-        return view("prescriptions");
+        $db = db_connect();
+        $model = new EczaneModel($db);
+        $data['prescs'] = $model->getPres();
+        $patients = $model->getPatients();
+
+        // Anahtar-değer çiftleri olarak patients dizisini oluştur
+        $data['patients'] = [];
+        foreach ($patients as $patient) {
+            $data['patients'][$patient->patient_id] = [
+                'p_name' => $patient->p_name,
+                'p_surname' => $patient->p_surname
+            ];
+        }
+
+        return view("prescriptions", $data);
     }
+
     public function Stok()
     {
         $db = db_connect();
@@ -73,7 +88,23 @@ class Eczane extends BaseController
     }
     public function Sepet()
     {
-        return view("myCart");
+        try {
+            $session = session();
+        } catch (\Throwable $th) {
+        }
+        $items = $session->get('items');
+        // Veriyi "-" işaretine göre böleriz
+        $pairs = explode("-", rtrim($items, "-")); // rtrim ile sondaki "-" işaretini kaldırırız
+
+        // Anahtar-değer çiftlerini içeren bir dizi oluştururuz
+        $result = [];
+        foreach ($pairs as $pair) {
+            // Her bir çifti "=" işaretine göre böleriz
+            list($ilacID, $ilacSayisi) = explode("=", $pair);
+            $result[$ilacID] = $ilacSayisi;
+        } 
+        $data['items'] = $result;
+        return view("myCart", $data);
     }
     public function Logout()
     {
@@ -170,13 +201,14 @@ class Eczane extends BaseController
         $sure = $_POST['kullanımsüre'];
         $receteRengi = $_POST['receteRengi'];
         $ilaclar = $_POST['ilaclar'];
+        $hasta_id = $_POST['pat_id'];
         $id = $model->getLastPresID();
         $id++;
-        $veri_dizisi = json_decode($ilaclar, true); 
-        foreach ($veri_dizisi as $veri) { 
+        $veri_dizisi = json_decode($ilaclar, true);
+        foreach ($veri_dizisi as $veri) {
             $ilacID = $veri['id'];
             $adet = $veri['adet'];
-            $model->addPress($id, $tarih, $sure, $receteRengi, $adet, $ilacID);
+            $model->addPress($id, $tarih, $sure, $receteRengi, $adet, $ilacID, $hasta_id);
         }
         echo json_encode(200);
     }
@@ -208,7 +240,30 @@ class Eczane extends BaseController
         else
             echo json_encode(400);
     }
-
+    public function PresDel()
+    {
+        $db = db_connect();
+        $model = new EczaneModel($db);
+        if ($model->delPres($_POST['id']))
+            echo json_encode(200);
+        else
+            echo json_encode(400);
+    }
+    public function AddCart()
+    {
+        try {
+            $session = session();
+        } catch (\Throwable $th) {
+        }
+        try {
+            $items = $_POST['items'];
+            $sessionData = ['items' => $items];
+            $session->set($sessionData);
+            echo json_encode(200);
+        } catch (\Throwable $th) {
+            echo json_encode(400);
+        }
+    }
     // ADMİN PANELİ STOK EKLEME+
     public function StockAdd()
     {

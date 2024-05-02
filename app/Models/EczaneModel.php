@@ -87,11 +87,11 @@ class EczaneModel
         $usage_time,
         $pres_color,
         $med_total,
-        $medicine_id
+        $medicine_id,
+        $hasta_id
     ) {
         $db = db_connect();
-        $sql = "INSERT INTO pres (pres_id,pres_date,usage_time,pres_color,medicine_id,med_total) VALUES ('$pres_id', '$pres_date', '$usage_time',  '$pres_color', '$medicine_id','$med_total')";
-
+        $sql = "INSERT INTO pres (pres_id,pres_date,usage_time,pres_color,medicine_id,med_total,patient_id) VALUES ('$pres_id', '$pres_date', '$usage_time',  '$pres_color', '$medicine_id','$med_total','$hasta_id')";
         return $this->db->query($sql);
     }
     // İLAÇ EKLEME
@@ -110,10 +110,28 @@ class EczaneModel
         else
             return false;
     }
+    public function editEmployees($data, $id)
+    {
+        $db = db_connect();
+        $query = $this->db->table('employee')->where('emp_id', $id)->update($data);
+        if ($this->db->affectedRows() > 0)
+            return true;
+        else
+            return false;
+    }
     public function delMedicines($id)
     {
         $db = db_connect();
         $query = $this->db->table('medicines')->where('medicine_id', $id)->delete();
+        if ($this->db->affectedRows() > 0)
+            return true;
+        else
+            return false;
+    }
+    public function delPres($id)
+    {
+        $db = db_connect();
+        $query = $this->db->table('pres')->where('pres_id', $id)->delete();
         if ($this->db->affectedRows() > 0)
             return true;
         else
@@ -126,7 +144,11 @@ class EczaneModel
             ->orderBy('pres_id', 'DESC')
             ->get();
         $result = $query->getFirstRow();
-        return $result->pres_id;
+        try {
+            return $result->pres_id;
+        } catch (\Throwable $th) {
+            return 0;
+        }
     }
     public function delStock($id)
     {
@@ -164,6 +186,12 @@ class EczaneModel
     public function getStock()
     {
         $query = $this->db->table("stock")->get();
+        $result = $query->getResult();
+        return $result;
+    }
+    public function getPres()
+    {
+        $query = $this->db->table("pres")->get();
         $result = $query->getResult();
         return $result;
     }

@@ -21,7 +21,7 @@
             </tr>
         </tbody>
     </table>
-</div>
+</div> 
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -108,6 +108,16 @@
             </div>
         </div>
     </div>
-</div> 
-</body> 
+</div>
+</body>
+<script>
+    $(document).ready(function () {
+        <?php foreach ($items as $ilacID => $ilacSayisi) { ?>
+            alert(" <?php echo "İlaç ID: $ilacID, İlaç Sayısı: $ilacSayisi<br>" ?>");;
+        <?php } ?>
+
+    });
+
+</script>
+
 </html>

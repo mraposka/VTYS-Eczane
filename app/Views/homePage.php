@@ -217,9 +217,7 @@
             <div style="margin-bottom: 20px;"></div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" id="MedicineAdderKapatBtn"
-              data-bs-dismiss="modal">Kapat</button>
-            <button type="submit" class="btn btn-custom btn-lg"
+            <button type="submit" class="btn btn-custom btn-lg w-100 fs-6"
               style="background-color: #ffa500; color: white;">Ekle</button> <!-- Formu gönder -->
           </div>
         </form> <!-- Form bitişi -->
@@ -232,7 +230,8 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">Personel Ekle</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" id="EmployeeAdderKapatBtn"
+            aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form id="EmployeeAdder">
@@ -248,18 +247,12 @@
               <option value="Kadın">Kadın &#9792;</option>
               <option value="Erkek">Erkek &#9794;</option>
             </select>
-            <div style="margin-bottom: 15px;"></div>
-            <div style="margin-bottom: 20px;"></div>
-            <div class="input-group mb-3">
-              <button type="submit" class="btn btn-custom btn-lg w-100 fs-6"
-                style="background-color: #ffa500; color: #808080; font-weight: bold;">EKLE</button>
-            </div>
-          </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" id="EmployeeAdderKapatBtn"
-            data-bs-dismiss="modal">Kapat</button>
+          <button type="submit" class="btn btn-custom btn-lg w-100 fs-6"
+            style="background-color: #ffa500; color: #808080; font-weight: bold;">EKLE</button>
         </div>
+        </form>
       </div>
     </div>
   </div>
@@ -269,25 +262,20 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">Kategori Ekle</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" id="CategoryAdderKapatBtn"
+            aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form id="CategoryAdder">
             <div class="input-group mb-3">
               <input type="text" name="Kategori" id="" class="form-control form-control-lg bg-ligth fs-6"
                 placeholder="Kategori adını girin." />
-            </div>
-            <div style="margin-bottom: 20px;"></div>
-            <div class="input-group mb-3">
-              <button type="submit" class="btn btn-custom btn-lg w-100 fs-6"
-                style="background-color: #ffa500; color: #808080; font-weight: bold;">EKLE</button>
-            </div>
-          </form>
+            </div> 
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" id="CategoryAdderKapatBtn"
-            data-bs-dismiss="modal">Kapat</button>
+        <div class="modal-footer"><button type="submit" class="btn btn-custom btn-lg w-100 fs-6"
+            style="background-color: #ffa500; color: #808080; font-weight: bold;">EKLE</button>
         </div>
+        </form>
       </div>
     </div>
   </div>
@@ -295,20 +283,17 @@
     aria-labelledby="staticBackdrop5Label" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <!-- Modal başlığı ve kapatma düğmesi -->
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdrop5Label">Stok Ekle</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" id="StockAdderKapatBtn"
+            aria-label="Close"></button>
         </div>
-        <!-- Modal gövdesi -->
         <div class="modal-body">
           <form id="StockAdder">
-            <!-- Stok Girişi -->
             <div class="input-group mb-3">
               <input type="text" name="Stok" class="form-control form-control-lg bg-light fs-6"
                 placeholder="Stok sayısını girin." />
             </div>
-            <!-- İlaç Seçimi -->
             <div class="input-group mb-3">
               <select class="form-select" name="ilac" aria-label="İlaç seçiniz">
                 <option selected disabled>İlaç seçiniz.</option>
@@ -317,17 +302,12 @@
                 <?php endforeach; ?>
               </select>
             </div>
-            <!-- Form gönderme düğmesi -->
-            <div class="input-group mb-3">
-              <button type="submit" class="btn btn-custom btn-lg w-100 fs-6"
-                style="background-color: #ffa500; color: white; font-weight: bold;">EKLE</button>
-            </div>
-          </form>
         </div>
-        <!-- Modal altbilgisi ve kapatma düğmesi -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" id="StockAdderKapatBtn" data-bs-dismiss="modal">Kapat</button>
+          <button type="submit" class="btn btn-custom btn-lg w-100 fs-6"
+            style="background-color: #ffa500; color: white; font-weight: bold;">EKLE</button>
         </div>
+        </form>
       </div>
     </div>
   </div>
@@ -346,7 +326,8 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">Hasta Ekle</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" id="PatientAdderKapatBtn"
+            aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form id="PatientAdder">
@@ -376,22 +357,15 @@
                 <option value="Kadın">Kadın &#9792;</option>
                 <option value="Erkek">Erkek &#9794;</option>
               </select>
-              <div style="margin-bottom: 15px;"></div>
-              <div style="margin-bottom: 20px;"></div>
-              <div class="input-group mb-3">
-                <br>
-                <button type="submit" class="btn btn-custom btn-lg w-100 fs-6"
-                  style="background-color: #ffa500; color: #808080; font-weight: bold;">EKLE</button>
-              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-custom btn-lg w-100 fs-6"
+                style="background-color: #ffa500; color: white; font-weight: bold;">EKLE</button> 
+            </div>
           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" id="PatientAdderKapatBtn"
-            data-bs-dismiss="modal">Kapat</button>
         </div>
       </div>
     </div>
-  </div>
   </div>
 
   <div class="modal fade" id="staticBackdrop6" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -405,7 +379,7 @@
           </div>
           <div class="modal-body">
             <div class="input-group mb-3">
-              <select class="form-select" name="patient" aria-label="İlaç seçiniz">
+              <select class="form-select" name="pat_id" aria-label="İlaç seçiniz">
                 <option selected disabled>Hasta seçiniz.</option>
                 <?php foreach ($patient as $patients): ?>
                   <option name="patient" value="<?php echo $patients->patient_id; ?>">
@@ -496,7 +470,7 @@
   <script>
     function silButtonClick(id) {
       var tbody = document.getElementById("ilacTable"); // tbody elementini al
-      var trList = tbody.getElementsByTagName("tr");  
+      var trList = tbody.getElementsByTagName("tr");
 
       // Tablodan ilgili satırı bul ve adetini azalt
       for (var i = 0; i < trList.length; i++) {
@@ -525,7 +499,7 @@
         var id = tr.id;
         var adet = parseInt(tr.querySelector('td.adet').textContent);
         ilacBilgileri.push({ id: id, adet: adet });
-      } 
+      }
       return ilacBilgileri;
     }
     $(document).ready(function () {
@@ -583,7 +557,7 @@
 
 
       $('#PresAdder').on('submit', function (e) {
-        var ilaclar=ilacBilgileriniGetir();
+        var ilaclar = ilacBilgileriniGetir();
         e.preventDefault();
         var base_url = window.location.origin + "/" + window.location.pathname.split("/")[1];
         var stockAdd_URL = base_url + "/PresAdd"

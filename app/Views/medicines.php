@@ -18,8 +18,7 @@
         <th scope="col">Fiyat</th>
         <th scope="col">Kategori</th>
         <th scope="col">Üretici Firma</th>
-        <th scope="col">Reçete Rengi</th>
-        <th scope="col"></th>
+        <th scope="col">Reçete Rengi</th> 
       </tr>
     </thead>
     <tbody>
@@ -41,8 +40,7 @@
             ?>
           </td>
           <td id="tableMedComp_<?php echo $medicine->medicine_id; ?>"><?php echo $medicine->company; ?></td>
-          <td id="tableMedPresColor_<?php echo $medicine->medicine_id; ?>"><?php echo $medicine->pres_color; ?></td>
-          <td><button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold; "><i class="fa-solid fa-cart-shopping"></i>&nbsp;Sepete Ekle</button>
+          <td id="tableMedPresColor_<?php echo $medicine->medicine_id; ?>"><?php echo $medicine->pres_color; ?></td> 
           </td>
         </tr>
       <?php endforeach; ?>
