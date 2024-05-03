@@ -88,22 +88,31 @@ class Eczane extends BaseController
     }
     public function Sepet()
     {
+        $db = db_connect();
+        $model = new EczaneModel($db);
+        $data['medicines'] = $model->getMedicines();
         try {
             $session = session();
         } catch (\Throwable $th) {
         }
-        $items = $session->get('items');
-        // Veriyi "-" işaretine göre böleriz
-        $pairs = explode("-", rtrim($items, "-")); // rtrim ile sondaki "-" işaretini kaldırırız
+        try {
+            $items = $session->get('items');
+            $pat_id = explode('-', $items)[count(explode('-', $items)) - 1];
+            $pat_id = str_replace('=id', "", $pat_id);
+            $items = str_replace($pat_id . "=id", "", $items);
+            $pairs = explode("-", rtrim($items, "-"));
+            $result = [];
+            foreach ($pairs as $pair) {
+                list($ilacID, $ilacSayisi) = explode("=", $pair);
+                $result[$ilacID] = $ilacSayisi;
+            }
+            $data['items'] = $result;
+            $data['pat'] = $pat_id."-".$model->getPatientByID($pat_id);
+        } catch (\Throwable $th) {
+            $data['items'] = "0";
+            $data['pat_id'] = "-1";
+        }
 
-        // Anahtar-değer çiftlerini içeren bir dizi oluştururuz
-        $result = [];
-        foreach ($pairs as $pair) {
-            // Her bir çifti "=" işaretine göre böleriz
-            list($ilacID, $ilacSayisi) = explode("=", $pair);
-            $result[$ilacID] = $ilacSayisi;
-        } 
-        $data['items'] = $result;
         return view("myCart", $data);
     }
     public function Logout()

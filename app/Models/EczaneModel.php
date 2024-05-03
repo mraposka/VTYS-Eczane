@@ -176,6 +176,16 @@ class EczaneModel
         $result = $query->getFirstRow();
         return $result->category_id;
     }
+    public function getPatientByID($pat_id)
+    {
+        // Örnek bir sorgu, gerçek veritabanı şemanı ve tablo adlarına göre düzenlenmelidir 
+        $query = $this->db->table("patient")
+            ->select('p_name,p_surname')
+            ->where(['patient_id' => $pat_id])
+            ->get();
+        $result = $query->getFirstRow();
+        return $result->p_name." ".$result->p_surname;
+    }
     // kategori görüntüleme
     public function getCategories()
     {

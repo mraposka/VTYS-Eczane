@@ -30,7 +30,7 @@
             
                 // Satır ekle
                 echo "<tr id='{$pres->pres_id}'>";
-                echo "<td>{$pres->patient_id}</td>";
+                echo "<td id='presTable_pat_id'>{$pres->patient_id}</td>";
                 echo "<td>{$patients[$pres->patient_id]['p_name']}</td>";
                 echo "<td>{$patients[$pres->patient_id]['p_surname']}</td>";
                 echo "<td><button onclick='changeCurrentPresID($pres->pres_id)' class='btn btn-sm' type='button' data-bs-toggle='modal' data-bs-target='#staticBackdrop' style='color: #808080; background:#ffa500; font-weight: bold;'>GÖRÜNTÜLE</button></td>";
@@ -132,8 +132,8 @@
                 }
                 items += "-"; // Bir satır bittiğinde yeni satıra geçmek için <br> ekle
             }
-        }
-        items=items.replaceAll("=-","-");
+        } items += document.getElementById("presTable_pat_id").innerHTML + "=id"
+        items = items.replaceAll("=-", "-");
         var base_url = window.location.origin + "/" + window.location.pathname.split("/")[1];
         var _URL = base_url + "/AddCart";
         $.ajax({
@@ -144,7 +144,7 @@
             },
             success: function (result) {
                 showSnackbar("NULL", "Reçete Başarıyla Sepete Eklendi!", 1);
-                 
+
             },
             error: function (result) {
                 showSnackbar("NULL", "Reçete Sepete Eklenirken Bir Hata Oluştu!", 0);

@@ -1,27 +1,52 @@
 <?php include ("header.php"); ?>
 <div class="table ">
+
     <table class="table  table-hover" style="background:#f2f2f2;">
         <thead>
             <tr>
-                <th scope="col">Sepet ID</th>
-                <th scope="col">Reçete ID</th>
-                <th scope="col">Personel</th>
-                <th scope="col">İlaç Sayısı</th>
-                <th scope="col">Sepeti Görüntüle</th>
+                <th scope="col">Hasta Adı</th>
+                <th scope="col">İlaç Adı</th>
+                <th scope="col">Adeti</th>
+                <th scope="col">Fiyatı</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>XXXX</td>
-                <td>XXXXX</td>
-                <td>XXXXXXX</td>
-                <td><button class="btn btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                        style="color: #808080; background:#ffa500; font-weight: bold;">GÖRÜNTÜLE</button></td>
-            </tr>
+            <?php if ($items != "0")
+                foreach ($items as $ilacID => $ilacSayisi) { ?>
+                    <tr>
+                        <td scope="row"><?php echo $pat; ?></td>
+                        <td><?php foreach ($medicines as $medicine)
+                            if ($medicine->medicine_id == $ilacID)
+                                echo $medicine->name; ?>
+                        </td>
+                        <td><?php echo $ilacSayisi; ?></td>
+                        <td id="ilacFiyat"><?php foreach ($medicines as $medicine)
+                            if ($medicine->medicine_id == $ilacID)
+                                echo ($medicine->price * $ilacSayisi); ?>
+                            TL</td>
+                    </tr>
+                <?php } ?>
         </tbody>
     </table>
-</div> 
+    <div class="row"><a style="font-size:20pt;font-weight: bold; float:right;" id="toplamFiyat"></a></div>
+    <div class="row" style="float:right;"><button class="btn btn-lg"
+            style="color: #808080; background:#ffa500; font-weight: bold; float:right;">Alışverişi
+            Tamamla</button></div>
+</div>
+<script>
+      $(document).ready(function () {
+        toplamFiyat();
+    });
+    function toplamFiyat() {
+        var toplamFiyat = 0;
+        document.querySelectorAll('#ilacFiyat').forEach(function (ilacFiyat) {
+            var fiyat = parseFloat(ilacFiyat.innerText.replace(' TL', ''));
+            toplamFiyat += fiyat;
+        });
+        document.getElementById("toplamFiyat").innerHTML = "Toplam Tutar:" + toplamFiyat;
+    }
+</script>
+<!---
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -75,7 +100,7 @@
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingThree">
+                       <h2 class="accordion-header" id="flush-headingThree">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#flush-collapseThree" aria-expanded="false"
                                 aria-controls="flush-collapseThree">
@@ -108,13 +133,10 @@
             </div>
         </div>
     </div>
-</div>
+</div>--->
 </body>
 <script>
     $(document).ready(function () {
-        <?php foreach ($items as $ilacID => $ilacSayisi) { ?>
-            alert(" <?php echo "İlaç ID: $ilacID, İlaç Sayısı: $ilacSayisi<br>" ?>");;
-        <?php } ?>
 
     });
 
