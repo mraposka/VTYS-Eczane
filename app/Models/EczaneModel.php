@@ -94,6 +94,18 @@ class EczaneModel
         $sql = "INSERT INTO pres (pres_id,pres_date,usage_time,pres_color,medicine_id,med_total,patient_id) VALUES ('$pres_id', '$pres_date', '$usage_time',  '$pres_color', '$medicine_id','$med_total','$hasta_id')";
         return $this->db->query($sql);
     }
+    public function SaveCart(
+        $pat_id,
+        $pres_id,
+        $total_price,
+    ) {
+        $db = db_connect();
+        $model = new EczaneModel($db);
+        $cart_id = $model->getLastCartID();
+        $cart_id++;
+        $sql = "INSERT INTO cart (pres_id,pat_id,total_price) VALUES ('$pres_id','$pat_id','$total_price')";
+        return $this->db->query($sql);
+    }
     // İLAÇ EKLEME
     public function addMedicines($name, $price, $company, $pres_color, $cat_id)
     {
@@ -150,6 +162,35 @@ class EczaneModel
             return 0;
         }
     }
+    public function GetBill()
+    {
+        $query = $this->db->query("
+        SELECT DISTINCT bill.bill_id, patient.tckno, CONCAT(patient.p_name, ' ', patient.p_surname) AS patient_name, pres.pres_id, bill.date, cart.total_price
+        FROM bill
+        JOIN cart ON bill.cart_id = cart.cart_id
+        JOIN pres ON cart.pres_id = pres.pres_id
+        JOIN patient ON pres.patient_id = patient.patient_id
+        ORDER BY bill.date DESC
+    ");
+
+        $result = $query->getResult();
+
+        return $result;
+    }
+
+    public function getLastCartID()
+    {
+        $query = $this->db->table("cart")
+            ->select('cart_id')
+            ->orderBy('cart_id', 'DESC')
+            ->get();
+        $result = $query->getFirstRow();
+        try {
+            return $result->cart_id;
+        } catch (\Throwable $th) {
+            return 0;
+        }
+    }
     public function delStock($id)
     {
         $db = db_connect();
@@ -184,7 +225,7 @@ class EczaneModel
             ->where(['patient_id' => $pat_id])
             ->get();
         $result = $query->getFirstRow();
-        return $result->p_name." ".$result->p_surname;
+        return $result->p_name . " " . $result->p_surname;
     }
     // kategori görüntüleme
     public function getCategories()

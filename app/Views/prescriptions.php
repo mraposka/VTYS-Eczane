@@ -127,8 +127,10 @@
 
                     // İlgili <td> öğesinin id'sini kontrol et
                     if (td.id === "ilacId" || td.id === "ilacSay") {
-                        items += td.innerHTML + "=";
+                        items += td.className + "=";
+                        console.log(td.className);
                     }
+
                 }
                 items += "-"; // Bir satır bittiğinde yeni satıra geçmek için <br> ekle
             }
@@ -140,11 +142,12 @@
             type: "POST",
             url: _URL,
             data: {
-                items: items
+                items: items,
+                pres_id: currentPresID
             },
             success: function (result) {
                 showSnackbar("NULL", "Reçete Başarıyla Sepete Eklendi!", 1);
-
+                console.log(items);
             },
             error: function (result) {
                 showSnackbar("NULL", "Reçete Sepete Eklenirken Bir Hata Oluştu!", 0);
@@ -179,8 +182,15 @@
                                 <td><?php echo $pres->pres_date; ?></td>
                                 <td><?php echo $pres->usage_time; ?></td>
                                 <td><?php echo $pres->pres_color; ?></td>
-                                <td id="ilacId"><?php echo $pres->medicine_id; ?></td>
-                                <td id="ilacSay"><?php echo $pres->med_total; ?></td>
+                                <td id="ilacId" class="<?php echo $pres->medicine_id; ?>">
+                                    <?php foreach ($medicines as $medicine):
+                                        if ($medicine->medicine_id == $pres->medicine_id)
+                                            echo $medicine->name;
+                                    endforeach; ?>
+                                </td>
+                                </td>
+                                <td id="ilacSay" class="<?php echo $pres->med_total; ?>"><?php echo $pres->med_total; ?>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
 

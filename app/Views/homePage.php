@@ -389,7 +389,7 @@
               </select>
             </div>
             <div class="input-group mb-3">
-              <input type="text" name="verilmetarih" name="tarih" class="form-control form-control-lg bg-ligth fs-6"
+              <input type="date" name="verilmetarih" name="tarih" class="form-control form-control-lg bg-ligth fs-6"
                 placeholder="Verilme tarihi" />
             </div>
             <div class="input-group mb-3">

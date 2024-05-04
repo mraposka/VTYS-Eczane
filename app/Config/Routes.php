@@ -27,7 +27,8 @@ $routes->post('/PatientDel', 'Eczane::PatientDel');
 $routes->post('/PatientEdit', 'Eczane::PatientEdit');
 $routes->post('/PresAdd', 'Eczane::PresAdd');
 $routes->post('/PresDel', 'Eczane::PresDel');
-$routes->post('/AddCart', 'Eczane::AddCart');
+$routes->post('/AddCart', 'Eczane::AddCart'); 
+$routes->post('/SaveCart', 'Eczane::SaveCart');
 $routes->post('/StockEdit', 'Eczane::StockEdit');
 //PostRoutes
 

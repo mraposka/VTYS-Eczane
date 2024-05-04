@@ -51,7 +51,8 @@ class Eczane extends BaseController
     {
         $db = db_connect();
         $model = new EczaneModel($db);
-        $data['prescs'] = $model->getPres();
+        $data['prescs'] = $model->getPres(); 
+        $data['medicines'] = $model->getMedicines();
         $patients = $model->getPatients();
 
         // Anahtar-değer çiftleri olarak patients dizisini oluştur
@@ -84,7 +85,12 @@ class Eczane extends BaseController
     }
     public function Faturalar()
     {
-        return view("invoice");
+        $db = db_connect();
+        $model = new EczaneModel($db);  
+        $data['prescs'] = $model->getPres();  
+        $data['medicines'] = $model->getMedicines();
+        $data['bills'] = $model->GetBill(); 
+        return view("invoice",$data);
     }
     public function Sepet()
     {
@@ -97,6 +103,7 @@ class Eczane extends BaseController
         }
         try {
             $items = $session->get('items');
+            $pres_id = $session->get('pres_id_for_cart');
             $pat_id = explode('-', $items)[count(explode('-', $items)) - 1];
             $pat_id = str_replace('=id', "", $pat_id);
             $items = str_replace($pat_id . "=id", "", $items);
@@ -107,7 +114,8 @@ class Eczane extends BaseController
                 $result[$ilacID] = $ilacSayisi;
             }
             $data['items'] = $result;
-            $data['pat'] = $pat_id."-".$model->getPatientByID($pat_id);
+            $data['pres_id'] = $pres_id;
+            $data['pat'] = $pat_id . "-" . $model->getPatientByID($pat_id);
         } catch (\Throwable $th) {
             $data['items'] = "0";
             $data['pat_id'] = "-1";
@@ -266,10 +274,24 @@ class Eczane extends BaseController
         }
         try {
             $items = $_POST['items'];
-            $sessionData = ['items' => $items];
+            $pres_id = $_POST['pres_id'];
+            $sessionData = ['items' => $items, 'pres_id_for_cart' => $pres_id];
             $session->set($sessionData);
             echo json_encode(200);
         } catch (\Throwable $th) {
+            echo json_encode(400);
+        }
+    }
+    public function SaveCart()
+    {
+        $db = db_connect();
+        $model = new EczaneModel($db);
+        $pat_id = $_POST['pat_id'];
+        $pres_id = $_POST['pres_id'];
+        $total_price = $_POST['total_price'];
+        if ($model->SaveCart($pat_id, $pres_id, $total_price)) {
+            echo json_encode(200);
+        } else {
             echo json_encode(400);
         }
     }

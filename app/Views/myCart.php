@@ -14,7 +14,7 @@
             <?php if ($items != "0")
                 foreach ($items as $ilacID => $ilacSayisi) { ?>
                     <tr>
-                        <td scope="row"><?php echo $pat; ?></td>
+                        <td id="patient" scope="row"><?php echo $pat; ?></td>
                         <td><?php foreach ($medicines as $medicine)
                             if ($medicine->medicine_id == $ilacID)
                                 echo $medicine->name; ?>
@@ -29,14 +29,62 @@
         </tbody>
     </table>
     <div class="row"><a style="font-size:20pt;font-weight: bold; float:right;" id="toplamFiyat"></a></div>
-    <div class="row" style="float:right;"><button class="btn btn-lg"
+    <div class="row" style="float:right;"><button class="btn btn-lg" onclick="SaveCart()"
             style="color: #808080; background:#ffa500; font-weight: bold; float:right;">Alışverişi
             Tamamla</button></div>
 </div>
+
+<div id="notif"></div>
 <script>
-      $(document).ready(function () {
-        toplamFiyat();
+    var pres_id = <?php echo $pres_id; ?>;
+    $(document).ready(function () {
+        toplamFiyat();  
     });
+    function SaveCart() {
+        var base_url = window.location.origin + "/" + window.location.pathname.split("/")[1];
+        var _URL = base_url + "/SaveCart";
+        $.ajax({
+            type: "POST",
+            url: _URL,
+            data: {
+                pat_id: document.getElementById("patient").innerHTML.split("-")[0],
+                total_price: document.getElementById("toplamFiyat").innerHTML.split(":")[1],
+                pres_id: pres_id
+            },
+            success: function (result) {
+                showSnackbar("NULL", "Alışveriş Tamamlandı!", 1);
+                const myTimeout = setTimeout(GoToBill, 5000);
+            },
+            error: function (result) {
+                showSnackbar("NULL", "Alışveriş Tamamlanırken Bir Hata Oluştu!", 0);
+            }
+        });
+    }
+
+    function GoToBill() {
+        window.location.replace(window.location.origin + "/" + window.location.pathname.split("/")[1]+"/Faturalar");
+    }
+    function showSnackbar(btnid, text, status) {
+        var notifDiv = document.getElementById("notif");
+        if (status == 1) {
+            var circle = "check-circle.svg";
+            document.documentElement.style.setProperty('--notification-primary', '#aaec8a');
+        } else {
+            var circle = "cross-circle.svg";
+            document.documentElement.style.setProperty('--notification-primary', '#ed3b32');
+        }
+        console.log(circle);
+        var notificationContent = `
+            <div class="notification">
+              <div class="notification__body">
+                <img src="<?php echo base_url('ViewAssets/') ?>images/` + circle + `" alt="Success" class="notification__icon">
+                ` + text + ` &#128640;
+              </div>
+              <div class="notification__progress"></div>
+            </div>
+          `;
+        notifDiv.innerHTML = notificationContent;
+    }
     function toplamFiyat() {
         var toplamFiyat = 0;
         document.querySelectorAll('#ilacFiyat').forEach(function (ilacFiyat) {
@@ -46,100 +94,6 @@
         document.getElementById("toplamFiyat").innerHTML = "Toplam Tutar:" + toplamFiyat;
     }
 </script>
-<!---
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">SEPET</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="accordion accordion-flush" id="accordionFlushExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseOne" aria-expanded="false"
-                                aria-controls="flush-collapseOne">
-                                İLAÇLAR
-                            </button>
-                        </h2>
-                        <div id="flush-collapseOne" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">
-                                <div class="card" style="width: 26.7rem;">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">ilaç 1</li>
-                                        <li class="list-group-item">ilaç 2</li>
-                                        <li class="list-group-item">ilaç 3</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
-                                aria-controls="flush-collapseTwo">
-                                İLAÇ KULLANIM TALİMATI
-                            </button>
-                        </h2>
-                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">
-                                <div class="card" style="width: 26.7rem;">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">ilaç 1 -- kullanım 1</li>
-                                        <li class="list-group-item">ilaç 2 -- kullanım 2</li>
-                                        <li class="list-group-item">ilaç 3 -- kullanım 3</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                       <h2 class="accordion-header" id="flush-headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseThree" aria-expanded="false"
-                                aria-controls="flush-collapseThree">
-                                İLAÇ FİYATLARI
-                            </button>
-                        </h2>
-                        <div id="flush-collapseThree" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">
-                                <div class="card" style="width: 26.7rem;">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">ilaç 1 -- xx TL</li>
-                                        <li class="list-group-item">ilaç 2 -- xx TL</li>
-                                        <li class="list-group-item">ilaç 3 -- xx TL</li>
-                                    </ul>
-                                    <div class="card-footer">
-                                        <p>Toplam Tutar -- xx TL</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold;">SEPETİ
-                    SİL</button>
-                <button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold;">SATIN
-                    AL</button>
-            </div>
-        </div>
-    </div>
-</div>--->
 </body>
-<script>
-    $(document).ready(function () {
-
-    });
-
-</script>
 
 </html>
