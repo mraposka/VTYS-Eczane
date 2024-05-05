@@ -89,7 +89,7 @@
     $session = session();
   } catch (\Throwable $th) {
   }
-  if ($session->get("user_id") == $controller->WhoIsAdmin()) { ?>
+  if ($session->get("user_id") == $admin) { ?>
     <div class="cards ">
       <div class="container py-5">
         <h1 class="text-center" style="color: #808080;">Admin Paneli</h1>

@@ -48,7 +48,9 @@
               <a class=" btn  btn-rounded nav-link mx-2" href="<?php echo base_url("/Stok") ?>"
                 style="color: #ffa500;"><i class="fas fa-box pe-2"></i>STOK</a>
             </li>
-            <?php try {
+            <?php
+            $admin="8fqJY6B2lmkhzbg55W66VZ3iaOAY4cchsTMMFMWAi2XMOJ2HVoHvDk4MrBUkGhHP4PpUkHaKEq87SWRpOZi5k2cIdX0w9Tou9hwzUrIdtq701EO399LbGSYJUspPsyOq0U5lXvkYP8GBpUZC1M8c0ICaCGxQwYZkgm7LrSg04tMpt7Ck3KjwQsKoAwrsoKDvAwXjiWzIvaP3P0rlUHfBDQHhMjPKfAAmsVgZEjdVlVSdUV4xJQWktLwJtFR9mIQ";
+            try {
               $session = session();
             } catch (\Throwable $th) {
             }

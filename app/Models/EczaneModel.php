@@ -65,11 +65,11 @@ class EczaneModel
         return $this->db->query($sql);
     }
     // PERSONEL EKLEME
-    public function addEmployee($user_id,$name, $surname, $gender)
+    public function addEmployee($user_id, $name, $surname, $gender)
     {
         $sql = "INSERT INTO employee (name, surname, gender) VALUES ('$name', '$surname', '$gender')";
         $this->db->query($sql);
-        $pass=md5($name.$surname);
+        $pass = md5($name . $surname);
         $sql = "INSERT INTO users (user_id, user_name, user_pass) VALUES ('$user_id', '$name', '$pass')";
         return $this->db->query($sql);
     }
@@ -206,7 +206,10 @@ class EczaneModel
             ->where(['user_id' => $user_id])
             ->get();
         $result = $query->getFirstRow();
-        return $result->user_id;
+        if (isset($result->user_id))
+            return $result->user_id;
+        else
+            return "-1";
     }
     public function GetBill()
     {

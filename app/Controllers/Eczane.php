@@ -21,8 +21,7 @@ class Eczane extends BaseController
     public function Home()
     {
         $db = db_connect();
-        $model = new EczaneModel($db);
-        $data['controller'] = $this; 
+        $model = new EczaneModel($db); 
         $data['categorys'] = $model->getCategories();
         $data['medicines'] = $model->getMedicines();
         $data['patient'] = $model->getPatients();
