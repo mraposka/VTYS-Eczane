@@ -210,7 +210,8 @@ class Eczane extends BaseController
         $name = $_POST['Ad'];
         $surname = $_POST['Soyad'];
         $gender = $_POST['Cinsiyet'];
-        if ($model->addEmployee($name, $surname, $gender))
+        $user_id = $_POST['user_id'];
+        if ($model->addEmployee($user_id,$name, $surname, $gender))
             echo json_encode(200);
         else
             echo json_encode(400);

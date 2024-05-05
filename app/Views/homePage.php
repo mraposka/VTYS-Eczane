@@ -246,6 +246,9 @@
             <div class="input-group mb-3">
               <input type="text" name="Soyad" class="form-control form-control-lg bg-ligth fs-6" placeholder="Soyad" />
             </div>
+            <div class="input-group mb-3">
+              <input type="text" name="user_id" class="form-control form-control-lg bg-ligth fs-6" placeholder="ID" />
+            </div>
             <select class="form-select w-100" name="Cinsiyet" style="color: #808080;"
               aria-label="Default select example">
               <option selected>Cinsiyet seçin..</option>
