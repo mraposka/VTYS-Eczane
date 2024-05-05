@@ -9,15 +9,20 @@ use CodeIgniter\Database\Query;
 $session = \Config\Services::session();
 class Eczane extends BaseController
 {
-    public $admin = "8fqJY6B2lmkhzbg55W66VZ3iaOAY4cchsTMMFMWAi2XMOJ2HVoHvDk4MrBUkGhHP4PpUkHaKEq87SWRpOZi5k2cIdX0w9Tou9hwzUrIdtq701EO399LbGSYJUspPsyOq0U5lXvkYP8GBpUZC1M8c0ICaCGxQwYZkgm7LrSg04tMpt7Ck3KjwQsKoAwrsoKDvAwXjiWzIvaP3P0rlUHfBDQHhMjPKfAAmsVgZEjdVlVSdUV4xJQWktLwJtFR9mI";
+    public $admin = "8fqJY6B2lmkhzbg55W66VZ3iaOAY4cchsTMMFMWAi2XMOJ2HVoHvDk4MrBUkGhHP4PpUkHaKEq87SWRpOZi5k2cIdX0w9Tou9hwzUrIdtq701EO399LbGSYJUspPsyOq0U5lXvkYP8GBpUZC1M8c0ICaCGxQwYZkgm7LrSg04tMpt7Ck3KjwQsKoAwrsoKDvAwXjiWzIvaP3P0rlUHfBDQHhMjPKfAAmsVgZEjdVlVSdUV4xJQWktLwJtFR9mIQ";
     public function index()
     {
         return view("homePage");
+    }
+    public function WhoIsAdmin()
+    {
+        return $this->admin;
     }
     public function Home()
     {
         $db = db_connect();
         $model = new EczaneModel($db);
+        $data['controller'] = $this; 
         $data['categorys'] = $model->getCategories();
         $data['medicines'] = $model->getMedicines();
         $data['patient'] = $model->getPatients();
@@ -31,6 +36,15 @@ class Eczane extends BaseController
         } catch (\Throwable $th) {
         }
         return view("login");
+    }
+    public function PersonelGiris()
+    {
+        try {
+            $session = session();
+            $session->destroy();
+        } catch (\Throwable $th) {
+        }
+        return view("personelLogin");
     }
     public function Ilaclar()
     {
@@ -51,7 +65,7 @@ class Eczane extends BaseController
     {
         $db = db_connect();
         $model = new EczaneModel($db);
-        $data['prescs'] = $model->getPres(); 
+        $data['prescs'] = $model->getPres();
         $data['medicines'] = $model->getMedicines();
         $patients = $model->getPatients();
 
@@ -86,11 +100,11 @@ class Eczane extends BaseController
     public function Faturalar()
     {
         $db = db_connect();
-        $model = new EczaneModel($db);  
-        $data['prescs'] = $model->getPres();  
+        $model = new EczaneModel($db);
+        $data['prescs'] = $model->getPres();
         $data['medicines'] = $model->getMedicines();
-        $data['bills'] = $model->GetBill(); 
-        return view("invoice",$data);
+        $data['bills'] = $model->GetBill();
+        return view("invoice", $data);
     }
     public function Sepet()
     {
@@ -117,7 +131,8 @@ class Eczane extends BaseController
             $data['pres_id'] = $pres_id;
             $data['pat'] = $pat_id . "-" . $model->getPatientByID($pat_id);
         } catch (\Throwable $th) {
-            $data['items'] = "0";
+            $data['items'] = "-1";
+            $data['pres_id'] = "-1";
             $data['pat_id'] = "-1";
         }
 
@@ -146,6 +161,24 @@ class Eczane extends BaseController
 
         if ($query !== null && $query->user_id == $this->admin) {
             $sessionData = ['user_id' => $this->admin];
+            $session->set($sessionData);
+            return redirect()->to("Home");
+        } else {
+            return redirect()->to("Giris");
+        }
+    }
+    public function PersonelLogin()
+    {
+        try {
+            $session = session();
+        } catch (\Throwable $th) {
+        }
+        $db = db_connect();
+        $model = new EczaneModel($db);
+        $query = $model->login($_POST["user"], md5($_POST["pass"]));
+
+        if ($query !== null) {
+            $sessionData = ['user_id' => $query->user_id];
             $session->set($sessionData);
             return redirect()->to("Home");
         } else {
@@ -291,6 +324,14 @@ class Eczane extends BaseController
         $total_price = $_POST['total_price'];
         if ($model->SaveCart($pat_id, $pres_id, $total_price)) {
             echo json_encode(200);
+            try {
+                $session = session();
+            } catch (\Throwable $th) {
+            }
+            $items = "-1";
+            $pres_id = "-1";
+            $sessionData = ['items' => $items, 'pres_id_for_cart' => $pres_id];
+            $session->set($sessionData);
         } else {
             echo json_encode(400);
         }

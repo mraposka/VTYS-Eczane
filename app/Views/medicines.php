@@ -1,31 +1,26 @@
-<?php include("header.php"); ?>
-<div class="input-group input-group-sm mb-3" style="margin-top:130px; width:250px; float:right; margin-right: 203px">
-  <input type="text" class="form-control form-control-sm" placeholder="Aramak istediğiniz şeyi giriniz." aria-label="Recipient's username" aria-describedby="button-addon2">
-  <button class="btn btn-outline-secondary btn-sm" style="color: #808080; background:#ffa500; font-weight: bold; " type="button" id="button-addon2">Button</button>
-</div>
+<?php include ("header.php"); ?>
 <div id="cats" style="visibility: hidden;">
-  <?php foreach ($categories as $category) : ?>
-    <a id="<?php echo $category->category_id; ?>" name="<?php echo $category->c_type; ?>"><?php echo $category->c_type; ?>-<?php echo $category->category_id; ?></a>
+  <?php foreach ($categories as $category): ?>
+    <a id="<?php echo $category->category_id; ?>"
+      name="<?php echo $category->c_type; ?>"><?php echo $category->c_type; ?>-<?php echo $category->category_id; ?></a>
   <?php endforeach; ?>
 </div>
 <div class="table ">
   <table class="table  table-hover" style="background:#f2f2f2;">
     <thead>
       <tr>
-        <th scope="col">Güncelle</th>
         <th scope="col">ilaç ID</th>
         <th scope="col">İlaç Adı</th>
         <th scope="col">Fiyat</th>
         <th scope="col">Kategori</th>
         <th scope="col">Üretici Firma</th>
-        <th scope="col">Reçete Rengi</th> 
+        <th scope="col">Reçete Rengi</th>
+        <th scope="col">Güncelle</th>
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($medicines as $medicine) : ?>
+      <?php foreach ($medicines as $medicine): ?>
         <tr id="tableID_<?php echo $medicine->medicine_id; ?>">
-          <td><button class="btn btn-sm" type="button" id="delete_<?php echo $medicine->medicine_id; ?>" style="color: #808080; background:#ffa500; font-weight: bold; "><i class="fa-solid fa-trash"></i>&nbsp;Sil</button>&nbsp;<button class="btn btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop<?php echo $medicine->medicine_id; ?>" style="color: #808080; background:#ffa500; font-weight: bold; "><i class="fa-solid fa-pen-to-square"></i>&nbsp;Düzenle</button></td>
-          </td>
           <td id="tableMedID_<?php echo $medicine->medicine_id; ?>"><?php echo $medicine->medicine_id; ?></td>
           <td id="tableMedName_<?php echo $medicine->medicine_id; ?>"><?php echo $medicine->name; ?></td>
           <td id="tableMedPrice_<?php echo $medicine->medicine_id; ?>"><?php echo $medicine->price; ?></td>
@@ -40,7 +35,14 @@
             ?>
           </td>
           <td id="tableMedComp_<?php echo $medicine->medicine_id; ?>"><?php echo $medicine->company; ?></td>
-          <td id="tableMedPresColor_<?php echo $medicine->medicine_id; ?>"><?php echo $medicine->pres_color; ?></td> 
+          <td id="tableMedPresColor_<?php echo $medicine->medicine_id; ?>"><?php echo $medicine->pres_color; ?></td>
+          </td>
+          <td><button class="btn btn-sm" type="button" id="delete_<?php echo $medicine->medicine_id; ?>"
+              style="color: #808080; background:#ffa500; font-weight: bold; "><i
+                class="fa-solid fa-trash"></i>&nbsp;Sil</button>&nbsp;<button class="btn btn-sm" type="button"
+              data-bs-toggle="modal" data-bs-target="#staticBackdrop<?php echo $medicine->medicine_id; ?>"
+              style="color: #808080; background:#ffa500; font-weight: bold; "><i
+                class="fa-solid fa-pen-to-square"></i>&nbsp;Düzenle</button></td>
           </td>
         </tr>
       <?php endforeach; ?>
@@ -48,63 +50,69 @@
     </tbody>
   </table>
 </div>
-<?php foreach ($medicines as $medicine) : ?>
+<?php foreach ($medicines as $medicine): ?>
   <form id="ilacEdit<?php echo $medicine->medicine_id; ?>">
-    <div class="modal fade" id="staticBackdrop<?php echo $medicine->medicine_id; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop<?php echo $medicine->medicine_id; ?>" data-bs-backdrop="static"
+      data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="staticBackdropLabel">İlaç Bilgileri</h5>
             <input type="hidden" value="<?php echo $medicine->medicine_id; ?>" name="med_id">
-            <button type="button" class="btn-close" id="kapatBtn<?php echo $medicine->medicine_id; ?>" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" id="kapatBtn<?php echo $medicine->medicine_id; ?>"
+              data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1"> <i class="fas fa-pencil-alt"></i></span>
-              <input name="IlaçAdı" type="text" class="form-control" placeholder="İlaç Adı" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $medicine->name; ?>">
+              <input name="IlaçAdı" type="text" class="form-control" placeholder="İlaç Adı" aria-label="Username"
+                aria-describedby="basic-addon1" value="<?php echo $medicine->name; ?>">
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1"> <i class="fas fa-pencil-alt"></i></span>
-              <input name="Fiyatı" type="text" class="form-control" placeholder="İlaç Adı" aria-label="Username" aria-describedby="basic-addon1" value="<?php echo $medicine->price; ?>">
+              <input name="Fiyatı" type="text" class="form-control" placeholder="İlaç Adı" aria-label="Username"
+                aria-describedby="basic-addon1" value="<?php echo $medicine->price; ?>">
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1"><i class="fas fa-pencil-alt"></i></span>
               <select class="form-select" name="kategori" aria-label="Kategori seçiniz">
-                <?php foreach ($categories as $category) : ?>
+                <?php foreach ($categories as $category): ?>
                   <?php if ($category->category_id == $medicine->category_id) { ?>
                     <option selected name="category" value="<?php echo $category->category_id; ?>">
                       <?php echo $category->c_type; ?>
                     </option>
-                  <?php
+                    <?php
                   } else { ?>
                     <option name="category" value="<?php echo $category->category_id; ?>">
                       <?php echo $category->c_type; ?>
                     </option><?php
 
-                            } ?>
+                  } ?>
                 <?php endforeach; ?>
               </select>
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1"><i class="fas fa-pencil-alt"></i></span>
-              <input name="Firması" value="<?php echo $medicine->company; ?>" type="text" class="form-control" placeholder="Üretici Firma" aria-label="Username" aria-describedby="basic-addon1">
+              <input name="Firması" value="<?php echo $medicine->company; ?>" type="text" class="form-control"
+                placeholder="Üretici Firma" aria-label="Username" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1"><i class="fas fa-pencil-alt"></i></span>
               <select name="receteRengi">
                 <option <?php if ($medicine->pres_color == "Normal")
-                          echo "selected"; ?> value="Normal">Normal</option>
+                  echo "selected"; ?> value="Normal">Normal</option>
                 <option <?php if ($medicine->pres_color == "Kırmızı")
-                          echo "selected"; ?> value="Kırmızı">Kırmızı</option>
+                  echo "selected"; ?> value="Kırmızı">Kırmızı</option>
                 <option <?php if ($medicine->pres_color == "Turuncu")
-                          echo "selected"; ?> value="Turuncu">Turuncu</option>
+                  echo "selected"; ?> value="Turuncu">Turuncu</option>
                 <option <?php if ($medicine->pres_color == "Yeşil")
-                          echo "selected"; ?> value="Yeşil">Yeşil</option>
+                  echo "selected"; ?> value="Yeşil">Yeşil</option>
                 <option <?php if ($medicine->pres_color == "Mor")
-                          echo "selected"; ?> value="Mor">Mor</option>
+                  echo "selected"; ?> value="Mor">Mor</option>
               </select>
             </div>
-            <button class="btn btn-sm" style="color: #808080; background:#ffa500; font-weight: bold; float: right;">KAYDET</button>
+            <button class="btn btn-sm"
+              style="color: #808080; background:#ffa500; font-weight: bold; float: right;">KAYDET</button>
           </div>
         </div>
       </div>
@@ -149,7 +157,7 @@
           `;
     notifDiv.innerHTML = notificationContent;
   }
-  $(document).ready(function() {
+  $(document).ready(function () {
     var forms = document.getElementsByTagName('form');
     var formIDs = [];
     for (var i = 0; i < forms.length; i++) {
@@ -158,7 +166,7 @@
         medicineID = formID.replace("ilacEdit", "");
         var ajaxFormID = '#ilacEdit' + medicineID;
         var ajaxDeleteID = '#delete_' + medicineID;
-        $(ajaxDeleteID).click(function(e) {
+        $(ajaxDeleteID).click(function (e) {
           e.preventDefault();
           var confirmMessage = "Bu ilacı silmek istediğinize emin misiniz?"; // Kullanıcıya gösterilecek onay iletişim kutusu mesajı
 
@@ -177,11 +185,11 @@
               data: {
                 id: id
               },
-              success: function(result) {
+              success: function (result) {
                 showSnackbar("NULL", "İlaç Başarıyla Silindi!", 1);
                 document.getElementById("tableID_" + id).remove();
               },
-              error: function(result) {
+              error: function (result) {
                 showSnackbar("NULL", "İlaç Silinirken Bir Hata Oluştu!", 0);
               }
             });
@@ -189,7 +197,7 @@
         });
 
         console.log(ajaxDeleteID);
-        $(ajaxFormID).on('submit', function(e) {
+        $(ajaxFormID).on('submit', function (e) {
           document.getElementById(e.delegateTarget[1].id).click();
           e.preventDefault();
           var base_url = window.location.origin + "/" + window.location.pathname.split("/")[1];
@@ -206,7 +214,7 @@
             type: 'POST',
             url: _URL, // StockAdd fonksiyonunun URL'si
             data: formData,
-            success: function(response) {
+            success: function (response) {
               if (response == "200") {
                 console.log("Succes");
                 showSnackbar(e.delegateTarget[1].id, "İlaç Güncellendi!", 1);
@@ -221,7 +229,7 @@
                 showSnackbar("MedicineAdderKapatBtn", "İlaç Güncellenirken Bir Hata Oluştu!", 0)
               }
             },
-            error: function() {
+            error: function () {
               $('#errorMessage').text("Error occurred while processing your request.").show();
             }
           });

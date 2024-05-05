@@ -1,70 +1,72 @@
-<?php include("header.php"); ?>
-<div class="input-group input-group-sm mb-3" style="margin-top:130px; width:250px; float:right; margin-right: 203px">
-  <input type="text" class="form-control form-control-sm" placeholder="Aramak istediğiniz şeyi giriniz." aria-label="Recipient's username" aria-describedby="button-addon2">
-  <button class="btn btn-outline-secondary btn-sm" style="color: #808080; background:#ffa500; font-weight: bold; " type="button" id="button-addon2">Button</button>
-</div>
-
+<?php include ("header.php"); ?>
 <head>
 </head>
 <div class="table">
   <table class="table table-hover" style="background:#f2f2f2;">
     <thead>
       <tr>
-        <th scope="col">Güncelle</th>
         <th scope="col">Personel ID</th>
         <th scope="col">Ad</th>
         <th scope="col">Soyad</th>
         <th scope="col">Cinsiyet</th>
+        <th scope="col">Güncelle</th>
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($employees as $employee) : ?>
+      <?php foreach ($employees as $employee): ?>
         <tr id="tableID_<?php echo $employee->emp_id; ?>">
-          <td>
-            <button class="btn btn-sm" type="button" id="delete_<?php echo $employee->emp_id; ?>" style="color: #808080; background:#ffa500; font-weight: bold;">
-              <i class="fa-solid fa-trash"></i>&nbsp;Sil
-            </button>
-            &nbsp;
-            <button class="btn btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop<?php echo $employee->emp_id; ?>" style="color: #808080; background:#ffa500; font-weight: bold;">
-              <i class="fa-solid fa-pen-to-square"></i>&nbsp;Düzenle
-            </button>
-          </td>
           <td id="tableEmp_id"><?php echo $employee->emp_id; ?></td>
           <td id="tableEmp_name"><?php echo $employee->name; ?></td>
           <td id="tableEmp_surname"><?php echo $employee->surname; ?></td>
           <td id="tableEmp_gender"><?php echo $employee->gender; ?></td>
+          <td>
+            <button class="btn btn-sm" type="button" id="delete_<?php echo $employee->emp_id; ?>"
+              style="color: #808080; background:#ffa500; font-weight: bold;">
+              <i class="fa-solid fa-trash"></i>&nbsp;Sil
+            </button>
+            &nbsp;
+            <button class="btn btn-sm" type="button" data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop<?php echo $employee->emp_id; ?>"
+              style="color: #808080; background:#ffa500; font-weight: bold;">
+              <i class="fa-solid fa-pen-to-square"></i>&nbsp;Düzenle
+            </button>
+          </td>
         </tr>
       <?php endforeach; ?>
     </tbody>
   </table>
 </div>
 <div id="notif"></div>
-<?php foreach ($employees as $employee) : ?> <!-- Düzeltme -->
+<?php foreach ($employees as $employee): ?> <!-- Düzeltme -->
   <form id="personelEdit<?php echo $employee->emp_id; ?>"> <!-- Düzeltme -->
-    <div class="modal fade" id="staticBackdrop<?php echo $employee->emp_id; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop<?php echo $employee->emp_id; ?>" data-bs-backdrop="static"
+      data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Personel Bilgileri</h5> <!-- Başlık düzeltilmesi -->
             <input type="hidden" value="<?php echo $employee->emp_id; ?>" name="emp_id"> <!-- Doğru değişken -->
-            <button type="button" class="btn-close" id="kapatBtn<?php echo $employee->emp_id; ?>" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" id="kapatBtn<?php echo $employee->emp_id; ?>" data-bs-dismiss="modal"
+              aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <div class="input-group mb-3">
               <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
-              <input name="adi" type="text" class="form-control" placeholder="Personel Adı" aria-label="Personel Adı" value="<?php echo $employee->name; ?>">
+              <input name="adi" type="text" class="form-control" placeholder="Personel Adı" aria-label="Personel Adı"
+                value="<?php echo $employee->name; ?>">
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
-              <input name="soyadi" type="text" class="form-control" placeholder="Personel Soyadı" aria-label="Personel Soyadı" value="<?php echo $employee->surname; ?>">
+              <input name="soyadi" type="text" class="form-control" placeholder="Personel Soyadı"
+                aria-label="Personel Soyadı" value="<?php echo $employee->surname; ?>">
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
               <select class="form-select" name="cinsiyeti">
                 <option value="Erkek" <?php if ($employee->gender == "Erkek")
-                                        echo "selected"; ?>>Erkek</option>
+                  echo "selected"; ?>>Erkek</option>
                 <option value="Kadın" <?php if ($employee->gender == "Kadın")
-                                        echo "selected"; ?>>Kadın</option>
+                  echo "selected"; ?>>Kadın</option>
               </select>
             </div>
           </div>
@@ -113,7 +115,7 @@
     notifDiv.innerHTML = notificationContent;
   }
 
-  $(document).ready(function() {
+  $(document).ready(function () {
     var forms = document.getElementsByTagName('form');
     var base_url = window.location.origin + "/" + window.location.pathname.split("/")[1];
     for (var i = 0; i < forms.length; i++) {
@@ -124,7 +126,7 @@
         var ajaxDeleteID = '#delete_' + employeeID;
 
         // Silme düğmesi olayı
-        $(ajaxDeleteID).click(function(e) {
+        $(ajaxDeleteID).click(function (e) {
           e.preventDefault();
           var confirmMessage = "Bu çalışanı silmek istediğinize emin misiniz?";
           var confirmed = confirm(confirmMessage);
@@ -140,11 +142,11 @@
               data: {
                 id: id
               },
-              success: function(result) {
+              success: function (result) {
                 showSnackbar(null, "Çalışan Başarıyla Silindi!", 1);
                 document.getElementById("tableID_" + id).remove();
               },
-              error: function() {
+              error: function () {
                 showSnackbar(null, "Çalışan Silinirken Bir Hata Oluştu!", 0);
               }
             });
@@ -152,7 +154,7 @@
         });
 
         // Form gönderme olayı
-        $(ajaxFormID).on('submit', function(e) {
+        $(ajaxFormID).on('submit', function (e) {
           e.preventDefault();
           var base_url = window.location.origin + "/" + window.location.pathname.split("/")[1];
           var _URL = base_url + "/EmployeeEdit"; // Çalışan güncelleme URL'si
@@ -168,7 +170,7 @@
             type: 'POST',
             url: _URL,
             data: formData,
-            success: function(response) {
+            success: function (response) {
               if (response == "200") {
                 showSnackbar(null, "Çalışan Güncellendi!", 1);
                 document.getElementById(e.delegateTarget[1].id).click();
@@ -182,7 +184,7 @@
                 showSnackbar(null, "Çalışan Güncellenirken Bir Hata Oluştu!", 0);
               }
             },
-            error: function() {
+            error: function () {
               console.error("Bir hata oluştu.");
             }
           });

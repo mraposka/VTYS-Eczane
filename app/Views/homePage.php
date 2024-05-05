@@ -84,99 +84,104 @@
   }
 </style>
 
-<body>
+<body> 
+  <?php try {
+    $session = session();
+  } catch (\Throwable $th) {
+  }
+  if ($session->get("user_id") == $controller->WhoIsAdmin()) { ?>
+    <div class="cards ">
+      <div class="container py-5">
+        <h1 class="text-center" style="color: #808080;">Admin Paneli</h1>
+        <div class="row">
 
-  <div class="cards ">
-    <div class="container py-5">
-      <h1 class="text-center" style="color: #808080;">Admin Paneli</h1>
-      <div class="row">
+          <div class="col-md-4">
+            <div class="card" style="background:#f2f2f2;">
+              <img id="MDB-logo5" class="card-img-top" src="<?php echo base_url('ViewAssets/') ?>images/5.jpg"
+                alt="..." />
+              <div class="card-body">
+                <h5 class="card-title" style="color: #808080; text-align:center;">PERSONEL</h5>
+              </div>
+              <div class="mb-5 d-flex justify-content-around">
+                <button class="btn " type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop2"
+                  style="color: #808080; background:#ffa500; font-weight: bold;">EKLE</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card" style="background:#f2f2f2;">
+              <img id="MDB-logo5" class="card-img-top" src="<?php echo base_url('ViewAssets/') ?>images/8.jpg"
+                alt="..." />
+              <div class="card-body">
+                <h5 class="card-title" style="color: #808080; text-align:center;">HASTA</h5>
+              </div>
+              <div class="mb-5 d-flex justify-content-around">
+                <button class="btn " type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop4"
+                  style="color: #808080; background:#ffa500; font-weight: bold;">EKLE</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card" style="background:#f2f2f2;">
+              <img id="MDB-logo5" class="card-img-top" src="<?php echo base_url('ViewAssets/') ?>images/9.jpg"
+                alt="..." />
+              <div class="card-body">
+                <h5 class="card-title" style="color: #808080; text-align:center;">STOK</h5>
+              </div>
+              <div class="mb-5 d-flex justify-content-around">
+                <button class="btn " type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop5"
+                  style="color: #808080; background:#ffa500; font-weight: bold;">EKLE</button>
+              </div>
+            </div>
+          </div>
+        </div><br>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card" style="background:#f2f2f2;">
+              <img id="MDB-logo6" class="card-img-top" src="<?php echo base_url('ViewAssets/') ?>images/6.jpg"
+                alt="..." />
+              <div class="card-body">
+                <h5 class="card-title" style="color: #808080; text-align:center;">İLAÇ</h5>
+              </div>
+              <div class="mb-5 d-flex justify-content-around">
+                <button class="btn " data-bs-toggle="modal" id="ekleBtn" data-bs-target="#staticBackdrop"
+                  style="color: #808080; background:#ffa500; font-weight: bold; ">EKLE</button>
+              </div>
+            </div>
+          </div>
 
-        <div class="col-md-4">
-          <div class="card" style="background:#f2f2f2;">
-            <img id="MDB-logo5" class="card-img-top" src="<?php echo base_url('ViewAssets/') ?>images/5.jpg"
-              alt="..." />
-            <div class="card-body">
-              <h5 class="card-title" style="color: #808080; text-align:center;">PERSONEL</h5>
-            </div>
-            <div class="mb-5 d-flex justify-content-around">
-              <button class="btn " type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop2"
-                style="color: #808080; background:#ffa500; font-weight: bold;">EKLE</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card" style="background:#f2f2f2;">
-            <img id="MDB-logo5" class="card-img-top" src="<?php echo base_url('ViewAssets/') ?>images/8.jpg"
-              alt="..." />
-            <div class="card-body">
-              <h5 class="card-title" style="color: #808080; text-align:center;">HASTA</h5>
-            </div>
-            <div class="mb-5 d-flex justify-content-around">
-              <button class="btn " type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop4"
-                style="color: #808080; background:#ffa500; font-weight: bold;">EKLE</button>
+          <div class="col-lg-4">
+            <div class="card" style="background:#f2f2f2;">
+              <img id="MDB-logo7" class="card-img-top" src="<?php echo base_url('ViewAssets/') ?>images/7.jpg"
+                alt="..." />
+              <div class="card-body">
+                <h5 class="card-title" style="color: #808080;text-align:center;">KATEGORİ</h5>
+              </div>
+              <div class="mb-5 d-flex justify-content-around">
+                <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop3"
+                  style="color: #808080; background:#ffa500; font-weight: bold;">EKLE</button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card" style="background:#f2f2f2;">
-            <img id="MDB-logo5" class="card-img-top" src="<?php echo base_url('ViewAssets/') ?>images/9.jpg"
-              alt="..." />
-            <div class="card-body">
-              <h5 class="card-title" style="color: #808080; text-align:center;">STOK</h5>
-            </div>
-            <div class="mb-5 d-flex justify-content-around">
-              <button class="btn " type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop5"
-                style="color: #808080; background:#ffa500; font-weight: bold;">EKLE</button>
-            </div>
-          </div>
-        </div>
-      </div><br>
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="card" style="background:#f2f2f2;">
-            <img id="MDB-logo6" class="card-img-top" src="<?php echo base_url('ViewAssets/') ?>images/6.jpg"
-              alt="..." />
-            <div class="card-body">
-              <h5 class="card-title" style="color: #808080; text-align:center;">İLAÇ</h5>
-            </div>
-            <div class="mb-5 d-flex justify-content-around">
-              <button class="btn " data-bs-toggle="modal" id="ekleBtn" data-bs-target="#staticBackdrop"
-                style="color: #808080; background:#ffa500; font-weight: bold; ">EKLE</button>
-            </div>
-          </div>
-        </div>
 
-        <div class="col-lg-4">
-          <div class="card" style="background:#f2f2f2;">
-            <img id="MDB-logo7" class="card-img-top" src="<?php echo base_url('ViewAssets/') ?>images/7.jpg"
-              alt="..." />
-            <div class="card-body">
-              <h5 class="card-title" style="color: #808080;text-align:center;">KATEGORİ</h5>
-            </div>
-            <div class="mb-5 d-flex justify-content-around">
-              <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop3"
-                style="color: #808080; background:#ffa500; font-weight: bold;">EKLE</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4">
-          <div class="card" style="background:#f2f2f2;">
-            <img id="MDB-logo8" class="card-img-top" src="<?php echo base_url('ViewAssets/') ?>images/10.jpg"
-              alt="..." />
-            <div class="card-body">
-              <h5 class="card-title" style="color: #808080;text-align:center;">Reçete</h5>
-            </div>
-            <div class="mb-5 d-flex justify-content-around">
-              <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop6"
-                style="color: #808080; background:#ffa500; font-weight: bold;">EKLE</button>
+          <div class="col-lg-4">
+            <div class="card" style="background:#f2f2f2;">
+              <img id="MDB-logo8" class="card-img-top" src="<?php echo base_url('ViewAssets/') ?>images/10.jpg"
+                alt="..." />
+              <div class="card-body">
+                <h5 class="card-title" style="color: #808080;text-align:center;">Reçete</h5>
+              </div>
+              <div class="mb-5 d-flex justify-content-around">
+                <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop6"
+                  style="color: #808080; background:#ffa500; font-weight: bold;">EKLE</button>
+              </div>
             </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
-  </div>
+  <?php } ?>
 
   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -270,7 +275,7 @@
             <div class="input-group mb-3">
               <input type="text" name="Kategori" id="" class="form-control form-control-lg bg-ligth fs-6"
                 placeholder="Kategori adını girin." />
-            </div> 
+            </div>
         </div>
         <div class="modal-footer"><button type="submit" class="btn btn-custom btn-lg w-100 fs-6"
             style="background-color: #ffa500; color: #808080; font-weight: bold;">EKLE</button>
@@ -360,7 +365,7 @@
             </div>
             <div class="modal-footer">
               <button type="submit" class="btn btn-custom btn-lg w-100 fs-6"
-                style="background-color: #ffa500; color: white; font-weight: bold;">EKLE</button> 
+                style="background-color: #ffa500; color: white; font-weight: bold;">EKLE</button>
             </div>
           </form>
         </div>

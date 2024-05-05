@@ -7,12 +7,13 @@ use App\Router\RouteCollection;
  */
 //GetRoutes
 $routes->get('/Giris', 'Eczane::Giris');
-$routes->get('/Logout', 'Eczane::Logout');
-
+$routes->get('/Logout', 'Eczane::Logout'); 
+$routes->get('/PersonelGiris', 'Eczane::PersonelGiris');
 //GetRoutes
 
 //PostRoutes
-$routes->post('/Login', 'Eczane::Login');
+$routes->post('/PersonelLogin', 'Eczane::PersonelLogin');  
+$routes->post('/Login', 'Eczane::Login');  
 $routes->post('/EmployeeAdd', 'Eczane::EmployeeAdd');
 $routes->post('/CategoryAdd', 'Eczane::CategoryAdd');
 $routes->post('/PatientAdd', 'Eczane::PatientAdd');

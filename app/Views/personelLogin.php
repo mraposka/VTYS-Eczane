@@ -27,7 +27,7 @@
             <div class="header-text mb-4">
               <h2>Hoşgeldiniz</h2>
             </div>
-            <form action="Login" method="POST">
+            <form action="PersonelLogin" method="POST">
               <div class="input-group mb-3">
                 <input type="text" name="user" class="form-control form-control-lg bg-light fs-6"
                   placeholder="Kullanıcı Adı" />
@@ -38,12 +38,12 @@
               </div>
               <div class="input-group mb-3">
                 <button type="submit" class="btn btn-custom btn-lg w-100 fs-6" style="background-color: #ffa500;"><i
-                    class="fa-solid fa-sign-in pe-2"></i>Giriş</button>
+                    class="fa-solid fa-sign-in pe-2"></i>Personel Giriş</button>
               </div>
-            </form>
+            </form> 
             <div class="input-group mb-3">
-              <a href="<?php echo base_url()."PersonelGiris"?>" type="submit" class="btn btn-custom btn-lg w-100 fs-6" style="background-color: #ffa500;"><i
-                  class="fa-solid fa-sign-in pe-2"></i>Personel Giriş</a>
+              <a href="<?php echo base_url()."Giris"?>" type="submit" class="btn btn-custom btn-lg w-100 fs-6" style="background-color: #ffa500;"><i
+                  class="fa-solid fa-sign-in pe-2"></i>Admin Giriş</a>
             </div>
           </div>
         </div>

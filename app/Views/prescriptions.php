@@ -1,10 +1,4 @@
 <?php include ("header.php"); ?>
-<div class="input-group input-group-sm mb-3" style="margin-top:130px; width:250px; float:right; margin-right: 203px">
-    <input type="text" class="form-control form-control-sm" placeholder="Aramak istediğiniz şeyi giriniz."
-        aria-label="Recipient's username" aria-describedby="button-addon2">
-    <button class="btn btn-outline-secondary btn-sm" style="color: #808080; background:#ffa500; font-weight: bold; "
-        type="button" id="button-addon2">Button</button>
-</div>
 <div class="table">
     <table class="table  table-hover" style="background:#f2f2f2;">
         <thead>
@@ -94,6 +88,7 @@
             },
             success: function (result) {
                 showSnackbar("NULL", "Reçete Başarıyla Silindi!", 1);
+                document.getElementById("receteKapatBtn").click();
                 var table = document.getElementById("presTable");
                 var rows = table.getElementsByTagName("tr");
                 for (var i = 0; i < rows.length; i++) {
@@ -105,6 +100,7 @@
             },
             error: function (result) {
                 showSnackbar("NULL", "Reçete Silinirken Bir Hata Oluştu!", 0);
+                document.getElementById("receteKapatBtn").click();
             }
         });
     }
@@ -147,10 +143,12 @@
             },
             success: function (result) {
                 showSnackbar("NULL", "Reçete Başarıyla Sepete Eklendi!", 1);
+                document.getElementById("receteKapatBtn").click();
                 console.log(items);
             },
             error: function (result) {
                 showSnackbar("NULL", "Reçete Sepete Eklenirken Bir Hata Oluştu!", 0);
+                document.getElementById("receteKapatBtn").click();
             }
         });
     }
@@ -213,7 +211,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">Bilgiler</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" id="receteKapatBtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="input-group mb-3">

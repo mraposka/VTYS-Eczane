@@ -94,18 +94,53 @@ class EczaneModel
         $sql = "INSERT INTO pres (pres_id,pres_date,usage_time,pres_color,medicine_id,med_total,patient_id) VALUES ('$pres_id', '$pres_date', '$usage_time',  '$pres_color', '$medicine_id','$med_total','$hasta_id')";
         return $this->db->query($sql);
     }
-    public function SaveCart(
-        $pat_id,
-        $pres_id,
-        $total_price,
-    ) {
+    public function SaveCart($pat_id, $pres_id, $total_price)
+    {
+        // Bağlantıyı al
         $db = db_connect();
+
+        // Modeli oluştur
         $model = new EczaneModel($db);
+
+        // Son sepet ID'sini al
         $cart_id = $model->getLastCartID();
         $cart_id++;
-        $sql = "INSERT INTO cart (pres_id,pat_id,total_price) VALUES ('$pres_id','$pat_id','$total_price')";
+
+        // Reçete bilgilerini al
+        $prescription = $this->db->table('pres')
+            ->where('pres_id', $pres_id)
+            ->get()
+            ->getRow();
+
+        // Reçete var mı kontrol et
+        if (!$prescription) {
+            return false; // Reçete bulunamadı
+        }
+
+        // Reçetede bulunan ilaçları ve miktarlarını al
+        $medicines = $this->db->table('pres')
+            ->where('pres_id', $pres_id)
+            ->get()
+            ->getResult();
+
+        // Her bir ilaç için stoktan düşme işlemini gerçekleştir
+        foreach ($medicines as $medicine) {
+            // İlaç miktarını stoktan düş
+            $this->deductStock($medicine->medicine_id, $medicine->med_total);
+        }
+
+        // Sepeti kaydet
+        $sql = "INSERT INTO cart (pres_id, pat_id, total_price) VALUES ('$pres_id', '$pat_id', '$total_price')";
         return $this->db->query($sql);
     }
+
+    // Stoktan düşme işlemini gerçekleştir
+    private function deductStock($medicine_id, $quantity)
+    {
+        // İlaç miktarını stoktan düş
+        $this->db->query("UPDATE stock SET piece = piece - $quantity WHERE medicine_id = $medicine_id");
+    }
+
     // İLAÇ EKLEME
     public function addMedicines($name, $price, $company, $pres_color, $cat_id)
     {
@@ -161,6 +196,15 @@ class EczaneModel
         } catch (\Throwable $th) {
             return 0;
         }
+    }
+    public function findUser($user_id)
+    {
+        $query = $this->db->table("users")
+            ->select('user_id')
+            ->where(['user_id' => $user_id])
+            ->get();
+        $result = $query->getFirstRow();
+        return $result->user_id;
     }
     public function GetBill()
     {

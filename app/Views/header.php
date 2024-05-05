@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="<?php echo base_url('ViewAssets/') ?>assets/homePage.css">
   <link rel="stylesheet" href="<?php echo base_url('ViewAssets/') ?>assets/employee.css">
-  <link rel="stylesheet" href="<?php echo base_url('ViewAssets/') ?>bootstrap/css/bootstrap.min.css"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+  <link rel="stylesheet" href="<?php echo base_url('ViewAssets/') ?>bootstrap/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="<?php echo base_url('ViewAssets/') ?>bootstrap/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
@@ -48,10 +48,15 @@
               <a class=" btn  btn-rounded nav-link mx-2" href="<?php echo base_url("/Stok") ?>"
                 style="color: #ffa500;"><i class="fas fa-box pe-2"></i>STOK</a>
             </li>
-            <li class="nav-item">
-              <a class=" btn  btn-rounded nav-link mx-2" href="<?php echo base_url("/Personel") ?>"
-                style="color: #ffa500;"><i class="fas fa-user pe-2"></i>PERSONEL</a>
-            </li>
+            <?php try {
+              $session = session();
+            } catch (\Throwable $th) {
+            }
+            if ($session->get("user_id") == "8fqJY6B2lmkhzbg55W66VZ3iaOAY4cchsTMMFMWAi2XMOJ2HVoHvDk4MrBUkGhHP4PpUkHaKEq87SWRpOZi5k2cIdX0w9Tou9hwzUrIdtq701EO399LbGSYJUspPsyOq0U5lXvkYP8GBpUZC1M8c0ICaCGxQwYZkgm7LrSg04tMpt7Ck3KjwQsKoAwrsoKDvAwXjiWzIvaP3P0rlUHfBDQHhMjPKfAAmsVgZEjdVlVSdUV4xJQWktLwJtFR9mIQ") { ?>
+              <li class="nav-item">
+                <a class=" btn  btn-rounded nav-link mx-2" href="<?php echo base_url("/Personel") ?>"
+                  style="color: #ffa500;"><i class="fas fa-user pe-2"></i>PERSONEL</a>
+              </li><?php } ?>
             <li class="nav-item">
               <a class="btn btn-rounded nav-link mx-2" href="<?php echo base_url("/Faturalar") ?>"
                 style="color: #ffa500;">

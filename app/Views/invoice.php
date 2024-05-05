@@ -1,10 +1,4 @@
 <?php include ("header.php"); ?>
-<div class="input-group input-group-sm mb-3" style="margin-top:130px; width:250px; float:right; margin-right: 203px">
-    <input type="text" class="form-control form-control-sm" placeholder="Aramak istediğiniz şeyi giriniz."
-        aria-label="Recipient's username" aria-describedby="button-addon2">
-    <button class="btn btn-outline-secondary btn-sm" style="color: #808080; background:#ffa500; font-weight: bold; "
-        type="button" id="button-addon2">Button</button>
-</div>
 <div class="table">
     <table class="table table-hover" style="background:#f2f2f2;">
         <thead>
