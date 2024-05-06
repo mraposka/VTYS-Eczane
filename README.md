@@ -32,6 +32,8 @@ Proje açıldığında bizi Login Page karşılar. Burada admin girişi ya da pe
 - Şevval Zeynep AYAR / zeynepayar2949@gmail.com
 - Sude Deniz SUVAR / sudesuvar51@gmail.com
 
+## Rapor
+Projenin raporuna [buradan](https://github.com/mraposka/VTYS-Eczane/blob/main/rapor.pdf) ulaşabilirsiniz.
 
 # KOU Pharmacy Automation -EN
 This automation system is developed to manage the daily operations of a pharmacy.
@@ -62,5 +64,8 @@ When the project is opened, we encounter the Login Page. Here, admin login or st
 - Abdulkadir Can KİNSİZ / kadircankinsiz@gmail.com
 - Şevval Zeynep AYAR / zeynepayar2949@gmail.com
 - Sude Deniz SUVAR / sudesuvar51@gmail.com
+
+## Report
+You can access the project report [here](https://github.com/mraposka/VTYS-Eczane/blob/main/rapor.pdf).
 
 
