@@ -12,7 +12,7 @@ Proje, CodeIgniter ve MVC mimarisi kullanılarak geliştirilmiştir. Veriitaban�
 Proje açıldığında bizi Login Page karşılar. Burada admin girişi ya da personel girişi yapılmalıdır. Admin girişi ile personel girişi arasındaki fark Adminin personel ekleyip çıkarabiliyor olmasıdır. 
 //foto
 
-![image]()
+![Akış Şeması](https://github.com/mraposka/VTYS-Eczane/assets/116346438/4707bbbc-963c-43d5-9469-8da95ff9cff1)
 
 ## Kullanım
 - İlaç Yönetimi: İlaçları ekleyebilir, düzenleyebilir ve silebilirsiniz. Ayrıca ilaçların stok durumunu izleyebilirsiniz.
