@@ -28,7 +28,7 @@ Proje açıldığında bizi Login Page karşılar. Burada admin girişi ya da pe
 ![Akış Şeması](https://github.com/mraposka/VTYS-Eczane/blob/main/otomasyonImage/3%2C.png)
 
 ## Hazırlayanlar
-- Abdülkadir Can KİNSİZ / kadircankinsiz@gmail.com
+- Abdulkadir Can KİNSİZ / kadircankinsiz@gmail.com
 - Şevval Zeynep AYAR / zeynepayar2949@gmail.com
 - Sude Deniz SUVAR / sudesuvar51@gmail.com
 
@@ -59,7 +59,7 @@ When the project is opened, we encounter the Login Page. Here, admin login or st
 ![Akış Şeması](https://github.com/mraposka/VTYS-Eczane/blob/main/otomasyonImage/8.png)
 
 ## Contributors
-- Abdülkadir Can KİNSİZ / kadircankinsiz@gmail.com
+- Abdulkadir Can KİNSİZ / kadircankinsiz@gmail.com
 - Şevval Zeynep AYAR / zeynepayar2949@gmail.com
 - Sude Deniz SUVAR / sudesuvar51@gmail.com
 
